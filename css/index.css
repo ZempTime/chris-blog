@@ -1,10 +1,10 @@
 :root {
-  --red: #C5004A;
-  --darkred: #7F0036;
+  --red: #c5004a;
+  --darkred: #7f0036;
   --lightgray: #e0e0e0;
-  --gray: #C0C0C0;
+  --gray: #c0c0c0;
   --darkgray: #333;
-  --navy: #17050F;
+  --navy: #17050f;
   --blue: #082840;
   --white: #fff;
 }
@@ -15,14 +15,38 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: proxima-nova, sans-serif;
   color: var(--darkgray);
   background-color: var(--white);
+}
+.tmpl-post .tmpl-home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+@media (min-width: 1000px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  main {
+    width: 950px;
+  }
+}
+@media (min-width: 768px) and (max-width: 999px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr minmax(750px, max-content) 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  main {
+    width: 750px;
+  }
 }
 p:last-child {
   margin-bottom: 0;
 }
-p,
 .tmpl-post li,
 img {
   max-width: 37.5em; /* 600px /16 */
@@ -45,6 +69,7 @@ main :first-child {
 }
 header {
   border-bottom: 1px dashed var(--lightgray);
+  grid-column: span 3;
 }
 header:after {
   content: "";
@@ -61,7 +86,7 @@ table th {
 
 pre,
 code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  font-family: proxima-nova, sans-serif;
   line-height: 1.5;
 }
 pre {
@@ -80,7 +105,7 @@ pre {
   -ms-hyphens: none;
   hyphens: none;
   padding: 1em;
-  margin: .5em 0;
+  margin: 0.5em 0;
   background-color: #f6f6f6;
 }
 .highlight-line {
@@ -105,7 +130,7 @@ pre {
 }
 .highlight-line-active {
   background-color: #444;
-  background-color: hsla(0, 0%, 27%, .8);
+  background-color: hsla(0, 0%, 27%, 0.8);
 }
 .highlight-line-add {
   background-color: #45844b;
@@ -179,7 +204,6 @@ pre {
   font-weight: 700;
 }
 
-
 /* Tags */
 .tag {
   display: inline-block;
@@ -209,10 +233,10 @@ a[href].tag:visited {
 
 /* Direct Links / Markdown Headers */
 .direct-link {
-  font-family: sans-serif;
+  font-family: proxima-nova, sans-serif;
   text-decoration: none;
   font-style: normal;
-  margin-left: .1em;
+  margin-left: 0.1em;
 }
 a[href].direct-link,
 a[href].direct-link:visited {
