@@ -7,7 +7,7 @@ tags:
 layout: layouts/post.njk
 ---
 
-After going through a couple Rails apps with the help of Chris Oliver and making my way through the [Agile Web Development with Rails](http://pragprog.com/book/rails4/agile-web-development-with-rails-4) (I now largely use it as a reference book), I tried to start implementing a password-protected users feature on the To-Do List app. My progress (or lack thereof) demoralized me, and on top of a head cold I was just beating my head against a wall with seemingly every step. It is my nature to be impatient with myself, and I expect to be able to sit down with a client and be able to build an app which would provide value to them _now_. I suppose I need to reevaluate if this is a realistic or healthy expectation to impose on myself. Anyway!~~
+After going through a couple Rails apps with the help of Chris Oliver and making my way through the [Agile Web Development with Rails](https://pragprog.com/book/rails4/agile-web-development-with-rails-4) (I now largely use it as a reference book), I tried to start implementing a password-protected users feature on the To-Do List app. My progress (or lack thereof) demoralized me, and on top of a head cold I was just beating my head against a wall with seemingly every step. It is my nature to be impatient with myself, and I expect to be able to sit down with a client and be able to build an app which would provide value to them _now_. I suppose I need to reevaluate if this is a realistic or healthy expectation to impose on myself. Anyway!~~
 
 Viewing my Rails progress as one giant problem wasn’t helpful, so I decided to chunk it apart.
 

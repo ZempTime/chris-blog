@@ -101,7 +101,7 @@ And that’s the important realization: the moment when you allow yourself to fe
 
 But the most important part of the project is how it affected the lives of the people who signed up for it. And this part is really easy to get distanced from, but it's actually the most important. Despite my code mistakes, I never let go of this and stayed focused on the big win: what actually using it feels like.
 
-When I saw [The Today Show](http://www.today.com/video/today/56841982) trying out the software I’d helped build, seeing the functions I wrote putting smiles on Jen’s face as she interacted with Derek Deter, I was touched, and super happy. Knowing that I’d contributed to 40k+ people (at that point) having gleeful, personal moments, actually being able to viscerally connect that consequence in the world with the code I wrote, it was surreal.
+When I saw [The Today Show](https://www.today.com/video/today/56841982) trying out the software I’d helped build, seeing the functions I wrote putting smiles on Jen’s face as she interacted with Derek Deter, I was touched, and super happy. Knowing that I’d contributed to 40k+ people (at that point) having gleeful, personal moments, actually being able to viscerally connect that consequence in the world with the code I wrote, it was surreal.
 
 This feels like a really private moment for me, but it deserves to be in this post, too. After that moment, I realized that up until that point I’d been subconsciously questioning why I was a developer. All that contribution…for what? I’d gotten as far as I had because I’d made a decision to be a developer, but I didn’t know what was next. When I finally got to connect with the fact that I could produce better lives for people at scale, the happiness is addictive and constructive. If you’re a new developer, chase this moment, and bask in it.
 
@@ -120,7 +120,7 @@ Lower budget, crazy idea, smaller team? Don’t even write in tests until someth
 The only thing that can inform you on where minefields are is experience. To get the most experience the most quickly, be happy, but not proud, and figure out how each feature should fall in this spectrum. Then see how it does later, down the line. Use that knowledge to change the way you do things upstream, but remember:
 
 <blockquote class="small">Tech businesses aren’t successful because they had perfect code and systems. They’re successful because they got a product to market fast and at the right time. They got out their protoype fast (hacks and all), tested and tweaked it, and then scaled. It is wholly arrogant to believe you will have a product on first launch that will be widely acclaimed and quickly adopted. Often it will take fast, iterative changes and tweaks with a small userbase and constant feedback until the right mix of features and pricing are met, along with aggressive marketing - and then growth happens.
-<p class="attribution text-right">-- from <a href="http://bigeng.io/post/118399425343/why-the-way-we-look-at-technical-debt-is-wrong" target="_blank">Why the Way We Look At Technical Debt is Wrong</a></p>
+<p class="attribution text-right">-- from <a href="https://bigeng.io/post/118399425343/why-the-way-we-look-at-technical-debt-is-wrong" target="_blank">Why the Way We Look At Technical Debt is Wrong</a></p>
 </blockquote>
 
 ## Remember
@@ -134,6 +134,6 @@ This doesn't mean you have an excuse not to have clean directory structures, per
 
 > We are actually user experience designers first and foremost who happen to be able to build their ideas. The design and structure of your code is a user experience on its own. - [Chris Oliver](https://twitter.com/@excid3)
 
-These pithy phrases sum up a lot of experience I’ve had since the last round of blog posts I wrote ([LaunchCode Placement Series](http://chriszempel.com/blog)). If anything is unclear or you have any questions, feel free to comment, email me at: chris.m.zempel.com or tweet me [@ZempTime](https://twitter.com/@zemptime).
+These pithy phrases sum up a lot of experience I’ve had since the last round of blog posts I wrote ([LaunchCode Placement Series](https://chriszempel.com/blog)). If anything is unclear or you have any questions, feel free to comment, email me at: chris.m.zempel.com or tweet me [@ZempTime](https://twitter.com/@zemptime).
 
 _P.S. Add ‘IGQ’ to the subject line of your email (stands for InvisibleGirlfriendQuestion in my head) and I’ll be sure to read it/get back to you faster than if you didn’t put it there._

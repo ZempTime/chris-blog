@@ -80,7 +80,7 @@ Lastly, if I can't figure out why from a technical POV, it very well could be so
 
 In a case like this, even if I still can't reasonably fix images not loading for the user, maybe I can fix the feeling of it. If there was any discretionary sort of budget built into the project at all anywhere, or maybe just because, I think this would be amazing:
 
-I'd ask the user, between <a href="https://media.mnn.com/assets/images/2010/08/blobfish.jpg.638x0_q80_crop-smart.jpg" target="_blank">blob fish</a> and <a href="http://cooperscorner.info/wp-content/uploads/2016/01/B12-KO8CcAAKL1Q.png-large.png" target="_blank">tea cup hat parakeet</a>, which picture did they like more? Then get a print of it, get that framed (in a frame that's nice, but not too nice) and mail it to them with a note:
+I'd ask the user, between <a href="https://media.mnn.com/assets/images/2010/08/blobfish.jpg.638x0_q80_crop-smart.jpg" target="_blank">blob fish</a> and <a href="https://cooperscorner.info/wp-content/uploads/2016/01/B12-KO8CcAAKL1Q.png-large.png" target="_blank">tea cup hat parakeet</a>, which picture did they like more? Then get a print of it, get that framed (in a frame that's nice, but not too nice) and mail it to them with a note:
 
 > Hey Katie,
 >

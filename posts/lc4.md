@@ -11,13 +11,13 @@ _Last week I went through what_ [_working at Efeqdev_](/posts/lc3/) _is like. No
 
 ## What happened this week?
 
-![Zempel](http://i.imgur.com/d2RHdzB.jpg)
+![Zempel](https://i.imgur.com/d2RHdzB.jpg)
 
 I’ve gone from Rookie to Novice in DB design, front-end technologies, and Ruby went from Novice to Novice+ as I’ve gotten exposed to the concepts of metaprogramming.
 
 Monday was AJAX day. In the to-do list app, I added functionality so checking off a task, deleting a task, and creating lists/tasks all take place without refreshing the screen.
 
-![Zempel](http://i.imgur.com/CNXh28z.png)
+![Zempel](https://i.imgur.com/CNXh28z.png)
 
 But I’ve learned something far more significant than any particular bit of code can explain, and that’s what I’m going to share with you.
 
@@ -76,7 +76,7 @@ There **are** people who fit this description, but that’s due more to the natu
 Cowboys are just as efficient and productive as rockstars, but with key differences: they don’t write needless or glitzy code, they select tools with great care and wield them adeptly focused on exactly the results they need to produce which are valuable for the end user &#8211; and nothing more. There is no fluff, just pure execution grounded by experience and attentiveness to user needs.
 
 <div>
-  <iframe width="500" height="375" src="http://www.youtube.com/embed/nhlHzYt4xRM?feature=oembed" frameborder="0" allowfullscreen></iframe>
+  <iframe width="500" height="375" src="https://www.youtube.com/embed/nhlHzYt4xRM?feature=oembed" frameborder="0" allowfullscreen></iframe>
 </div>
 
 _In this video: Cowboy vs Rockstar_

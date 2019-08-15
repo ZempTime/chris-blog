@@ -1,5 +1,5 @@
 ---
-title: Learning to Think Like A Developer
+title: The Five Core Activities of a Software Dev
 description: (Post 5 of 5) At this point, I was pretty much running out of things to write about. I still chuckle at the horrible Zoolander joke I made, though.
 date: 2013-11-22
 tags:
@@ -15,7 +15,7 @@ _This week will be focused on one of any programmer’s primary activities: main
 
 I'm dropping the snapshot approach. It's no longer useful!
 
-I also came across a [fascinating concept](http://jasonlefkowitz.net/2013/03/how-winners-win-john-boyd-and-the-four-qualities-of-victorious-organizations/) of proportion. The success of a given process is an emergent property dependent only on the presence of all required elements working in tandem, and if any one of those elements is missing everything falls apart.
+I also came across a [fascinating concept](https://jasonlefkowitz.net/2013/03/how-winners-win-john-boyd-and-the-four-qualities-of-victorious-organizations/) of proportion. The success of a given process is an emergent property dependent only on the presence of all required elements working in tandem, and if any one of those elements is missing everything falls apart.
 
 Immediately, I pondered how this could apply to the profession of programming.
 
@@ -23,7 +23,7 @@ Immediately, I pondered how this could apply to the profession of programming.
 
 Whenever I go from abstract concepts to practical application, I worry I sound ridiculous. Like this.
 
-![think I](http://i.imgur.com/ZQn8jsB.jpg)
+![think I](https://i.imgur.com/ZQn8jsB.jpg)
 
 Didn't know Apple was into male modeling
 
@@ -51,7 +51,7 @@ There’s absolutely no reason to move away from something that’s solid and wo
 
 Look for whatever gives you small wins immediately. Large breakthroughs are created through the force of small wins puncturing through the mental and technological frameworks, leading to the next big iteration where you have that “This is _such_ a better way of doing things!” moment.
 
-If you are one of the [LaunchCode](http://launchcodestl.com) hopefuls you might grasp at the meaning of this advice, but it won’t truly make sense unless you’re solving problems.
+If you are one of the [LaunchCode](https://launchcodestl.com) hopefuls you might grasp at the meaning of this advice, but it won’t truly make sense unless you’re solving problems.
 
 Once you’ve identified a language, framework or methodology worth learning, there’s another assessment to make.
 
@@ -73,6 +73,6 @@ However, everyone is different and this approach to learning new skills might no
 
 So I guess the ultimate answer is,
 
-![](http://i.imgur.com/oWNUurh.jpg)
+![](https://i.imgur.com/oWNUurh.jpg)
 
 Next week, I'll go over exactly how to go about teaching yourself Ruby on Rails.
