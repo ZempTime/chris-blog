@@ -90,7 +90,7 @@ code {
   line-height: 1.5;
 }
 pre {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.375;
   direction: ltr;
   text-align: left;
@@ -144,7 +144,7 @@ pre {
   padding: 0 1rem;
   float: left;
   margin: 1rem 0; /* 16px /16 */
-  font-size: 1em; /* 16px /16 */
+  font-size: 1.3em;
 }
 .home :link:not(:hover) {
   text-decoration: none;
@@ -153,6 +153,7 @@ pre {
 /* Nav */
 .nav {
   padding: 0;
+  padding-top: 4px;
   list-style: none;
   float: left;
   margin-left: 1em;
@@ -186,7 +187,7 @@ pre {
 }
 .postlist-date,
 .postlist-item:before {
-  font-size: 0.8125em; /* 13px /16 */
+  font-size: 1em;
   color: var(--darkgray);
 }
 .postlist-date {
@@ -209,7 +210,8 @@ pre {
   display: inline-block;
   vertical-align: text-top;
   text-transform: uppercase;
-  font-size: 0.625em; /* 10px /16 */
+  font-size: 0.7em;
+  min-width: 48px;
   padding: 2px 4px;
   margin-left: 0.8em; /* 8px /10 */
   background-color: var(--red);
@@ -220,6 +222,7 @@ pre {
 a[href].tag,
 a[href].tag:visited {
   color: #fff;
+  text-align: center;
 }
 
 /* Warning */

@@ -1,5 +1,5 @@
 ---
-title: The Five Core Activities of a Software Dev
+title: The Five Core Activities of a Software Dev 
 description: (Post 5 of 5) At this point, I was pretty much running out of things to write about. I still chuckle at the horrible Zoolander joke I made, though.
 date: 2013-11-22
 tags:
