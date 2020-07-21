@@ -35,7 +35,7 @@ Marketing, reviews, less qualified references, etc will populate your awareness 
 
 Whenever - anywhere, in any context - I see someone make an unexpected connection, and write an otherwise-ignored comment way down a post about a topic, I pay attention. If they're excited to realize something, and rush to write a post sharing what they've just connected, pay attention. If this connection is interesting to you, and references one of the books in your anti-library, get it.
 
-This has the added side benefit of turning your idle internet browsing into a wonderful book referral tactic.
+This has the added side benefit of turning your idle internet browsing into a wonderful book referral tactic. In fact, this is the main characteristic which makes this system antifragile to modern day life. It reframes the bad habits into constructive ones, and filters the torrent of information into a purified trickle.
 
 Drop your idea of being a fiction, or nonfiction reader. Drop your categories. Fiction is often better at exploring truth than nonfiction.
 
