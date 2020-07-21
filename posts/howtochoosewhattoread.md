@@ -3,7 +3,7 @@ title: How to Choose What to Read
 description: A simple, three-tier approach which naturally emerged and works well.
 date: 2020-07-21
 tags:
-  - anecdote
+  - guide
 layout: layouts/post.njk
 ---
 
