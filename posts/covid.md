@@ -24,24 +24,7 @@ The trudge of time, gradual change of what safe conduct means, and the general s
 - "How come you said I couldn't do x, but now you're doing y?" into being able to answer
 - "It's raining outside. How safe (or not) is it for us to be indoors together?"
 
-<!-- TOC -->
-
-- [Sourcing Trusted Information](#sourcing-trusted-information)
-- [Causative Factors](#causative-factors)
-  - [What are the symptpoms of COVID?](#what-are-the-symptpoms-of-covid)
-  - [What is the incubation period for COVID?](#what-is-the-incubation-period-for-covid)
-  - [How does it get transmitted?](#how-does-it-get-transmitted)
-  - [How does dosage relate?](#how-does-dosage-relate)
-  - [Are children less likely to spread it?](#are-children-less-likely-to-spread-it)
-  - [Can you get sick after you've already gotten sick?](#can-you-get-sick-after-youve-already-gotten-sick)
-  - [Do masks work?](#do-masks-work)
-  - [But but but masks/plandemic/etc](#but-but-but-masksplandemicetc)
-- [Guidelines](#guidelines)
-- [Design Mechanisms (coming soon)](#design-mechanisms-coming-soon)
-- [Changelog](#changelog)
-- [Suspected Censorship](#suspected-censorship)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Sourcing Trusted Information](#sourcing-trusted-information)auto- [Causative Factors](#causative-factors)auto  - [What are the symptpoms of COVID?](#what-are-the-symptpoms-of-covid)auto  - [What is the incubation period for COVID?](#what-is-the-incubation-period-for-covid)auto  - [How does it get transmitted?](#how-does-it-get-transmitted)auto  - [How does dosage relate?](#how-does-dosage-relate)auto  - [Are children less likely to spread it?](#are-children-less-likely-to-spread-it)auto  - [Can you get sick after you've already gotten sick?](#can-you-get-sick-after-youve-already-gotten-sick)auto  - [Do masks work?](#do-masks-work)auto  - [But but but masks/plandemic/etc](#but-but-but-masksplandemicetc)auto- [Guidelines](#guidelines)auto- [Design Mechanisms (coming soon)](#design-mechanisms-coming-soon)auto- [Changelog](#changelog)auto- [Suspected Censorship](#suspected-censorship)autoauto<!-- /TOC -->
 
 ## Sourcing Trusted Information
 
@@ -188,6 +171,8 @@ There must be possible design approaches to increase safety in varying situation
 
 ## Changelog
 I expect I should need to change this. Updates will be noted here, newest -> oldest. If you see something here that should be different (or updated), email chris.zempel@hey.com or [open an issue](https://github.com/ZempTime/chris-blog/issues/new). The actual update frequency will likely be once every 1-2 weeks, so a set of changes will be applied then.
+
+* [Adds "some risks worth taking"](https://github.com/ZempTime/chris-blog/commit/1748e6e840c9c321b87325ef8dda943b887568c2)
 
 ## Suspected Censorship
 - https://vimeo.com/402577241
