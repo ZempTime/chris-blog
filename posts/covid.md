@@ -33,6 +33,7 @@ The trudge of time, gradual change of what safe conduct means, and the general s
   - [How does it get transmitted?](#how-does-it-get-transmitted)
   - [How does dosage relate?](#how-does-dosage-relate)
   - [Are children less likely to spread it?](#are-children-less-likely-to-spread-it)
+  - [Can you get sick after you've already gotten sick?](#can-you-get-sick-after-youve-already-gotten-sick)
   - [Do masks work?](#do-masks-work)
   - [But but but masks/plandemic/etc](#but-but-but-masksplandemicetc)
 - [Guidelines](#guidelines)
@@ -169,7 +170,13 @@ There is no eliminating risk. There is only choosing different kinds. You might 
 - Wear a mask. Indoors, outdoors. Prefer window, outdoor environments with configurations you're not downwind.
 - Wash your hands.
 
-The goal is minimizing droplet exposure.
+The goal is minimizing droplet exposure. If a behavior has low risk but massive quality of life enhancement... it's worth taking to preserve sanity.
+
+Some risks worth taking:
+
+- Quick indoor bathroom trips, 1 person at a time w/ mask on
+- Outdoor spaces events with limited attendance/adequately spaced seating
+- Single-person servers (minimzing contact across individuals)
 
 ## Design Mechanisms (coming soon)
 There must be possible design approaches to increase safety in varying situations. Here are some ideas I want to develop:
