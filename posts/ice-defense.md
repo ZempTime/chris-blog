@@ -1,267 +1,322 @@
 ---
-title: ICE Detention Defense for US Citizens
-description: A practical playbook for legal US citizens to prepare for and respond to immigration enforcement encounters.
+title: ICE Defense
+description: What to do if ICE comes to your door, stops you, or detains someone you know.
 date: 2026-01-20
 tags:
   - guide
 layout: layouts/post.njk
 ---
 
-<div class="emergency-banner">
+<style>
+.hotline {
+  font-size: 1.8em;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.6em 1em;
+  background: #111;
+  color: #fff;
+  margin: 1.5em 0;
+  letter-spacing: 0.02em;
+}
+.hotline small {
+  display: block;
+  font-size: 0.45em;
+  font-weight: 400;
+  margin-top: 0.4em;
+  letter-spacing: 0;
+  opacity: 0.85;
+}
+.crisis-section {
+  border-left: 4px solid #c5004a;
+  padding: 1.25em 1.25em 1.25em 1.5em;
+  margin: 2.5em 0;
+  background: linear-gradient(to right, #fafafa, transparent);
+}
+.crisis-section h2 {
+  margin: 0 0 1em 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.1em;
+}
+.say-this {
+  font-size: 1.15em;
+  font-weight: 600;
+  background: #fff;
+  padding: 0.75em 1em;
+  margin: 0.75em 0;
+  border-left: 3px solid #111;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.step {
+  margin: 1.25em 0;
+  line-height: 1.5;
+}
+.step-num {
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  line-height: 1.6em;
+  font-weight: 700;
+  font-size: 0.85em;
+  margin-right: 0.6em;
+  border-radius: 2px;
+}
+.section-break {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 3em 0;
+}
+.prep-header {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 2em;
+}
+.prep-section {
+  margin: 2.5em 0;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #eee;
+}
+.prep-section:last-of-type {
+  border-bottom: none;
+}
+.prep-section h3 {
+  margin: 0 0 0.75em 0;
+  font-size: 1.05em;
+}
+.prep-section p, .prep-section ul {
+  color: #333;
+}
+.legal-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75em;
+  margin: 1em 0;
+}
+.legal-numbers div {
+  background: #f5f5f5;
+  padding: 0.6em 0.8em;
+  border-radius: 2px;
+}
+.legal-numbers strong {
+  display: block;
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 0.2em;
+}
+.doc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75em 0;
+}
+.doc-list li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid #eee;
+}
+.doc-list li:last-child {
+  border-bottom: none;
+}
+.context-section {
+  background: #f9f9f9;
+  padding: 1.5em;
+  margin: 2em 0;
+  border-radius: 2px;
+}
+.context-section h2 {
+  margin-top: 0;
+  font-size: 1em;
+}
+@media (max-width: 500px) {
+  .legal-numbers { grid-template-columns: 1fr; }
+  .hotline { font-size: 1.4em; padding: 0.5em; }
+}
+</style>
 
-## Emergency Numbers (Memorize)
-**St. Louis Rapid Response: 314-370-7080** (24/7, call or text)
+<div class="hotline">
+  314-370-7080
+  <small>St. Louis Rapid Response Coalition · 24/7 · Legal aid, detention locator, family support</small>
+</div>
 
-Legal Aid: LSEM 314-256-8756 | MICA 314-669-4290 | ACLU-MO 314-652-3111
+<div class="crisis-section">
+
+## ICE at Your Door
+
+<div class="step"><span class="step-num">1</span> <strong>Stay inside. Do not open.</strong></div>
+
+<div class="step"><span class="step-num">2</span> Ask through the door: "Do you have a warrant signed by a judge?"</div>
+
+<div class="step"><span class="step-num">3</span> If yes: "Slide it under the door." Look for a judge's signature and your correct name/address. ICE administrative warrants lack a judge's signature—they don't count.</div>
+
+<div class="step"><span class="step-num">4</span> Say:</div>
+
+<div class="say-this">"I do not consent to entry."</div>
+
+<div class="step"><span class="step-num">5</span> Record through the window if safe. Call <strong>314-370-7080</strong>.</div>
 
 </div>
 
----
+<div class="crisis-section">
 
-## Why This Page Exists
+## Stopped in Public
 
-ICE detained 170+ US citizens in the first nine months of 2025. Citizens have been held for days without contact, denied phone access, and had valid documentation—including REAL IDs and tribal IDs—rejected. In Missouri, traffic stops are the primary enforcement method. Your concern is statistically justified.
+<div class="step"><span class="step-num">1</span> Ask:</div>
 
-This page provides:
-1. [Immediate action checklist](#immediate-action-checklist)
-2. [Know your rights](#know-your-rights)
-3. [Family preparedness](#family-preparedness)
-4. [What to do if detained](#if-someone-is-detained)
-5. [Community resources](#st-louis-resources)
-6. [Printable quick-reference card](#print-section)
+<div class="say-this">"Am I free to leave?"</div>
 
----
+<div class="step"><span class="step-num">2</span> If yes: walk away calmly.</div>
 
-## Immediate Action Checklist
+<div class="step"><span class="step-num">3</span> If detained, say:</div>
 
-### This Week
+<div class="say-this">"I am a US citizen."</div>
 
-- [ ] **Get documentation for all family members**: US passport or passport card (strongest), certified birth certificate, REAL ID
-- [ ] **Create emergency contact card**: Write down 314-370-7080 and 2-3 trusted contacts. Memorize them.
-- [ ] **Designate emergency contacts**: Who can pick up your kids? Who has authority to access your accounts?
-- [ ] **Compile document package**: Birth certificates, Social Security cards, marriage license, medical records, financial accounts. Give a copy to your trusted person.
-- [ ] **Join or create a Signal group**: Your neighborhood needs an encrypted alert network. Not SMS—Signal.
-- [ ] **Post "Know Your Rights" by your front door**: Remind everyone not to open the door without a judicial warrant.
+<div class="step"><span class="step-num">4</span> Show ID. Passport is strongest. Then stay silent.</div>
 
-### This Month
+<div class="step"><span class="step-num">5</span> Say:</div>
 
-- [ ] **Consult an attorney** for Power of Attorney and standby guardianship (especially if you have children)
-- [ ] **Attend Know Your Rights training**: Contact 314-370-7080 for local sessions
-- [ ] **Install alert apps**: ICEBlock (iOS) or SignalSafe for real-time ICE activity tracking
-- [ ] **Practice scenarios with family**: What happens if ICE knocks? What do the kids do?
-- [ ] **Establish a mutual aid pod**: 5-10 households who look out for each other
+<div class="say-this">"I want an attorney."</div>
 
-### Ongoing
+<div class="step"><span class="step-num">6</span> Sign nothing.</div>
 
-- [ ] Monitor @stlrapidresponse on Instagram for local enforcement patterns
-- [ ] Update document package quarterly
-- [ ] Refresh family scenarios monthly
-- [ ] Report ICE sightings to hotline (314-370-7080) for community intelligence
+</div>
 
----
+<div class="crisis-section">
 
-## Know Your Rights
+## Someone Was Detained
 
-### At Home
+<div class="step"><span class="step-num">1</span> <strong>Call 314-370-7080</strong> — they'll help you find legal aid and locate the detainee.</div>
 
-**ICE cannot enter without a judicial warrant** (signed by a judge, with correct name and address). ICE administrative warrants are NOT judicial warrants.
+<div class="step"><span class="step-num">2</span> Call an immigration attorney directly:<br>
+LSEM <strong>314-256-8756</strong> · MICA <strong>314-669-4290</strong></div>
 
-1. Do not open the door
-2. Ask to see the warrant—have them slide it under the door
-3. State clearly: "I do not consent to entry"
-4. Record through the window if safe
-5. Teach children: don't answer the door for strangers
+<div class="step"><span class="step-num">3</span> Search <a href="https://locator.ice.gov/odls/">locator.ice.gov/odls</a> — may take 24-48 hours to appear in system.</div>
 
-### In Public
+<div class="step"><span class="step-num">4</span> Activate emergency contacts. Secure children with your designated caretaker.</div>
 
-1. Ask: "Am I being detained or am I free to leave?"
-2. If free: walk away calmly
-3. If detained: State "I am a US citizen" and show ID
-4. Exercise your right to remain silent beyond asserting citizenship
-5. Request an attorney immediately
-6. Do not sign anything without an attorney
+<div class="step"><span class="step-num">5</span> Attorney files bond hearing request (no fee). Hearing typically within 1-2 weeks.</div>
 
-### During Traffic Stops
+</div>
 
-Federal settlement (*Castañon Nava v. DHS*) applies in Missouri. ICE must have specific articulable facts for stops—they cannot use traffic violations as pretext.
+<div class="hotline">
+  314-370-7080
+  <small>St. Louis Rapid Response Coalition · 24/7</small>
+</div>
 
-1. Ask if the officer is ICE or local police
-2. Keep hands visible, be calm
-3. You can record the interaction
-4. If asked about immigration status, you can decline to answer
-5. Document the encounter afterward
+<hr class="section-break">
 
----
+<p class="prep-header">Prepare Before Anything Happens</p>
 
-## Family Preparedness
+<div class="prep-section">
 
-### Documentation to Carry
+### Documents to Carry
 
-- **US Passport/Passport Card** (strongest proof of citizenship)
-- **Certified birth certificate**
-- **State REAL ID** (proves lawful presence, not citizenship)
-- **Tribal ID** if applicable (request a supervisor if refused)
+<ul class="doc-list">
+<li><strong>US Passport or Passport Card</strong> — strongest proof of citizenship</li>
+<li><strong>Certified birth certificate</strong></li>
+<li><strong>State REAL ID</strong> — proves lawful presence, not citizenship</li>
+</ul>
 
-Citizens are not legally required to carry proof, but having ID resolves most encounters. Without documentation, citizens have been detained for "verification."
+Citizens aren't legally required to carry proof. But ID resolves most encounters. Without it, citizens have been detained for "verification."
 
-### Emergency Document Package
+</div>
 
-Keep this accessible to your trusted person:
+<div class="prep-section">
 
-- Birth certificates for all family members
+### Emergency Contacts
+
+Memorize the hotline: **314-370-7080**
+
+<div class="legal-numbers">
+<div><strong>LSEM (Legal Services)</strong>314-256-8756</div>
+<div><strong>MICA Project</strong>314-669-4290</div>
+<div><strong>ACLU Missouri</strong>314-652-3111</div>
+<div><strong>Catholic Legal</strong>314-977-3993</div>
+</div>
+
+Designate 2-3 trusted contacts. Who picks up your children? Who can access accounts if you're unreachable?
+
+</div>
+
+<div class="prep-section">
+
+### Document Package
+
+Give a copy to your trusted person:
+
+- Birth certificates (all family members)
 - Marriage license
 - Social Security cards
-- Medical records, prescriptions, insurance cards
-- School records, immunization cards
-- Financial account info, bills, insurance policies
-- Power of Attorney forms (childcare, financial, medical)
-- A-numbers if any family member has immigration documents
+- Medical records, prescriptions
+- School records
+- Financial accounts, insurance policies
+- Power of Attorney forms
+
+</div>
+
+<div class="prep-section">
 
 ### Childcare Designation
 
-Talk to an attorney about your options:
+Talk to an immigration attorney about your options:
 
-| Option | What it does |
-|--------|--------------|
-| **Caregiver's Authorization Affidavit** | Temporary childcare without court involvement |
-| **Standby Guardianship** | Emergency designation for immigration scenarios (preferred) |
-| **Power of Attorney** | Handles finances/medical, NOT childcare decisions |
-| **Court Guardianship** | Full transfer (difficult to terminate) |
+**Standby Guardianship** — activates in emergency, best for immigration scenarios
 
-Designate a trusted person with written authorization. Practice with children what to do.
+**Caregiver's Authorization Affidavit** — temporary authority, no court required
 
----
-
-## If Someone Is Detained
-
-### First 24 Hours
-
-1. **Locate the detainee**: [ICE Online Detainee Locator](https://locator.ice.gov/odls/) (may take 24-48 hours to appear)
-   - Search by A-number + country of birth, OR name + DOB + country
-2. **Contact an attorney immediately**: LSEM 314-256-8756, MICA 314-669-4290
-3. **Activate your emergency contact tree**
-4. **Secure childcare** via your designated caretaker
-5. **Call rapid response**: 314-370-7080
-
-### Within 72 Hours
-
-- Attorney files bond hearing request
-- Bond hearing typically scheduled within 1-2 weeks
-- Activate Power of Attorney for finances/medical
-- Notify employer/school as appropriate
-
-### Wrongful Detention (US Citizens)
-
-The federal *Castañon Nava* settlement allows individuals arrested without warrant or during an unlawful vehicle stop to seek immediate release. Your attorney should document:
-- Citizenship status
-- Violation of settlement terms
-- File for immediate release from ICE custody
-
----
-
-## Community Alert System
-
-### How to Report ICE Sightings
-
-1. **Verify**: Look for "POLICE ICE" on badges
-2. **Text your group**: "ICE at [location] [time] [details: # officers, vehicles]"
-3. **Call hotline**: 314-370-7080
-4. **Do NOT post unverified info on public social media**
-
-### Apps for Real-Time Alerts
-
-- **ICEBlock** (iOS): Anonymous, 5-mile radius alerts
-- **SignalSafe**: Citizen reports, moderator-verified
-
-### Recording ICE Encounters
-
-You have a First Amendment right to record law enforcement in public:
-- Stand 8+ feet from the scene
-- If told to step back, point camera at your feet while stepping back—keep recording
-- Document: time, date, location, number of officers, badge numbers, vehicle descriptions, license plates
-
-**Protocol: Observe and document, NOT obstruct.** Physical interference = felony charges. Recording = protected speech.
-
----
-
-## St. Louis Resources
-
-| Organization | Service | Contact |
-|--------------|---------|---------|
-| **Rapid Response Coalition** | 24/7 hotline, legal referrals, family support | 314-370-7080 |
-| **Legal Services of Eastern Missouri** | Free legal aid, immigration cases | 314-256-8756 |
-| **MICA Project** | Legal services, organizing, advocacy | 314-669-4290 |
-| **St. Francis Community Services** | Immigration Law Project, KYR programs | [sfcsstl.org](https://sfcsstl.org/services/immigration-law-project/) |
-| **International Institute** | Immigrant services, community hub | [iistl.org](https://www.iistl.org) |
-| **ACLU of Missouri** | Civil rights, litigation | 314-652-3111 |
-
-### Volunteer
-
-The network needs:
-- Hotline operators (bilingual especially needed)
-- Legal observers
-- Accompaniment volunteers
-- Mutual aid coordinators
-
-Contact 314-370-7080 to connect with training.
-
----
-
-## High-Risk Areas in Missouri
-
-**Primary enforcement method**: Traffic stops using minor violations (expired plates, window tint, speeding)
-
-**Reported activity**: St. Charles, Arnold, South County, I-44 corridor
-
-**State infrastructure**:
-- 287(g) agreements: MO State Highway Patrol + Pulaski County Sheriff
-- County jails holding ICE detainees: Phelps, Greene, Ste. Genevieve
-- Missouri's anti-sanctuary law prohibits local non-cooperation with ICE
-
----
-
-<div id="print-section" class="print-card">
-
-## Quick Reference Card
-
-**Print this page or screenshot this section.**
-
-### Emergency Numbers
-- **Rapid Response**: 314-370-7080
-- **LSEM Legal Aid**: 314-256-8756
-- **MICA Project**: 314-669-4290
-- **ACLU-MO**: 314-652-3111
-
-### At Your Door
-1. Don't open
-2. Ask for judicial warrant (judge signature)
-3. Say: "I do not consent to entry"
-4. Record if safe
-
-### In Public
-1. "Am I free to leave?"
-2. "I am a US citizen" + show ID
-3. Stay silent beyond that
-4. Request attorney
-5. Don't sign anything
-
-### ICE Locator
-https://locator.ice.gov/odls/
+**Power of Attorney** — covers finances and medical decisions, not childcare
 
 </div>
 
----
+<div class="prep-section">
 
-## Key Principle
+### Home Preparation
 
-**Proactive community infrastructure prevents reactive chaos.**
+Post "Know Your Rights" by your front door.
 
-The difference between a 2-hour detention with ID shown versus a 48-hour incommunicado hold is preparation. The difference between children in state custody versus with a designated caretaker is paperwork completed today. The difference between isolated fear and collective protection is organizing neighbors now.
+Teach children: don't answer the door for strangers.
 
-Build redundant systems: multiple emergency contacts, multiple forms of ID, multiple communication channels.
+Practice together: "ICE is here. What do we do?"
 
-You're not paranoid. You're appropriately assessing risk. And you're not alone—start with 314-370-7080.
+</div>
 
----
+<div class="prep-section">
 
-*Sources: [ProPublica](https://www.propublica.org/article/immigration-dhs-american-citizens-arrested-detained-against-will), [ILRC Family Preparedness](https://www.ilrc.org/sites/default/files/resources/family_preparedness_plan.pdf), [Immigrant Justice](https://immigrantjustice.org/for-immigrants/know-your-rights/ice-encounter/), [CLINIC Legal](https://www.cliniclegal.org/resources/enforcement-and-detention/settlement-limits-ices-power-stop-vehicles-and-make-arrests)*
+### Community Network
+
+Join or create a neighborhood **Signal group** — encrypted, not SMS.
+
+Install **ICEBlock** (iOS) or **SignalSafe** for real-time community alerts.
+
+Follow **@stlrapidresponse** on Instagram for local enforcement patterns.
+
+To report a sighting: text location and details to your group, then call **314-370-7080**. Don't post unverified info publicly.
+
+</div>
+
+<hr class="section-break">
+
+<div class="context-section">
+
+## Why This Matters
+
+ICE detained 170+ US citizens in 2025's first nine months. Citizens held for days without contact. Valid IDs rejected.
+
+In Missouri, traffic stops are the primary enforcement method. The state signed a 287(g) agreement training 45 highway patrol troopers in immigration enforcement. Reported activity: St. Charles, Arnold, South County, I-44 corridor.
+
+The difference between 2 hours with ID versus 48 hours incommunicado is preparation. The difference between your children with a designated caretaker versus in state custody is paperwork completed today.
+
+You're not paranoid. You're prepared.
+
+</div>
+
+<div class="hotline">
+  314-370-7080
+  <small>St. Louis Rapid Response Coalition · 24/7 · Legal aid, detention locator, family support</small>
+</div>
+
+**[Printable Cards →](/posts/ice-card/)** — Wallet-sized quick reference
+
+<small>Sources: [ProPublica](https://www.propublica.org/article/immigration-dhs-american-citizens-arrested-detained-against-will), [ILRC](https://www.ilrc.org/sites/default/files/resources/family_preparedness_plan.pdf), [Immigrant Justice](https://immigrantjustice.org/for-immigrants/know-your-rights/ice-encounter/), [CLINIC](https://www.cliniclegal.org/resources/enforcement-and-detention/settlement-limits-ices-power-stop-vehicles-and-make-arrests)</small>

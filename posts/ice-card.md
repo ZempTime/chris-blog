@@ -1,6 +1,6 @@
 ---
-title: ICE Rights Card (Printable)
-description: A printable wallet card with emergency numbers and know-your-rights basics.
+title: ICE Card (Print)
+description: Printable wallet cards and quick reference for ICE encounters.
 date: 2026-01-20
 tags:
   - guide
@@ -8,121 +8,133 @@ layout: layouts/post.njk
 ---
 
 <style>
-.wallet-card {
+.card {
   border: 2px solid #000;
-  padding: 12px;
+  padding: 10px 14px;
   margin: 20px 0;
-  max-width: 3.5in;
-  font-size: 9pt;
-  line-height: 1.3;
+  max-width: 3.4in;
+  font-size: 8.5pt;
+  line-height: 1.25;
   background: #fff;
 }
-.wallet-card h2 {
-  font-size: 11pt;
-  margin: 0 0 8px 0;
-  text-align: center;
-  border-bottom: 1px solid #000;
+.card h2 {
+  font-size: 10pt;
+  margin: 0 0 6px 0;
   padding-bottom: 4px;
+  border-bottom: 1px solid #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
-.wallet-card h3 {
-  font-size: 9pt;
-  margin: 8px 0 2px 0;
+.card h3 {
+  font-size: 8.5pt;
+  margin: 8px 0 3px 0;
   text-transform: uppercase;
 }
-.wallet-card p, .wallet-card ul {
+.card p {
+  margin: 3px 0;
+}
+.card ul {
+  margin: 3px 0;
+  padding-left: 1em;
+}
+.card li {
   margin: 2px 0;
-  font-size: 8pt;
 }
-.wallet-card ul {
-  padding-left: 14px;
-}
-.wallet-card li {
-  margin: 1px 0;
-}
-.phone-big {
-  font-size: 12pt;
-  font-weight: bold;
+.card .phone {
+  font-size: 11pt;
+  font-weight: 700;
   text-align: center;
-  margin: 4px 0;
+  margin: 6px 0;
 }
-
-.full-page {
-  border: 1px solid #ccc;
-  padding: 1em;
-  margin: 1em 0;
+.card .say {
+  background: #f0f0f0;
+  padding: 4px 8px;
+  margin: 4px 0;
+  font-weight: 600;
+}
+.full {
+  border: 1px solid #000;
+  padding: 1.5em;
+  margin: 2em 0;
   page-break-inside: avoid;
 }
-.full-page h2 {
+.full h2 {
   margin-top: 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5em;
 }
-
+.full h3 {
+  margin-bottom: 0.25em;
+}
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+@media (max-width: 600px) {
+  .cols { grid-template-columns: 1fr; }
+}
 @media print {
   body { font-size: 10pt; }
   header, footer, .nav, .no-print { display: none; }
-  .wallet-card { page-break-inside: avoid; }
-  .full-page { border: 1px solid #000; }
+  .card { page-break-inside: avoid; }
 }
 </style>
 
-<p class="no-print">Print this page (Ctrl/Cmd + P) to get wallet cards and a full-page reference sheet. Cut along the borders.</p>
-
-<p class="no-print"><a href="/posts/ice-defense/">← Back to full ICE Defense guide</a></p>
+<p class="no-print">Print this page. Cut out the wallet cards. Keep one, give extras to family.</p>
+<p class="no-print"><a href="/posts/ice-defense/">← Full guide</a></p>
 
 ---
 
-## Wallet Cards (Cut Out)
+## Wallet Cards
 
-Print and cut these out. Keep one in your wallet, give extras to family.
+<div class="card">
 
-<div class="wallet-card">
+## Know Your Rights
 
-## Know Your Rights - ICE
+<p class="phone">314-370-7080</p>
 
-<p class="phone-big">📞 314-370-7080</p>
+### Door
+- Don't open
+- Ask for JUDICIAL warrant (judge signature)
+- <span class="say">"I do not consent to entry."</span>
 
-### At Your Door
-- Don't open without JUDICIAL warrant (judge signature)
-- "I do not consent to entry"
-- Record through window
-
-### In Public
-- "Am I free to leave?"
-- "I am a US citizen" + show ID
-- Stay silent, request attorney
-- Don't sign anything
+### Public
+- <span class="say">"Am I free to leave?"</span>
+- <span class="say">"I am a US citizen."</span> + show ID
+- Stay silent
+- <span class="say">"I want an attorney."</span>
+- Sign nothing
 
 ### Legal Aid
-- LSEM: 314-256-8756
-- MICA: 314-669-4290
-- ACLU-MO: 314-652-3111
+LSEM 314-256-8756 · MICA 314-669-4290
 
-<small>locator.ice.gov/odls/</small>
+<small>locator.ice.gov/odls</small>
 
 </div>
 
-<div class="wallet-card">
+<div class="card">
 
-## Know Your Rights - ICE
+## Know Your Rights
 
-<p class="phone-big">📞 314-370-7080</p>
+<p class="phone">314-370-7080</p>
 
-### At Your Door
-- Don't open without JUDICIAL warrant (judge signature)
-- "I do not consent to entry"
-- Record through window
+### Door
+- Don't open
+- Ask for JUDICIAL warrant (judge signature)
+- <span class="say">"I do not consent to entry."</span>
 
-### In Public
-- "Am I free to leave?"
-- "I am a US citizen" + show ID
-- Stay silent, request attorney
-- Don't sign anything
+### Public
+- <span class="say">"Am I free to leave?"</span>
+- <span class="say">"I am a US citizen."</span> + show ID
+- Stay silent
+- <span class="say">"I want an attorney."</span>
+- Sign nothing
 
 ### Legal Aid
-- LSEM: 314-256-8756
-- MICA: 314-669-4290
-- ACLU-MO: 314-652-3111
+LSEM 314-256-8756 · MICA 314-669-4290
 
-<small>locator.ice.gov/odls/</small>
+<small>locator.ice.gov/odls</small>
 
 </div>
 
@@ -130,71 +142,72 @@ Print and cut these out. Keep one in your wallet, give extras to family.
 
 ## Full Page Reference
 
-<div class="full-page">
+<div class="full">
 
-## ICE Detention Defense Quick Reference
+## ICE Encounter Quick Reference
 
-### Emergency Contacts (Memorize These)
+<div class="cols">
+<div>
 
-| Service | Number |
-|---------|--------|
-| **Rapid Response Hotline** | **314-370-7080** |
-| Legal Services of Eastern MO | 314-256-8756 |
-| MICA Project | 314-669-4290 |
-| ACLU of Missouri | 314-652-3111 |
+### Hotline
+**314-370-7080** (24/7)
 
----
+### Legal Aid
+- LSEM: 314-256-8756
+- MICA: 314-669-4290
+- ACLU-MO: 314-652-3111
+
+### Detainee Locator
+locator.ice.gov/odls
+
+</div>
+<div>
 
 ### At Your Door
 
-1. **Do NOT open the door**
-2. Ask to see warrant—have them slide it under door
-3. Must be **JUDICIAL warrant** (signed by judge, correct name/address)
-4. ICE administrative warrants are NOT judicial warrants
-5. Say clearly: **"I do not consent to entry"**
-6. Record through window if safe
+1. Don't open
+2. Ask for judicial warrant (judge signature)
+3. "Slide it under the door"
+4. **"I do not consent to entry."**
+5. Record if safe. Call hotline.
 
----
-
-### In Public or Traffic Stop
-
-1. Ask: **"Am I being detained or am I free to leave?"**
-2. If free: walk away calmly
-3. If detained: State **"I am a US citizen"** and show ID
-4. **Stay silent** beyond asserting citizenship
-5. Say: **"I want to speak to an attorney"**
-6. **Do NOT sign anything** without attorney
-
----
-
-### If Someone Is Detained
-
-1. **ICE Detainee Locator**: locator.ice.gov/odls/ (may take 24-48 hrs)
-2. Call attorney immediately
-3. Call Rapid Response: 314-370-7080
-4. Activate emergency contacts
-5. Secure childcare via designated caretaker
-
----
-
-### Recording Rights
-
-You CAN legally record ICE in public:
-- Stand 8+ feet away
-- If told to move back, keep recording while stepping back
-- **Observe and document, do NOT physically interfere**
-
----
-
-### Carry These Documents
-
-- US Passport or Passport Card (strongest)
-- Certified birth certificate
-- State REAL ID
-- Emergency contact card with numbers above
-
+</div>
 </div>
 
 ---
 
-<p class="no-print"><strong>Share this page:</strong> Send the URL to neighbors, post in community groups, print extras for local businesses.</p>
+<div class="cols">
+<div>
+
+### In Public
+
+1. **"Am I free to leave?"**
+2. If yes: walk away
+3. If detained: **"I am a US citizen."**
+4. Show ID. Then stay silent.
+5. **"I want an attorney."**
+6. Sign nothing.
+
+</div>
+<div>
+
+### Someone Detained
+
+1. Call 314-370-7080
+2. Call attorney
+3. Check locator.ice.gov/odls (24-48 hrs)
+4. Activate emergency contacts
+5. Secure children with designated caretaker
+
+</div>
+</div>
+
+---
+
+### Carry These Documents
+**Passport** (strongest) · Certified birth certificate · REAL ID
+
+### Recording Rights
+You can record ICE in public. Stand 8+ feet away. Keep recording if told to step back. Observe and document—don't physically interfere.
+
+</div>
