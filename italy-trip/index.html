@@ -1,0 +1,375 @@
+---
+title: Italy & Greece Family Trip Plan
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Italy & Greece — Family Trip Plan</title>
+<style>
+  :root {
+    /* Aegean theme */
+    --bg: #f4f9fb;
+    --surface: #ffffff;
+    --ink: #16323f;
+    --muted: #557085;
+    --accent: #1a7ea3;
+    --accent-2: #0f5e7a;
+    --gold: #d9a441;
+    --line: #d7e6ec;
+    --shadow: 0 6px 24px rgba(22,50,63,.10);
+    --radius: 16px;
+    --band: linear-gradient(135deg,#1a7ea3,#0f5e7a);
+    --font-head: "Georgia", "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font-body); line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3 { font-family: var(--font-head); line-height: 1.2; }
+  a { color: var(--accent); }
+
+  /* ---- top nav ---- */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    display: flex; gap: 4px; align-items: center;
+    padding: 8px 16px; overflow-x: auto; box-shadow: var(--shadow);
+  }
+  nav.top .brand { font-family: var(--font-head); font-weight: 700; color: var(--accent-2); margin-right: 12px; white-space: nowrap; }
+  nav.top a {
+    text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600;
+    padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  nav.top a:hover { color: var(--accent); background: var(--bg); }
+
+  /* ---- hero ---- */
+  header.hero {
+    background: var(--band); color: #fff; padding: 64px 20px 56px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  header.hero::after {
+    content: "〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜";
+    position: absolute; bottom: 6px; left: 0; right: 0; text-align: center;
+    color: rgba(255,255,255,.25); font-size: 22px; letter-spacing: -2px; overflow: hidden; white-space: nowrap;
+  }
+  header.hero h1 { font-size: clamp(30px, 6vw, 54px); margin: 0 0 8px; }
+  header.hero p { font-size: clamp(15px, 2.5vw, 19px); opacity: .95; margin: 6px 0; }
+  .keyfacts { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
+  .keyfacts span {
+    background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3);
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  }
+
+  main { max-width: 940px; margin: 0 auto; padding: 0 18px 80px; }
+  section { padding: 44px 0 8px; scroll-margin-top: 64px; }
+  section > h2 {
+    font-size: clamp(24px, 4vw, 34px); margin: 0 0 6px; color: var(--accent-2);
+    display: flex; align-items: center; gap: 10px;
+  }
+  section > .sub { color: var(--muted); margin: 0 0 22px; font-size: 15px; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 22px 24px; margin: 16px 0;
+  }
+  .card h3 { margin: 0 0 4px; color: var(--ink); font-size: 21px; }
+  .card .tag { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color: var(--accent-2); background: var(--bg); border:1px solid var(--line); padding:3px 10px; border-radius:999px; margin-bottom:8px;}
+
+  /* itinerary comparison */
+  .itin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; }
+  .itin { border-top: 5px solid var(--accent); }
+  .itin.best { border-top-color: var(--gold); }
+  .itin .verdict { font-size: 13px; color: var(--muted); font-style: italic; margin: 6px 0 12px; }
+  .itin ul { padding-left: 18px; margin: 8px 0; }
+  .itin li { margin: 5px 0; font-size: 14.5px; }
+  .pill { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:6px; vertical-align:middle;}
+  .pill.baby { background:#e7f3f7; color:#0f5e7a; }
+  .pill.gp { background:#fdf1e0; color:#8a5a12; }
+
+  /* timeline */
+  .timeline { list-style: none; padding: 0; margin: 0; }
+  .timeline li { position: relative; padding: 0 0 18px 26px; border-left: 2px solid var(--line); }
+  .timeline li::before { content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px;
+    border-radius:50%; background: var(--accent); border:2px solid var(--surface); }
+  .timeline li:last-child { border-left-color: transparent; }
+  .timeline .day { font-weight:700; color: var(--accent-2); }
+
+  table { width:100%; border-collapse: collapse; font-size: 14.5px; margin: 8px 0; }
+  th,td { text-align:left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--accent-2); font-size: 13px; text-transform: uppercase; letter-spacing:.03em; }
+  tr:last-child td { border-bottom: none; }
+
+  .checklist { columns: 2; column-gap: 28px; }
+  .checklist label { display:block; break-inside: avoid; font-size:14.5px; margin:5px 0; cursor:pointer; }
+  .checklist input { margin-right:8px; }
+  @media(max-width:640px){ .checklist { columns: 1; } }
+
+  .callout { border-left: 4px solid var(--gold); background: var(--bg); padding: 12px 16px; border-radius: 8px; margin: 14px 0; font-size: 14.5px; }
+  .callout.warn { border-left-color: var(--accent); }
+  .callout b { color: var(--accent-2); }
+
+  details { border:1px solid var(--line); border-radius: 10px; margin:8px 0; background: var(--surface); }
+  details summary { cursor:pointer; padding: 12px 16px; font-weight:600; color: var(--accent-2); }
+  details[open] summary { border-bottom:1px solid var(--line); }
+  details .body { padding: 6px 16px 14px; }
+
+  footer { text-align:center; color: var(--muted); font-size:13px; padding: 30px 16px 60px; }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <span class="brand">🇬🇷 Καλώς ήρθατε</span>
+  <a href="#overview">Overview</a>
+  <a href="#itineraries">Itineraries</a>
+  <a href="#health">Health</a>
+  <a href="#flights">Flights</a>
+  <a href="#getting-around">Getting Around</a>
+  <a href="#lodging">Lodging</a>
+  <a href="#apps">Apps &amp; Data</a>
+  <a href="#packing">Packing</a>
+  <a href="#learn">Good to Know</a>
+</nav>
+
+<header class="hero">
+  <h1>Italy &amp; Greece, Together</h1>
+  <p>A multigenerational family trip — three generations, one big adventure.</p>
+  <p style="opacity:.85; font-size:15px;">Departing ~August 24, 2026 · Italy first, then Greece</p>
+  <div class="keyfacts">
+    <span>👶 1 baby (Hudson)</span>
+    <span>👵 grandparents aboard</span>
+    <span>🗓️ ~2–3 weeks</span>
+    <span>🏛️ Italy → 🏝️ Greece</span>
+  </div>
+</header>
+
+<main>
+
+  <section id="overview">
+    <h2>The Plan, In One Breath</h2>
+    <p class="sub">Everything on this page is built around two things that make our trip special (and specific): a one-year-old, and grandparents who'd rather stroll than sprint.</p>
+    <div class="card">
+      <p style="margin-top:0">We're keeping it <b>slow and warm</b>: a home base or two rather than a city-a-day sprint. That single choice quietly solves three problems at once — it's gentle on Hudson's nap schedule, kind to less-mobile grandparents, and it keeps us out of the densest crowds during peak-season August. Cities and big sights still happen; we just do them in unhurried day-trips and come home to a familiar bed.</p>
+      <div class="callout"><b>The north star:</b> nobody should be exhausted, nobody should be rushed, and every day should have a "do nothing" escape hatch built in.</div>
+    </div>
+  </section>
+
+  <section id="itineraries">
+    <h2>Three Ways To Do It</h2>
+    <p class="sub">Same spirit, different shapes. Pick by how much moving-around feels good for the group. All start in Italy and finish in Greece.</p>
+
+    <div class="itin-grid">
+      <div class="card itin best">
+        <span class="tag">Recommended</span>
+        <h3>A · The Slow Homebase</h3>
+        <p class="verdict">Least moving, most rest. Best fit for a baby + grandparents.</p>
+        <ul>
+          <li><b>Week 1 — Umbria/Tuscan countryside villa</b> <span class="pill gp">flat, calm</span><br>One house, kitchen, pool. Day trips to hill towns at our own pace.</li>
+          <li><b>Week 2 — Crete (Chania/Rethymno)</b> <span class="pill baby">accessible island</span><br>One base on Greece's most accessible island. Beach mornings, tavernas, ruins optional.</li>
+          <li>Two homes, two unpackings, the whole trip. That's it.</li>
+        </ul>
+      </div>
+
+      <div class="card itin">
+        <span class="tag">Balanced</span>
+        <h3>B · A Taste of the Icons</h3>
+        <p class="verdict">One great city up front, then slow down.</p>
+        <ul>
+          <li><b>Days 1–4 — Rome</b> <span class="pill gp">golf-cart tours</span><br>The big sights, done seated where possible. Central, elevator hotel.</li>
+          <li><b>Days 5–9 — Tuscan/Umbrian base</b> <span class="pill baby">recover &amp; rest</span></li>
+          <li><b>Days 10–16 — Crete or Corfu</b> <span class="pill baby">accessible island</span></li>
+          <li>More variety; more transit. Front-loads the busy part.</li>
+        </ul>
+      </div>
+
+      <div class="card itin">
+        <span class="tag">Ambitious</span>
+        <h3>C · The Grand Tour</h3>
+        <p class="verdict">See the most; accept more packing/unpacking.</p>
+        <ul>
+          <li><b>Rome (3) → Florence (3)</b> <span class="pill gp">busiest</span></li>
+          <li><b>Athens (2–3)</b> — Acropolis, then out</li>
+          <li><b>One accessible island (5)</b> <span class="pill baby">the reward</span></li>
+          <li>Most memories per mile, most fatigue per day. Only if the group has strong energy.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn"><b>Why islands matter:</b> Greece has ~200+ inhabited islands but only a handful are truly friendly to strollers, wheels, and tired knees. We favor <b>Crete, Corfu, or Syros</b> and steer clear of the stair-mazes (Santorini, we love you, but not this trip).</div>
+
+    <details>
+      <summary>See Option A as a day-by-day timeline</summary>
+      <div class="body">
+        <ul class="timeline">
+          <li><span class="day">Day 1</span> — Fly to Rome (or nearest hub), private transfer to the countryside. Collapse.</li>
+          <li><span class="day">Days 2–6</span> — Villa life. One low-key hill-town day-trip every other day (Orvieto, Assisi, Montepulciano). Midday rest for everyone.</li>
+          <li><span class="day">Day 7</span> — Short flight to Crete. Settle into home base #2.</li>
+          <li><span class="day">Days 8–13</span> — Beaches, Chania old town (flat harborfront), Rethymno (has accessibility ramps), tavernas. Palace of Knossos as an optional half-day.</li>
+          <li><span class="day">Day 14</span> — Fly home from Crete (or via Athens).</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <section id="health">
+    <h2>The One Health Thing 👶</h2>
+    <p class="sub">Short version for the family. (Chris has the full sourced write-up.)</p>
+    <div class="card">
+      <p style="margin-top:0">Measles is circulating in Europe (and honestly, in the US too right now), so Hudson's MMR vaccine timing matters. The plan: get him his measles shot <b>about a month before we fly</b> so he's fully protected on arrival, not still building immunity. Every adult traveling is already fully vaccinated, so <b>nobody in our group can pass it to him</b> — the only thing left to manage is crowds, which is exactly why we're going slow and rural-first.</p>
+      <table>
+        <tr><th>What</th><th>Why it's handled</th></tr>
+        <tr><td>Hudson's protection</td><td>Early MMR dose → ~4 weeks to build immunity before wheels-up</td></tr>
+        <tr><td>The rest of us</td><td>All fully vaccinated → can't be a bridge to the baby</td></tr>
+        <tr><td>Crowds</td><td>Slow/rural itinerary keeps exposure low during peak season</td></tr>
+        <tr><td>Worst case</td><td>Travel medical insurance + a pediatric hospital scouted near each base</td></tr>
+      </table>
+      <div class="callout"><b>Please make sure</b> your own MMR is up to date (2 doses) before the trip — it protects Hudson, not just you.</div>
+    </div>
+  </section>
+
+  <section id="flights">
+    <h2>Flights &amp; The Long Haul ✈️</h2>
+    <p class="sub">The plane is the hardest part with a baby and the easiest to smooth for grandparents.</p>
+    <div class="card">
+      <table>
+        <tr><th>For the baby</th><th>For the grandparents</th></tr>
+        <tr>
+          <td>
+            • Consider buying Hudson his own seat + car seat — safest &amp; easiest on a long-haul<br>
+            • Request a <b>bassinet</b> at booking (widebody bulkhead)<br>
+            • Gate-check stroller + car seat (free)<br>
+            • Bottle/nurse on takeoff &amp; landing for his ears<br>
+            • Pack 2× diapers/snacks for delays
+          </td>
+          <td>
+            • Request <b>wheelchair/airport assistance</b> on every flight (free!) — biggest single win<br>
+            • Aisle seats near a lavatory<br>
+            • Compression socks + walk breaks<br>
+            • Meds in carry-on, original bottles<br>
+            • Board early with the family
+          </td>
+        </tr>
+      </table>
+      <div class="callout warn"><b>Do first:</b> Hudson needs <b>his own passport</b> (both parents apply in person — weeks of lead time), and everyone's passport must be valid <b>6+ months past our return</b>.</div>
+    </div>
+  </section>
+
+  <section id="getting-around">
+    <h2>Getting Around 🚕</h2>
+    <p class="sub">Italy is cobblestones and hills; Greece is uneven and sunny. We move gently.</p>
+    <div class="card">
+      <ul>
+        <li><b>Private transfers over trains-with-connections</b> when we move as a full group with luggage + baby. Door to door beats hauling.</li>
+        <li><b>In cities:</b> seated options — Rome even has golf-cart tours of the big sights. Rent a wheelchair/rollator locally (via a pharmacy) for long days, even just in case.</li>
+        <li><b>Taxis:</b> use <b>FreeNow</b> or <b>Bolt</b> apps (Uber is weak in Italy/Greece).</li>
+        <li><b>Venice, if we go:</b> vaporetto water buses dodge the bridge stairs.</li>
+        <li><b>Islands:</b> we pick accessible ones on purpose (Crete/Corfu/Syros).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="lodging">
+    <h2>Where We Stay 🏡</h2>
+    <p class="sub">One rule solves it: kitchen + a confirmed elevator.</p>
+    <div class="card">
+      <ul>
+        <li><b>Apartments/villas with a kitchen</b> — nap space, bottle-warming, laundry, and family dinners in when going out is too much.</li>
+        <li><b>Confirm the elevator ("lift") explicitly</b> — European "first floor" often means a flight of stairs with no lift.</li>
+        <li><b>Book accessible rooms EARLY</b> — city hotels have only 1–2 and they sell out months ahead.</li>
+        <li>Request a <b>crib/pack-'n-play</b> in advance; pick places near a pharmacy and hospital.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="apps">
+    <h2>Apps &amp; Staying Connected 📱</h2>
+    <p class="sub">Install everything before we leave. One parent's phone becomes the group hotspot.</p>
+    <div class="card">
+      <table>
+        <tr><th>App</th><th>For</th></tr>
+        <tr><td><b>Google Maps</b> (download offline)</td><td>Navigation everywhere</td></tr>
+        <tr><td><b>Google Translate</b> (offline IT + GR)</td><td>Menus, signs, pharmacy labels — camera mode is magic</td></tr>
+        <tr><td><b>WhatsApp</b></td><td>Europe's default — hosts, drivers, restaurants</td></tr>
+        <tr><td><b>FreeNow / Bolt</b></td><td>Taxis &amp; rides</td></tr>
+        <tr><td><b>Trenitalia / Italo</b></td><td>Italian trains</td></tr>
+        <tr><td><b>Ferryhopper</b></td><td>Greek island ferries</td></tr>
+        <tr><td><b>XE Currency</b></td><td>Offline € ↔ $ conversion</td></tr>
+      </table>
+      <div class="callout"><b>Data:</b> get an <b>eSIM</b> that covers both countries (Airalo = easiest, Holafly = unlimited). Keep your US line on for bank text codes. <b>ETIAS:</b> Europe's new €20 travel authorization may launch late 2026 — Chris is watching the official site; if it's live by August, we'll each need one.</div>
+    </div>
+  </section>
+
+  <section id="packing">
+    <h2>Packing Checklist ✅</h2>
+    <p class="sub">Tap to check off. (Nothing saves — it's just a visual list.)</p>
+    <div class="card">
+      <h3 style="font-size:17px;margin-top:0">Baby (Hudson)</h3>
+      <div class="checklist">
+        <label><input type="checkbox">Travel stroller</label>
+        <label><input type="checkbox">Baby carrier (for cobblestones/airports)</label>
+        <label><input type="checkbox">Hudson's usual sunscreen (EU formulas differ!)</label>
+        <label><input type="checkbox">2× diapers &amp; wipes for flight delays</label>
+        <label><input type="checkbox">Familiar formula/snacks/purees</label>
+        <label><input type="checkbox">Comfort lovey + white-noise app</label>
+        <label><input type="checkbox">Portable blackout window cover</label>
+        <label><input type="checkbox">Infant meds kit + thermometer</label>
+        <label><input type="checkbox">Plane entertainment (painter's tape!)</label>
+        <label><input type="checkbox">Birth certificate (carry-on)</label>
+      </div>
+      <h3 style="font-size:17px">Everyone</h3>
+      <div class="checklist">
+        <label><input type="checkbox">Hypochlorous acid spray (hands/faces on plane)</label>
+        <label><input type="checkbox">Mini zipper lock for backpacks</label>
+        <label><input type="checkbox">Water shoes + wet bags</label>
+        <label><input type="checkbox">Handheld/stroller fan</label>
+        <label><input type="checkbox">Water bottles + electrolyte packets</label>
+        <label><input type="checkbox">Single passport holder (all together)</label>
+        <label><input type="checkbox">Headphones</label>
+        <label><input type="checkbox">Full change of clothes in carry-on</label>
+        <label><input type="checkbox">Universal adapter (IT: C/F/L · GR: C/F) + power strip</label>
+        <label><input type="checkbox">Battery pack</label>
+        <label><input type="checkbox">No-foreign-fee credit cards + some € cash</label>
+        <label><input type="checkbox">Document copies (cloud + offline)</label>
+      </div>
+      <h3 style="font-size:17px">Grandparents</h3>
+      <div class="checklist">
+        <label><input type="checkbox">Broken-in walking shoes</label>
+        <label><input type="checkbox">Folding cane / trekking pole</label>
+        <label><input type="checkbox">Compression socks (flight)</label>
+        <label><input type="checkbox">Full meds supply + generic-name list</label>
+        <label><input type="checkbox">Airport-assistance confirmation</label>
+        <label><input type="checkbox">Emergency-contact card</label>
+      </div>
+    </div>
+  </section>
+
+  <section id="learn">
+    <h2>Good To Know Before We Go 🗺️</h2>
+    <div class="card">
+      <ul>
+        <li><b>Meals run late.</b> Italian dinner is 8pm+, Greek even later; shops often close midday. We'll do early or apartment dinners for Hudson and the grandparents.</li>
+        <li><b>Tipping is modest</b> — service is often included ("coperto"). No US-style 20%.</li>
+        <li><b>August is hot &amp; peak.</b> Out in the mornings/evenings, rest midday. Book Greek ferries ahead.</li>
+        <li><b>A few words go far:</b> <i>grazie / ευχαριστώ</i> (thank you), <i>per favore / παρακαλώ</i> (please). Translate app covers the rest.</li>
+        <li><b>Pharmacies</b> (farmacia / φαρμακείο) are excellent for minor stuff — often faster than a doctor.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Made with love for the whole family · See you in Italy 🇮🇹 &amp; Greece 🇬🇷<br>
+  <span style="opacity:.7">Details still firming up — this page will keep updating.</span>
+</footer>
+</body>
+</html>
