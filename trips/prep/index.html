@@ -373,6 +373,43 @@ eleventyExcludeFromCollections: true
     font-size: 13.5px;
   }
 
+  .rec-panel {
+    margin: 10px 0 9px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: #fbfaf7;
+    overflow: hidden;
+  }
+
+  .rec-line {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 10px;
+    padding: 8px 10px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+
+  .rec-line:first-child {
+    border-top: 0;
+  }
+
+  .rec-line b {
+    color: var(--blue);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .rec-line span {
+    color: var(--ink);
+  }
+
+  .rec-line.source span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -631,7 +668,13 @@ const ITEMS = [
     status: "buy",
     contexts: ["Plane carry-on", "Transit day"],
     note: "Single place for passports, birth certificate copy, insurance, and flight confirmations.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Zoppen RFID family travel wallet, zip-around version.",
+      fallback: "Zero Grid family passport wallet if you want a slightly more travel-gear style organizer.",
+      logistics: "Needs room for 3 passports, birth certificate copy, insurance card, boarding documents, 1-2 cards, and a pen. Keep it in a parent personal item, never checked.",
+      caution: "Do not use this as the only cash/card location; keep a backup card separate."
+    }
   },
   {
     id: "birth-certificate",
@@ -653,7 +696,12 @@ const ITEMS = [
     status: "research",
     contexts: ["Plane carry-on", "Transit day"],
     note: "Needs infant coverage and medical evacuation confirmation.",
-    research: true
+    research: true,
+    rec: {
+      pick: "Still unresolved: choose a travel medical policy with infant coverage, emergency medical, and medical evacuation.",
+      logistics: "Once purchased, add policy number, emergency phone, and proof of Hudson coverage to the passport holder and offline phone copies.",
+      caution: "Do not treat credit-card trip insurance as enough until infant medical and evacuation coverage are confirmed in writing."
+    }
   },
   {
     id: "offline-doc-copies",
@@ -771,10 +819,16 @@ const ITEMS = [
     category: "Plane and airport",
     priority: "Core",
     qty: "6-10 small items",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on"],
     note: "Rotate novelty. Avoid noisy, tiny, or easy-to-lose pieces.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Plane toy set: Fat Brain Dimpl, 1-2 suction spinners, lift-the-flap board book, reusable stickers, painter's tape, and a couple of snack-based distractions.",
+      fallback: "Buy a prebuilt toddler busy board only if it has no tiny removable pieces.",
+      logistics: "Pack in 2-3 small pouches and reveal gradually. Keep one fresh item hidden for the final third of the flight.",
+      caution: "Avoid choking-size pieces, loud toys, and toys that roll under seats."
+    }
   },
   {
     id: "plane-snacks",
@@ -826,10 +880,16 @@ const ITEMS = [
     category: "Feeding and hydration",
     priority: "Must",
     qty: "1 method",
-    status: "research",
+    status: "review",
     contexts: ["Plane carry-on", "Checked luggage"],
     note: "Decide sealed containers vs measured packets and how much stays in carry-on.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Pack factory-sealed formula containers when possible; split the trip supply across checked luggage and carry-on.",
+      fallback: "Use clearly labeled pre-measured formula dispensers only for travel-day doses.",
+      logistics: "Carry enough for flight day plus 24-48 hours of delays. Baby formula is exempt from the standard 3.4 oz liquid rule when traveling with a child, but declare it for screening.",
+      caution: "Do not pack all formula in one checked bag."
+    }
   },
   {
     id: "bottles-cups",
@@ -851,7 +911,13 @@ const ITEMS = [
     status: "buy",
     contexts: ["Checked luggage", "Lodging"],
     note: "Supports formula and cup cleaning without arrival-day shopping.",
-    research: true
+    research: false,
+    rec: {
+      pick: "OXO Tot On-the-Go Drying Rack with Bottle Brush.",
+      fallback: "Munchkin travel bottle brush plus a small drying mat if OXO is unavailable.",
+      logistics: "Pack in checked luggage. Put dish soap in a leak bag if larger than 3.4 oz; carry-on soap must follow liquids rules.",
+      source: "Parents.com names the OXO On-the-Go rack as its travel drying-rack pick."
+    }
   },
   {
     id: "sterilizing-tablets",
@@ -859,10 +925,17 @@ const ITEMS = [
     category: "Feeding and hydration",
     priority: "Core",
     qty: "trip pack",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Lodging"],
     note: "Voltage-proof backup for bottles and feeding parts.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Milton Sterilising Tablets, 28- or 40-count.",
+      fallback: "Skip if you decide normal washing is enough for Hudson's age; keep bottle brush and dish soap either way.",
+      logistics: "Tablets are dry and easy to pack. Milton's method uses cold water, works in 15 minutes, and the solution lasts up to 24 hours.",
+      caution: "Follow the package exactly; keep tablets away from Hudson and do not mix with other cleaning products.",
+      source: "Milton product page."
+    }
   },
   {
     id: "adult-bottles",
@@ -873,7 +946,13 @@ const ITEMS = [
     status: "review",
     contexts: ["Plane carry-on", "Day bag", "City module"],
     note: "Hydration is a major comfort and safety category.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Owala FreeSip 24 oz for each adult.",
+      fallback: "Hydro Flask 24 oz Standard Mouth if you prefer simpler insulated bottles.",
+      logistics: "Bring empty through security, fill after TSA. 24 oz is a good balance between heat usefulness and day-bag weight.",
+      caution: "Do not rely on one shared adult bottle in August heat."
+    }
   },
   {
     id: "hudson-water-cup",
@@ -892,10 +971,17 @@ const ITEMS = [
     category: "Feeding and hydration",
     priority: "Core",
     qty: "10-20 packets",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on", "Checked luggage", "Day bag"],
     note: "For adult heat and travel days; not a pediatric ORS substitute.",
-    research: true
+    research: false,
+    rec: {
+      pick: "LMNT variety pack for Chris/heavy-sweat days.",
+      fallback: "Liquid I.V. Hydration Multiplier if you prefer a sweeter, lower-sodium mainstream option.",
+      logistics: "Powder packets can fly in carry-on. Use for adults only; keep separate from Hudson's ORS.",
+      caution: "LMNT is high sodium at 1,000 mg per packet; avoid or ask a clinician first if sodium restriction, blood pressure, kidney, or heart issues apply.",
+      source: "LMNT and Liquid I.V. product pages."
+    }
   },
   {
     id: "pediatric-ors",
@@ -903,10 +989,16 @@ const ITEMS = [
     category: "Feeding and hydration",
     priority: "Must",
     qty: "small backup supply",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on", "Checked luggage", "Day bag"],
     note: "Use pediatrician guidance and product labeling for Hudson.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Pedialyte powder packets from home, plus know local backups: Dicodral in Italy and Almora Plus in Greece.",
+      fallback: "Buy pediatric ORS at a local farmacia/pharmacy if needed.",
+      logistics: "Pack a small number in carry-on and the rest checked. Mix only as directed and use clean water.",
+      caution: "Confirm when/how much to use with Hudson's pediatrician; adult electrolyte mixes are not substitutes."
+    }
   },
   {
     id: "arrival-food-buffer",
@@ -958,10 +1050,17 @@ const ITEMS = [
     category: "Diapers and cleanup",
     priority: "Core",
     qty: "2-3",
-    status: "research",
+    status: "buy",
     contexts: ["Day bag", "Beach/boat module"],
     note: "For swim clothes, blowouts, wet towels, and sunscreen-mess clothes.",
-    research: true
+    research: false,
+    rec: {
+      pick: "ALVABABY wet/dry bags, set of 2.",
+      fallback: "Bumkins wet bags if you prefer a more baby-gear brand.",
+      logistics: "Two bags is the minimum: one day bag/blowout bag, one beach/swim bag. Three is better if beach days stack up.",
+      caution: "Wet bags reduce leaks and mess, but do not leave wet clothes sealed for days.",
+      source: "Real Simple 2026 wet/dry bag recommendation."
+    }
   },
   {
     id: "quick-bibs",
@@ -994,7 +1093,13 @@ const ITEMS = [
     status: "review",
     contexts: ["Checked luggage", "Lodging"],
     note: "Sleep kit stays minimal; bring only if it earns the space.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Tommee Tippee Gro Anywhere Blackout Blind only if Hudson is light-sensitive.",
+      fallback: "Skip and rely on late bedtime adjustment, room shutters, and the USB-C fan as white noise.",
+      logistics: "Optional because you are co-sleeping and keeping sleep gear minimal.",
+      caution: "Suction blackout blinds work best on clean glass and may not solve every room."
+    }
   },
   {
     id: "familiar-textile",
@@ -1013,10 +1118,17 @@ const ITEMS = [
     category: "Health and hygiene",
     priority: "Core",
     qty: "carry-on size + checked backup",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on", "Checked luggage", "Day bag"],
     note: "Skin-safe cleaning archetype; needs brand, size, and plane logistics research.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Tower 28 SOS Rescue Spray: one 1 oz travel bottle in carry-on/day bag plus a 4 oz bottle in checked luggage.",
+      fallback: "Briotech Topical Skin Spray if you prefer a less beauty-branded family-use bottle.",
+      logistics: "The 1 oz Tower 28 bottle is carry-on compliant. The 4 oz bottle is over 3.4 oz, so check it. This is for skin refresh/face/hand use, not tray-table disinfection.",
+      caution: "Patch test before travel and avoid spraying into eyes or inhaling mist.",
+      source: "Tower 28 product page; Briotech product page; TSA 3-1-1 liquid rule."
+    }
   },
   {
     id: "disinfecting-wipes",
@@ -1027,7 +1139,13 @@ const ITEMS = [
     status: "buy",
     contexts: ["Plane carry-on", "Day bag"],
     note: "For tray tables, armrests, high chairs, and hard surfaces.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Clorox Disinfecting Wipes travel pack.",
+      fallback: "Lysol disinfecting wipes travel pack.",
+      logistics: "Wipes are simpler than liquid sprays for TSA and hard surfaces. Keep one pack in the plane kit.",
+      caution: "Use on hard surfaces only; not Hudson's face/hands."
+    }
   },
   {
     id: "adult-hand-sanitizer",
@@ -1093,7 +1211,14 @@ const ITEMS = [
     status: "buy",
     contexts: ["Plane carry-on", "Checked luggage", "Day bag", "Beach/boat module"],
     note: "Known-tolerated sunscreen from home. Need quantity and bag placement.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Thinkbaby SPF 50+ in 3 oz tubes: carry one tube onboard and pack two additional tubes checked.",
+      fallback: "If you can only find larger tubes, check them and put a 3 oz tube or decanted TSA-compliant amount in carry-on.",
+      logistics: "Sunscreen is a liquid/cream for TSA. Carry-on containers must be 3.4 oz/100 mL or smaller unless rules change.",
+      caution: "Use hats, shade, timing, and stroller shade as the primary sun system; sunscreen handles exposed skin.",
+      source: "Thinkbaby is the known-tolerated family product; TSA liquids rule."
+    }
   },
   {
     id: "adult-sunscreen",
@@ -1112,10 +1237,17 @@ const ITEMS = [
     category: "Sun, heat, and stroller climate",
     priority: "Must",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Transit day", "City module", "Checked luggage"],
     note: "Prioritize cobblestones and mixed terrain over overhead-bin compactness.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Baby Jogger City Mini GT3 All-Terrain Stroller.",
+      fallback: "UPPAbaby Minu V3 if you later decide overhead-bin portability matters more than rough-street performance.",
+      logistics: "Plan to gate-check, not carry onboard. The GT3 is all-terrain and comfortable but still a real stroller, so test folding/lifting before committing.",
+      caution: "Not a beach stroller; for deep sand, carry Hudson or use the beach module.",
+      source: "The Strategist and Parents.com 2026 stroller guides; UPPAbaby Minu V3 product page."
+    }
   },
   {
     id: "stroller-shade",
@@ -1123,10 +1255,16 @@ const ITEMS = [
     category: "Sun, heat, and stroller climate",
     priority: "Core",
     qty: "1",
-    status: "research",
+    status: "review",
     contexts: ["Day bag", "City module", "Beach/boat module"],
     note: "Part of the stroller climate system; avoid heat-trapping full covers.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Start with the stroller's built-in canopy; add a SnoozeShade only if the chosen stroller leaves obvious sun gaps.",
+      fallback: "A breathable muslin cloth clipped for short supervised shade only.",
+      logistics: "This decision depends on the final stroller. Keep shade compatible, ventilated, and easy to remove.",
+      caution: "Never fully cover the stroller in heat; airflow beats darkness."
+    }
   },
   {
     id: "stroller-fan",
@@ -1134,10 +1272,17 @@ const ITEMS = [
     category: "Sun, heat, and stroller climate",
     priority: "Core",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Day bag", "City module", "Beach/boat module"],
     note: "USB-C preferred; check clip strength, battery, and finger safety.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Momcozy Portable Stroller Fan, USB-C rechargeable, flexible tripod mount.",
+      fallback: "WiHoo flexible-tripod stroller fan if Momcozy is unavailable.",
+      logistics: "Charge in the room nightly and carry in the day bag. A flexible tripod is better than a weak clip for stroller bars and ferry/restaurant use.",
+      caution: "Choose a tight grille or bladeless/soft-blade design and mount out of Hudson's reach.",
+      source: "Verywell Family stroller-fan safety criteria."
+    }
   },
   {
     id: "hudson-sun-hat",
@@ -1145,10 +1290,16 @@ const ITEMS = [
     category: "Sun, heat, and stroller climate",
     priority: "Must",
     qty: "1-2",
-    status: "research",
+    status: "buy",
     contexts: ["Day bag", "Beach/boat module", "City module"],
     note: "Hudson is likely to wear one; still pair with sunscreen, shade, and timing.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Sunday Afternoons Kids Play Hat in Hudson's size.",
+      fallback: "iPlay/Green Sprouts brim sun hat if fit or chin-strap tolerance is better.",
+      logistics: "Buy early and test compliance. Pack one primary hat and consider a backup if he is rough on hats.",
+      caution: "Hat helps, but sunscreen, shade, and timing still carry the sun plan."
+    }
   },
   {
     id: "breathable-muslin",
@@ -1167,10 +1318,16 @@ const ITEMS = [
     category: "Beach, boat, and wet gear",
     priority: "Core",
     qty: "2 pairs",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Beach/boat module"],
     note: "Rocky/pebbly beach readiness for adults.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Astral Loyak AC for each adult who wants one shoe for boats, rocky beaches, and casual wet walking.",
+      fallback: "Merrell Hydro Moc if you want cheaper, easier rinse-off water footwear and do not need it to pass as a normal shoe.",
+      logistics: "Pack in checked luggage. These replace flimsy aqua socks and can also handle ferry decks and rocky shore entries.",
+      caution: "Do not make these your only city walking shoes."
+    }
   },
   {
     id: "hudson-water-shoes",
@@ -1178,10 +1335,16 @@ const ITEMS = [
     category: "Beach, boat, and wet gear",
     priority: "Core",
     qty: "1 pair",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Beach/boat module"],
     note: "Only if he will stand or walk near shore.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Stride Rite Made2Play Phibian or similar closed-toe toddler water shoe.",
+      fallback: "Ten Little water sandal if sizing/fit is better for Hudson.",
+      logistics: "Closed toe matters for pebbles, ferry decks, and rough beach entries. Buy early enough to test barefoot fit.",
+      caution: "Skip if he is not walking/standing at beaches by departure."
+    }
   },
   {
     id: "dry-bag",
@@ -1189,10 +1352,16 @@ const ITEMS = [
     category: "Beach, boat, and wet gear",
     priority: "Core",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Beach/boat module", "Day bag"],
     note: "For phones, passports during transfers, and beach/boat wet zones.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Sea to Summit Lightweight Dry Bag, 5L.",
+      fallback: "Hiearcool 2-pack waterproof phone pouches for phone-only protection.",
+      logistics: "5L is enough for phones, passport holder during ferry transfer, small wallet, and keys without taking over the beach bag.",
+      caution: "Dry bags are water-resistant insurance, not a license to submerge passports."
+    }
   },
   {
     id: "quick-dry-towels",
@@ -1203,7 +1372,13 @@ const ITEMS = [
     status: "review",
     contexts: ["Checked luggage", "Beach/boat module"],
     note: "Decide after lodging/beach plan; rentals or lodging towels may cover this.",
-    research: true
+    research: false,
+    rec: {
+      pick: "PackTowl Personal towels, body size, only if lodging/beach rentals will not cover towels.",
+      fallback: "Turkish towels if you prefer beach-blanket comfort over fastest drying.",
+      logistics: "This is optional because towels consume bulk. Decide after lodging and beach plan are known.",
+      caution: "Do not pack full cotton beach towels."
+    }
   },
   {
     id: "beach-change-strategy",
@@ -1222,10 +1397,17 @@ const ITEMS = [
     category: "Mobility and transport",
     priority: "Must",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Transit day"],
     note: "Purchase decision. Favor rental-car/transfer compatibility; taxi install speed is secondary.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Cosco Scenera NEXT convertible car seat, if Hudson fits its height/weight limits at departure.",
+      fallback: "Evenflo Sonus 65 if you want more padding and a higher forward-facing limit at the cost of extra weight.",
+      logistics: "Use rear-facing for Hudson unless he has outgrown the rear-facing limits. Practice seat-belt install before travel; assume rental cars/transfers more than rapid taxi installs.",
+      caution: "Do not buy a forward-facing-only travel seat like WAYB Pico for this age unless your pediatrician/CPST and the seat limits clearly support it.",
+      source: "FAA child restraint guidance; AAP rear-facing guidance; Car and Driver travel-seat testing."
+    }
   },
   {
     id: "car-seat-travel-bag",
@@ -1233,10 +1415,16 @@ const ITEMS = [
     category: "Mobility and transport",
     priority: "Core",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Transit day"],
     note: "Protects the travel car seat if checked or gate-checked.",
-    research: true
+    research: false,
+    rec: {
+      pick: "J.L. Childress Ultimate Backpack Padded Car Seat Travel Bag.",
+      fallback: "A cheaper drawstring gate-check bag if you buy the low-cost Cosco and accept less protection.",
+      logistics: "Backpack straps matter when also managing stroller, luggage, and Hudson.",
+      caution: "Remove any loose extras from the bag before checking."
+    }
   },
   {
     id: "stroller-gate-check-plan",
@@ -1255,10 +1443,17 @@ const ITEMS = [
     category: "Parent clothing and laundry",
     priority: "Must",
     qty: "3-4",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "City module"],
     note: "Heavy-sweat strategy: heat comfort, odor control, rewearability, line dry.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Wool&Prince Signature 160 Crew if available in your size/color.",
+      fallback: "Unbound Merino Crew if you want a heavier 100% merino tee; Woolly if you want lower cost.",
+      logistics: "Buy 3 first, test fit/sweat/itch before buying a fourth. Favor black, navy, white, or patterns over heather gray.",
+      caution: "Do not machine-dry hot; line dry.",
+      source: "Unbound product page confirms 100% merino 190gsm; existing comfort research supports Wool&Prince 160 as the lighter hot-weather target."
+    }
   },
   {
     id: "chris-underwear",
@@ -1266,10 +1461,16 @@ const ITEMS = [
     category: "Parent clothing and laundry",
     priority: "Core",
     qty: "5-6",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "City module"],
     note: "Line-dry laundry cadence; avoid cotton dependency.",
-    research: true
+    research: false,
+    rec: {
+      pick: "ExOfficio Give-N-Go 2.0 boxer briefs.",
+      fallback: "Saxx Quest Quick-Dry Mesh if fit is better.",
+      logistics: "5-6 pairs supports laundry every few days plus sweat buffer.",
+      caution: "Avoid cotton underwear for long hot walking days."
+    }
   },
   {
     id: "walking-socks",
@@ -1280,7 +1481,13 @@ const ITEMS = [
     status: "review",
     contexts: ["Checked luggage", "City module"],
     note: "Support long walking days, heat swelling, and line drying.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Darn Tough lightweight or light cushion merino hiking socks.",
+      fallback: "Feetures Elite Light Cushion if you prefer synthetic running socks.",
+      logistics: "Bring enough to rotate and change midday on heavy-sweat days.",
+      caution: "No cotton socks for long cobblestone days."
+    }
   },
   {
     id: "adult-walking-shoes",
@@ -1302,7 +1509,13 @@ const ITEMS = [
     status: "buy",
     contexts: ["Checked luggage", "Lodging"],
     note: "Assume washer access but not dryer access.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Earth Breeze laundry detergent sheets plus a Sea to Summit Lite Line clothesline.",
+      fallback: "SinkSuds packets if you expect more sink washing than machine washing.",
+      logistics: "Dryer is not assumed. Pack a tiny sink stopper only if lodging sinks look questionable.",
+      caution: "Do not bring liquid detergent unless checked and leak-bagged."
+    }
   },
   {
     id: "chafe-care",
@@ -1310,10 +1523,16 @@ const ITEMS = [
     category: "Parent clothing and laundry",
     priority: "Core",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Day bag"],
     note: "Heavy sweat, heat, and walking make this worth a product decision.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Body Glide Original balm.",
+      fallback: "Gold Bond Friction Defense stick.",
+      logistics: "Stick format is less messy than creams and easier for day bag.",
+      caution: "Carry-on balm should still fit your liquids/gels comfort zone; checked is easiest."
+    }
   },
   {
     id: "hudson-cool-outfits",
@@ -1324,7 +1543,13 @@ const ITEMS = [
     status: "review",
     contexts: ["Checked luggage", "Day bag"],
     note: "Prioritize cool clothing, quick changes, and rash prevention.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Primary capsule: loose cotton/bamboo short rompers and tees/shorts, plus 1-2 lightweight UPF pieces for exposed days.",
+      fallback: "Use Old Navy/Carter's basics for most outfits and spend only on hat/swim/UPF pieces.",
+      logistics: "Pack 4-5 days plus buffer because sweat, sunscreen, food, and water messes will be frequent.",
+      caution: "Coolest-first means sunscreen, shade, hat, and timing must do more work."
+    }
   },
   {
     id: "hudson-spare-day-outfits",
@@ -1343,10 +1568,16 @@ const ITEMS = [
     category: "Hudson clothing",
     priority: "Core",
     qty: "2 sets",
-    status: "research",
+    status: "buy",
     contexts: ["Checked luggage", "Beach/boat module"],
     note: "Coolest-first, but use UPF where it does not cause overheating.",
-    research: true
+    research: false,
+    rec: {
+      pick: "2 lightweight rashguard swim sets: one long-sleeve UPF top for high-sun water time, one shorter/cooler set for shade-heavy beach time.",
+      fallback: "Primary brand can be Primary, Hanna Andersson, iPlay, or Carter's depending on fit and availability.",
+      logistics: "Two sets let one dry while the other is used. Pair with swim diapers and wet bag.",
+      caution: "Reapply Thinkbaby to exposed skin; swim clothing does not cover everything."
+    }
   },
   {
     id: "hudson-sleep-clothes",
@@ -1365,10 +1596,16 @@ const ITEMS = [
     category: "Electronics and connectivity",
     priority: "Must",
     qty: "1",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on", "Lodging"],
     note: "Core of compact power system.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Anker 735 Charger, 65W, 2 USB-C + 1 USB-A.",
+      fallback: "Anker 747 150W if you need to charge laptops aggressively too.",
+      logistics: "Use with simple plug adapters. Modern USB-C chargers handle 100-240V; plug adapters change shape, not voltage.",
+      caution: "Do not plug US-only heating devices into EU outlets."
+    }
   },
   {
     id: "plug-adapters",
@@ -1376,10 +1613,16 @@ const ITEMS = [
     category: "Electronics and connectivity",
     priority: "Must",
     qty: "2-3",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on", "Lodging"],
     note: "Italy may need Type L; Greece uses Type C/F. Verify final kit.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Ceptics adapters: bring at least one Italy Type L and one Europe Type C/F adapter.",
+      fallback: "A quality universal adapter as backup, but still include Type L for Italy.",
+      logistics: "For USB chargers and dual-voltage electronics only. Italy's Type L can be the gotcha; Greece is generally Type C/F.",
+      caution: "Adapters are not voltage converters."
+    }
   },
   {
     id: "power-bank",
@@ -1387,10 +1630,17 @@ const ITEMS = [
     category: "Electronics and connectivity",
     priority: "Must",
     qty: "1-2",
-    status: "research",
+    status: "buy",
     contexts: ["Plane carry-on", "Day bag", "Beach/boat module"],
     note: "Must stay in carry-on for flying. Supports maps, phones, fan, and entertainment.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Anker Nano Power Bank 10,000mAh USB-C, one primary unit.",
+      fallback: "Nitecore NB10000 Gen 3 if lowest weight matters more than built-in cable convenience.",
+      logistics: "Power banks must be in carry-on only. A 10,000mAh bank is well below the FAA's 100Wh ordinary-passenger limit.",
+      caution: "Remove power banks from any gate-checked bag.",
+      source: "FAA PackSafe lithium battery guidance; Anker/Nitecore product coverage."
+    }
   },
   {
     id: "short-cables",
@@ -1409,10 +1659,16 @@ const ITEMS = [
     category: "Electronics and connectivity",
     priority: "Core",
     qty: "1 hub phone",
-    status: "research",
+    status: "review",
     contexts: ["Plane carry-on", "City module"],
     note: "Install before departure, activate on landing if provider requires it.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Airalo Eurolink regional eSIM on one hub phone.",
+      fallback: "Nomad Europe regional eSIM if pricing/GB is better close to departure.",
+      logistics: "Install before leaving; activate when the plan/provider says. Keep the US line active for bank 2FA.",
+      caution: "Recheck coverage and prices 1-2 weeks before departure."
+    }
   },
   {
     id: "offline-maps-translate",
@@ -1431,10 +1687,16 @@ const ITEMS = [
     category: "Security",
     priority: "Core",
     qty: "2-4",
-    status: "research",
+    status: "buy",
     contexts: ["Transit day", "Day bag"],
     note: "Light deterrent for zipper holes on transit days.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Lewis N. Clark mini brass travel locks or similar small TSA-style luggage locks.",
+      fallback: "Nite Ize S-Biner MicroLock for day-bag zippers where a lock is too annoying.",
+      logistics: "Use only as a transit-day deterrent, not as a daily friction point.",
+      caution: "Do not lock anything you need fast access to with Hudson."
+    }
   },
   {
     id: "trackers",
@@ -1456,7 +1718,13 @@ const ITEMS = [
     status: "review",
     contexts: ["Day bag", "City module"],
     note: "Lightweight security; avoid fortress gear unless preference changes.",
-    research: true
+    research: false,
+    rec: {
+      pick: "Use an existing comfortable crossbody or sling with zipper closure if you have one.",
+      fallback: "Bellroy Venture Sling 6L if you need to buy a polished, practical parent day bag.",
+      logistics: "Passport holder, phone, power bank, water, sunscreen, and a tiny wipe kit should fit without becoming the diaper bag.",
+      caution: "Comfort and access matter more than slash-proof anti-theft features."
+    }
   },
   {
     id: "local-diaper-resupply",
@@ -1683,6 +1951,30 @@ function renderStatusOptions(selected) {
   }).join("");
 }
 
+function renderRecommendation(record) {
+  if (!record.rec) return "";
+  const rows = [
+    ["Pick", record.rec.pick],
+    ["Fallback", record.rec.fallback],
+    ["Logistics", record.rec.logistics],
+    ["Caution", record.rec.caution],
+    ["Source", record.rec.source]
+  ].filter(([_label, value]) => value);
+
+  if (!rows.length) return "";
+
+  return `
+    <div class="rec-panel">
+      ${rows.map(([label, value]) => `
+        <div class="rec-line ${label === "Source" ? "source" : ""}">
+          <b>${escapeHtml(label)}</b>
+          <span>${escapeHtml(value)}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function renderItem(record, extraContext = "") {
   const status = getStatus(record);
   const qty = getQty(record);
@@ -1703,6 +1995,7 @@ function renderItem(record, extraContext = "") {
           ${statusChip}
         </div>
         <p class="note">${escapeHtml(record.note)}</p>
+        ${renderRecommendation(record)}
         <div class="chips">
           <span class="chip">${escapeHtml(record.category)}</span>
           ${contextNote}
