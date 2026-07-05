@@ -1,0 +1,1887 @@
+---
+title: Italy/Greece Prep Tool
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Italy/Greece Prep Tool</title>
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --surface-2: #efede6;
+    --ink: #232621;
+    --muted: #64685f;
+    --faint: #8b9085;
+    --line: #d9d7ce;
+    --line-strong: #c3c0b5;
+    --green: #3f6f59;
+    --green-bg: #e8f0ea;
+    --blue: #2f6775;
+    --blue-bg: #e5eef1;
+    --amber: #9b6a20;
+    --amber-bg: #f6ead4;
+    --red: #9c463a;
+    --red-bg: #f4e4e0;
+    --shadow: 0 1px 2px rgba(35, 38, 33, .05), 0 10px 28px rgba(35, 38, 33, .08);
+    --radius: 8px;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .app {
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .topbar {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 20px 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: end;
+  }
+
+  .eyebrow {
+    margin: 0 0 5px;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  .dek {
+    margin: 8px 0 0;
+    color: var(--muted);
+    max-width: 78ch;
+    font-size: 15px;
+  }
+
+  .phase {
+    justify-self: end;
+    text-align: right;
+    min-width: 220px;
+  }
+
+  .phase b {
+    display: block;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .phase span {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .facts {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fact {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+    padding: 5px 11px;
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(246, 245, 241, .96);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+  }
+
+  .toolbar-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: grid;
+    grid-template-columns: minmax(210px, 1.25fr) repeat(4, minmax(140px, .7fr)) auto;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .field {
+    min-width: 0;
+  }
+
+  .field label {
+    display: block;
+    color: var(--faint);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    min-height: 36px;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    padding: 7px 9px;
+  }
+
+  .actions {
+    align-self: end;
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn {
+    min-height: 36px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 12px;
+    white-space: nowrap;
+  }
+
+  .btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .btn.primary {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 20px 70px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px;
+    min-height: 72px;
+    box-shadow: var(--shadow);
+  }
+
+  .stat b {
+    display: block;
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--line);
+    margin: 18px 0 16px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    padding: 11px 4px 10px;
+    min-width: 118px;
+    font-weight: 750;
+  }
+
+  .tab[aria-selected="true"] {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  .view-note {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .section {
+    margin: 0 0 22px;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: baseline;
+    margin: 0 0 8px;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: 0;
+  }
+
+  .section-head span {
+    color: var(--faint);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .item-list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 16px;
+    padding: 14px;
+  }
+
+  .item-main {
+    min-width: 0;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .title-row h3 {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.25;
+  }
+
+  .priority,
+  .status-chip,
+  .research-chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    padding: 2px 8px;
+    text-transform: uppercase;
+  }
+
+  .priority.must {
+    background: var(--red-bg);
+    color: var(--red);
+  }
+
+  .priority.core {
+    background: var(--blue-bg);
+    color: var(--blue);
+  }
+
+  .priority.optional {
+    background: var(--surface-2);
+    color: var(--muted);
+  }
+
+  .research-chip {
+    background: var(--amber-bg);
+    color: var(--amber);
+  }
+
+  .status-chip {
+    background: var(--green-bg);
+    color: var(--green);
+  }
+
+  .note {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .chip {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 650;
+    padding: 2px 8px;
+  }
+
+  .controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 96px;
+    gap: 8px;
+    align-content: start;
+  }
+
+  .mini-field label {
+    display: block;
+    color: var(--faint);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .mini-field select,
+  .mini-field input {
+    width: 100%;
+    min-height: 34px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .task-list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .empty {
+    background: var(--surface);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    color: var(--muted);
+    padding: 22px;
+    text-align: center;
+  }
+
+  .footer-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 22px 0 0;
+  }
+
+  @media (max-width: 980px) {
+    .toolbar-inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .actions {
+      grid-column: 1 / -1;
+      justify-content: flex-start;
+    }
+
+    .stats {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .topbar {
+      grid-template-columns: 1fr;
+    }
+
+    .phase {
+      justify-self: start;
+      text-align: left;
+    }
+
+    .toolbar {
+      position: static;
+    }
+
+    .toolbar-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .item {
+      grid-template-columns: 1fr;
+    }
+
+    .controls-grid {
+      grid-template-columns: 1fr 120px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .controls-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="topbar">
+      <div>
+        <p class="eyebrow">Italy/Greece prep tool</p>
+        <h1>Shopping, Packing, And Pre-Trip Inventory</h1>
+        <p class="dek">Phase 1 skeleton for Chris, partner, and Hudson. This page defines the item taxonomy, bag contexts, statuses, and starting quantities. Specific product winners are intentionally left for the research pass.</p>
+      </div>
+      <div class="phase">
+        <b>Phase 1: inventory skeleton</b>
+        <span>Rome round trip: Aug 24 to Sep 10, 2026</span>
+        <span>Greece in scope. Checked luggage assumed.</span>
+      </div>
+    </div>
+    <div class="facts">
+      <span class="fact">Active party: 2 parents + Hudson</span>
+      <span class="fact">Plane strategy: high-containment lap infant kit</span>
+      <span class="fact">Formula: bring full expected supply</span>
+      <span class="fact">Laundry: wash every few days, line dry</span>
+      <span class="fact">Output: shared parent prep tool</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="field">
+        <label for="search">Search</label>
+        <input id="search" type="search" placeholder="Search items, notes, contexts">
+      </div>
+      <div class="field">
+        <label for="status-filter">Status</label>
+        <select id="status-filter">
+          <option value="all">All statuses</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="category-filter">Category</label>
+        <select id="category-filter">
+          <option value="all">All categories</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="context-filter">Bag / context</label>
+        <select id="context-filter">
+          <option value="all">All contexts</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="priority-filter">Priority</label>
+        <select id="priority-filter">
+          <option value="all">All priorities</option>
+          <option value="Must">Must</option>
+          <option value="Core">Core</option>
+          <option value="Optional">Optional</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="clear-filters">Clear</button>
+        <button class="btn" type="button" id="reset-progress">Reset progress</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="stats" id="stats"></div>
+
+    <div class="tabs" role="tablist" aria-label="Prep views">
+      <button class="tab" type="button" id="tab-shopping" aria-selected="true" data-view="shopping">Shopping</button>
+      <button class="tab" type="button" id="tab-packing" aria-selected="false" data-view="packing">Packing</button>
+      <button class="tab" type="button" id="tab-research" aria-selected="false" data-view="research">Research</button>
+      <button class="tab" type="button" id="tab-tasks" aria-selected="false" data-view="tasks">Tasks</button>
+    </div>
+
+    <p class="view-note" id="view-note"></p>
+    <div id="view"></div>
+    <p class="footer-note">Progress is saved in this browser with localStorage. Brand picks and current airline/security details belong in Phase 2 research, not this skeleton.</p>
+  </main>
+</div>
+
+<script>
+const STATUSES = [
+  { id: "review", label: "Needs review" },
+  { id: "own", label: "Own / have" },
+  { id: "buy", label: "Need to buy" },
+  { id: "research", label: "Research needed" },
+  { id: "packed", label: "Packed" },
+  { id: "local", label: "Buy local if needed" },
+  { id: "skip", label: "Skip" }
+];
+
+const CATEGORY_ORDER = [
+  "Documents and money",
+  "Plane and airport",
+  "Feeding and hydration",
+  "Diapers and cleanup",
+  "Sleep and room comfort",
+  "Health and hygiene",
+  "Sun, heat, and stroller climate",
+  "Beach, boat, and wet gear",
+  "Mobility and transport",
+  "Parent clothing and laundry",
+  "Hudson clothing",
+  "Electronics and connectivity",
+  "Security",
+  "Consumables and resupply"
+];
+
+const CONTEXT_ORDER = [
+  "Plane carry-on",
+  "Checked luggage",
+  "Day bag",
+  "Beach/boat module",
+  "City module",
+  "Transit day",
+  "Lodging",
+  "Buy local backup"
+];
+
+const ITEMS = [
+  {
+    id: "passports",
+    name: "Passports for all travelers",
+    category: "Documents and money",
+    priority: "Must",
+    qty: "3",
+    status: "own",
+    contexts: ["Plane carry-on", "Transit day"],
+    note: "Passports are in hand; verify validity against return date and keep together.",
+    research: false
+  },
+  {
+    id: "passport-holder",
+    name: "Designated passport/document holder",
+    category: "Documents and money",
+    priority: "Must",
+    qty: "1",
+    status: "buy",
+    contexts: ["Plane carry-on", "Transit day"],
+    note: "Single place for passports, birth certificate copy, insurance, and flight confirmations.",
+    research: true
+  },
+  {
+    id: "birth-certificate",
+    name: "Hudson birth certificate copy",
+    category: "Documents and money",
+    priority: "Must",
+    qty: "1 copy + digital",
+    status: "review",
+    contexts: ["Plane carry-on", "Transit day"],
+    note: "Useful as proof of age for lap-infant travel.",
+    research: false
+  },
+  {
+    id: "insurance-docs",
+    name: "Travel medical insurance documents",
+    category: "Documents and money",
+    priority: "Must",
+    qty: "digital + paper",
+    status: "research",
+    contexts: ["Plane carry-on", "Transit day"],
+    note: "Needs infant coverage and medical evacuation confirmation.",
+    research: true
+  },
+  {
+    id: "offline-doc-copies",
+    name: "Offline copies of passports, bookings, and insurance",
+    category: "Documents and money",
+    priority: "Must",
+    qty: "on both phones",
+    status: "review",
+    contexts: ["Plane carry-on", "Transit day"],
+    note: "Store in shared cloud and offline on both parent phones.",
+    research: false
+  },
+  {
+    id: "cards-cash",
+    name: "No-FX cards and euro cash plan",
+    category: "Documents and money",
+    priority: "Core",
+    qty: "2+ cards, EUR 100-200",
+    status: "review",
+    contexts: ["Plane carry-on", "City module"],
+    note: "Use bank ATMs in Europe; decline dynamic currency conversion.",
+    research: false
+  },
+  {
+    id: "diaper-bag-organizer",
+    name: "Organized diaper bag setup",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "1 system",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Must support maximum containment and entertainment without becoming impossible to search.",
+    research: false
+  },
+  {
+    id: "flight-diapers",
+    name: "Flight diapers",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "2x journey time",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "Use generous delay math; local restock is fine after arrival.",
+    research: false
+  },
+  {
+    id: "flight-wipes",
+    name: "Baby wipes for plane and transit",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "1 full pack",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "For messes, hands, diaper changes, and surfaces that do not need disinfecting.",
+    research: false
+  },
+  {
+    id: "changing-pad",
+    name: "Portable changing pad",
+    category: "Plane and airport",
+    priority: "Core",
+    qty: "1",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Plane and ferry bathrooms are cramped; keep this easy to grab.",
+    research: false
+  },
+  {
+    id: "gallon-bags",
+    name: "Large zip bags for blowouts and trash",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "6-10",
+    status: "buy",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Cheap insurance for wet clothes, dirty diapers, and snack trash.",
+    research: false
+  },
+  {
+    id: "hudson-plane-clothes",
+    name: "Hudson plane outfit changes",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "2 full changes",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "Separate from checked toddler clothing.",
+    research: false
+  },
+  {
+    id: "parent-plane-clothes",
+    name: "Parent carry-on clothing backup",
+    category: "Plane and airport",
+    priority: "Core",
+    qty: "1 top per parent",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "For spills, spit-up, sweat, and blowouts during the long-haul block.",
+    research: false
+  },
+  {
+    id: "painters-tape",
+    name: "Painter's tape",
+    category: "Plane and airport",
+    priority: "Core",
+    qty: "1 small roll",
+    status: "buy",
+    contexts: ["Plane carry-on"],
+    note: "Quiet toddler entertainment for tray table, window, and seat area.",
+    research: false
+  },
+  {
+    id: "quiet-toys",
+    name: "Quiet plane toys and suction toys",
+    category: "Plane and airport",
+    priority: "Core",
+    qty: "6-10 small items",
+    status: "research",
+    contexts: ["Plane carry-on"],
+    note: "Rotate novelty. Avoid noisy, tiny, or easy-to-lose pieces.",
+    research: true
+  },
+  {
+    id: "plane-snacks",
+    name: "Plane snacks and pouches",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "travel day + buffer",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "Familiar, low-mess, high-success foods for long-haul containment.",
+    research: false
+  },
+  {
+    id: "headphones",
+    name: "Headphones",
+    category: "Plane and airport",
+    priority: "Core",
+    qty: "2 adult pairs",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "Include adapters if any device still needs them.",
+    research: false
+  },
+  {
+    id: "baby-carrier",
+    name: "Baby carrier",
+    category: "Plane and airport",
+    priority: "Must",
+    qty: "1",
+    status: "review",
+    contexts: ["Plane carry-on", "City module", "Transit day"],
+    note: "Hands-free airport, stairs, cobblestones, and stroller-impossible moments.",
+    research: false
+  },
+  {
+    id: "full-formula-supply",
+    name: "Full expected formula supply",
+    category: "Feeding and hydration",
+    priority: "Must",
+    qty: "calculate by day",
+    status: "review",
+    contexts: ["Plane carry-on", "Checked luggage"],
+    note: "Bring all expected formula from home; split some into carry-on for delays.",
+    research: false
+  },
+  {
+    id: "formula-packing-method",
+    name: "Formula packing method",
+    category: "Feeding and hydration",
+    priority: "Must",
+    qty: "1 method",
+    status: "research",
+    contexts: ["Plane carry-on", "Checked luggage"],
+    note: "Decide sealed containers vs measured packets and how much stays in carry-on.",
+    research: true
+  },
+  {
+    id: "bottles-cups",
+    name: "Bottles, sippy cups, or straw cups",
+    category: "Feeding and hydration",
+    priority: "Must",
+    qty: "2-4",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag", "Lodging"],
+    note: "Use Hudson's familiar system; include one for takeoff/descent.",
+    research: false
+  },
+  {
+    id: "bottle-brush",
+    name: "Travel bottle brush and small dish soap",
+    category: "Feeding and hydration",
+    priority: "Core",
+    qty: "1",
+    status: "buy",
+    contexts: ["Checked luggage", "Lodging"],
+    note: "Supports formula and cup cleaning without arrival-day shopping.",
+    research: true
+  },
+  {
+    id: "sterilizing-tablets",
+    name: "Cold-water sterilizing tablets",
+    category: "Feeding and hydration",
+    priority: "Core",
+    qty: "trip pack",
+    status: "research",
+    contexts: ["Checked luggage", "Lodging"],
+    note: "Voltage-proof backup for bottles and feeding parts.",
+    research: true
+  },
+  {
+    id: "adult-bottles",
+    name: "Adult reusable water bottles",
+    category: "Feeding and hydration",
+    priority: "Must",
+    qty: "2",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag", "City module"],
+    note: "Hydration is a major comfort and safety category.",
+    research: true
+  },
+  {
+    id: "hudson-water-cup",
+    name: "Hudson water cup",
+    category: "Feeding and hydration",
+    priority: "Must",
+    qty: "1-2",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag", "Beach/boat module"],
+    note: "Separate from adult bottles; keep familiar and leak-resistant.",
+    research: false
+  },
+  {
+    id: "adult-electrolytes",
+    name: "Adult electrolyte packets",
+    category: "Feeding and hydration",
+    priority: "Core",
+    qty: "10-20 packets",
+    status: "research",
+    contexts: ["Plane carry-on", "Checked luggage", "Day bag"],
+    note: "For adult heat and travel days; not a pediatric ORS substitute.",
+    research: true
+  },
+  {
+    id: "pediatric-ors",
+    name: "Pediatric ORS",
+    category: "Feeding and hydration",
+    priority: "Must",
+    qty: "small backup supply",
+    status: "research",
+    contexts: ["Plane carry-on", "Checked luggage", "Day bag"],
+    note: "Use pediatrician guidance and product labeling for Hudson.",
+    research: true
+  },
+  {
+    id: "arrival-food-buffer",
+    name: "Arrival food buffer",
+    category: "Feeding and hydration",
+    priority: "Core",
+    qty: "first 24-48 hours",
+    status: "review",
+    contexts: ["Plane carry-on", "Checked luggage"],
+    note: "Familiar snacks/solids so grocery shopping is not required immediately.",
+    research: false
+  },
+  {
+    id: "diaper-arrival-buffer",
+    name: "Diaper arrival buffer",
+    category: "Diapers and cleanup",
+    priority: "Core",
+    qty: "2-3 days",
+    status: "review",
+    contexts: ["Checked luggage", "Day bag"],
+    note: "Diapers can be restocked locally, but do not require shopping on arrival.",
+    research: false
+  },
+  {
+    id: "diaper-cream",
+    name: "Diaper rash cream",
+    category: "Diapers and cleanup",
+    priority: "Must",
+    qty: "1 tube",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Heat, sweat, and long transit make rash prevention more important.",
+    research: false
+  },
+  {
+    id: "swim-diapers",
+    name: "Swim diapers",
+    category: "Diapers and cleanup",
+    priority: "Core",
+    qty: "beach days + buffer",
+    status: "buy",
+    contexts: ["Checked luggage", "Beach/boat module"],
+    note: "Tie quantity to final beach/pool cadence.",
+    research: false
+  },
+  {
+    id: "wet-bags",
+    name: "Wet bags",
+    category: "Diapers and cleanup",
+    priority: "Core",
+    qty: "2-3",
+    status: "research",
+    contexts: ["Day bag", "Beach/boat module"],
+    note: "For swim clothes, blowouts, wet towels, and sunscreen-mess clothes.",
+    research: true
+  },
+  {
+    id: "quick-bibs",
+    name: "Compact bibs or wipeable feeding layer",
+    category: "Diapers and cleanup",
+    priority: "Optional",
+    qty: "2",
+    status: "review",
+    contexts: ["Day bag", "Lodging"],
+    note: "Useful if Hudson is messy with solids and restaurants.",
+    research: false
+  },
+  {
+    id: "usb-c-fan",
+    name: "USB-C fan",
+    category: "Sleep and room comfort",
+    priority: "Core",
+    qty: "1",
+    status: "own",
+    contexts: ["Checked luggage", "Lodging", "Day bag"],
+    note: "Doubles as room white noise and stroller cooling if compatible.",
+    research: false
+  },
+  {
+    id: "compact-blackout",
+    name: "Compact blackout option",
+    category: "Sleep and room comfort",
+    priority: "Optional",
+    qty: "1",
+    status: "review",
+    contexts: ["Checked luggage", "Lodging"],
+    note: "Sleep kit stays minimal; bring only if it earns the space.",
+    research: true
+  },
+  {
+    id: "familiar-textile",
+    name: "Small familiar sleep textile",
+    category: "Sleep and room comfort",
+    priority: "Optional",
+    qty: "1",
+    status: "review",
+    contexts: ["Plane carry-on", "Lodging"],
+    note: "No full bedding set; one small familiar item if helpful.",
+    research: false
+  },
+  {
+    id: "hypochlorous-spray",
+    name: "Hypochlorous acid spray",
+    category: "Health and hygiene",
+    priority: "Core",
+    qty: "carry-on size + checked backup",
+    status: "research",
+    contexts: ["Plane carry-on", "Checked luggage", "Day bag"],
+    note: "Skin-safe cleaning archetype; needs brand, size, and plane logistics research.",
+    research: true
+  },
+  {
+    id: "disinfecting-wipes",
+    name: "Disinfecting wipes",
+    category: "Health and hygiene",
+    priority: "Core",
+    qty: "1 travel pack",
+    status: "buy",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "For tray tables, armrests, high chairs, and hard surfaces.",
+    research: true
+  },
+  {
+    id: "adult-hand-sanitizer",
+    name: "Adult hand sanitizer",
+    category: "Health and hygiene",
+    priority: "Core",
+    qty: "travel size",
+    status: "buy",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Adult use; not the same job as hypochlorous spray or baby wipes.",
+    research: false
+  },
+  {
+    id: "infant-acetaminophen",
+    name: "Infant acetaminophen",
+    category: "Health and hygiene",
+    priority: "Must",
+    qty: "1 bottle",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Verify dose with pediatrician; keep dosing note.",
+    research: false
+  },
+  {
+    id: "infant-ibuprofen",
+    name: "Infant ibuprofen, if appropriate",
+    category: "Health and hygiene",
+    priority: "Core",
+    qty: "1 bottle",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Verify age/weight/dosing with pediatrician.",
+    research: false
+  },
+  {
+    id: "thermometer",
+    name: "Infant thermometer",
+    category: "Health and hygiene",
+    priority: "Must",
+    qty: "1",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Keep accessible, not buried in checked luggage.",
+    research: false
+  },
+  {
+    id: "saline-nasal",
+    name: "Saline drops and nasal aspirator",
+    category: "Health and hygiene",
+    priority: "Core",
+    qty: "1 set",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Useful for dry plane air, congestion, and sleep disruption.",
+    research: false
+  },
+  {
+    id: "thinkbaby-sunscreen",
+    name: "Thinkbaby sunscreen for Hudson",
+    category: "Health and hygiene",
+    priority: "Must",
+    qty: "trip supply",
+    status: "buy",
+    contexts: ["Plane carry-on", "Checked luggage", "Day bag", "Beach/boat module"],
+    note: "Known-tolerated sunscreen from home. Need quantity and bag placement.",
+    research: true
+  },
+  {
+    id: "adult-sunscreen",
+    name: "Adult sunscreen",
+    category: "Health and hygiene",
+    priority: "Core",
+    qty: "trip supply",
+    status: "review",
+    contexts: ["Checked luggage", "Day bag", "Beach/boat module"],
+    note: "Adults can use preferred formulation or restock locally.",
+    research: false
+  },
+  {
+    id: "all-terrain-stroller",
+    name: "All-terrain travel stroller",
+    category: "Sun, heat, and stroller climate",
+    priority: "Must",
+    qty: "1",
+    status: "research",
+    contexts: ["Transit day", "City module", "Checked luggage"],
+    note: "Prioritize cobblestones and mixed terrain over overhead-bin compactness.",
+    research: true
+  },
+  {
+    id: "stroller-shade",
+    name: "Compatible stroller shade",
+    category: "Sun, heat, and stroller climate",
+    priority: "Core",
+    qty: "1",
+    status: "research",
+    contexts: ["Day bag", "City module", "Beach/boat module"],
+    note: "Part of the stroller climate system; avoid heat-trapping full covers.",
+    research: true
+  },
+  {
+    id: "stroller-fan",
+    name: "Stroller fan",
+    category: "Sun, heat, and stroller climate",
+    priority: "Core",
+    qty: "1",
+    status: "research",
+    contexts: ["Day bag", "City module", "Beach/boat module"],
+    note: "USB-C preferred; check clip strength, battery, and finger safety.",
+    research: true
+  },
+  {
+    id: "hudson-sun-hat",
+    name: "Hudson toddler sun hat",
+    category: "Sun, heat, and stroller climate",
+    priority: "Must",
+    qty: "1-2",
+    status: "research",
+    contexts: ["Day bag", "Beach/boat module", "City module"],
+    note: "Hudson is likely to wear one; still pair with sunscreen, shade, and timing.",
+    research: true
+  },
+  {
+    id: "breathable-muslin",
+    name: "Breathable muslin cloth",
+    category: "Sun, heat, and stroller climate",
+    priority: "Optional",
+    qty: "1",
+    status: "review",
+    contexts: ["Plane carry-on", "Day bag"],
+    note: "Useful as cloth, shade, or cleanup; do not fully cover stroller in heat.",
+    research: false
+  },
+  {
+    id: "adult-water-shoes",
+    name: "Adult water shoes",
+    category: "Beach, boat, and wet gear",
+    priority: "Core",
+    qty: "2 pairs",
+    status: "research",
+    contexts: ["Checked luggage", "Beach/boat module"],
+    note: "Rocky/pebbly beach readiness for adults.",
+    research: true
+  },
+  {
+    id: "hudson-water-shoes",
+    name: "Hudson water shoes",
+    category: "Beach, boat, and wet gear",
+    priority: "Core",
+    qty: "1 pair",
+    status: "research",
+    contexts: ["Checked luggage", "Beach/boat module"],
+    note: "Only if he will stand or walk near shore.",
+    research: true
+  },
+  {
+    id: "dry-bag",
+    name: "Small dry bag or waterproof pouch",
+    category: "Beach, boat, and wet gear",
+    priority: "Core",
+    qty: "1",
+    status: "research",
+    contexts: ["Beach/boat module", "Day bag"],
+    note: "For phones, passports during transfers, and beach/boat wet zones.",
+    research: true
+  },
+  {
+    id: "quick-dry-towels",
+    name: "Quick-dry beach towels",
+    category: "Beach, boat, and wet gear",
+    priority: "Optional",
+    qty: "2-3",
+    status: "review",
+    contexts: ["Checked luggage", "Beach/boat module"],
+    note: "Decide after lodging/beach plan; rentals or lodging towels may cover this.",
+    research: true
+  },
+  {
+    id: "beach-change-strategy",
+    name: "Beach change strategy",
+    category: "Beach, boat, and wet gear",
+    priority: "Core",
+    qty: "1 module",
+    status: "review",
+    contexts: ["Beach/boat module"],
+    note: "Dry outfit, swim diaper changes, wet bag, sunscreen reapply, and water.",
+    research: false
+  },
+  {
+    id: "travel-car-seat",
+    name: "Travel car seat",
+    category: "Mobility and transport",
+    priority: "Must",
+    qty: "1",
+    status: "research",
+    contexts: ["Checked luggage", "Transit day"],
+    note: "Purchase decision. Favor rental-car/transfer compatibility; taxi install speed is secondary.",
+    research: true
+  },
+  {
+    id: "car-seat-travel-bag",
+    name: "Car seat travel bag",
+    category: "Mobility and transport",
+    priority: "Core",
+    qty: "1",
+    status: "research",
+    contexts: ["Checked luggage", "Transit day"],
+    note: "Protects the travel car seat if checked or gate-checked.",
+    research: true
+  },
+  {
+    id: "stroller-gate-check-plan",
+    name: "Stroller gate-check plan",
+    category: "Mobility and transport",
+    priority: "Core",
+    qty: "1 plan",
+    status: "review",
+    contexts: ["Transit day"],
+    note: "Know what gets gate-checked vs checked and what must stay with you.",
+    research: false
+  },
+  {
+    id: "chris-merino-tees",
+    name: "Chris merino travel tees",
+    category: "Parent clothing and laundry",
+    priority: "Must",
+    qty: "3-4",
+    status: "research",
+    contexts: ["Checked luggage", "City module"],
+    note: "Heavy-sweat strategy: heat comfort, odor control, rewearability, line dry.",
+    research: true
+  },
+  {
+    id: "chris-underwear",
+    name: "Chris quick-dry underwear",
+    category: "Parent clothing and laundry",
+    priority: "Core",
+    qty: "5-6",
+    status: "research",
+    contexts: ["Checked luggage", "City module"],
+    note: "Line-dry laundry cadence; avoid cotton dependency.",
+    research: true
+  },
+  {
+    id: "walking-socks",
+    name: "Walking socks",
+    category: "Parent clothing and laundry",
+    priority: "Core",
+    qty: "4-5 pairs per adult",
+    status: "review",
+    contexts: ["Checked luggage", "City module"],
+    note: "Support long walking days, heat swelling, and line drying.",
+    research: true
+  },
+  {
+    id: "adult-walking-shoes",
+    name: "Serious adult walking shoes",
+    category: "Parent clothing and laundry",
+    priority: "Must",
+    qty: "1 pair per adult",
+    status: "review",
+    contexts: ["City module", "Transit day"],
+    note: "Role-based footwear: all-day walking shoe plus wet/beach lane.",
+    research: false
+  },
+  {
+    id: "laundry-kit",
+    name: "Laundry kit",
+    category: "Parent clothing and laundry",
+    priority: "Core",
+    qty: "detergent sheets + line",
+    status: "buy",
+    contexts: ["Checked luggage", "Lodging"],
+    note: "Assume washer access but not dryer access.",
+    research: true
+  },
+  {
+    id: "chafe-care",
+    name: "Chafe and sweat care",
+    category: "Parent clothing and laundry",
+    priority: "Core",
+    qty: "1",
+    status: "research",
+    contexts: ["Checked luggage", "Day bag"],
+    note: "Heavy sweat, heat, and walking make this worth a product decision.",
+    research: true
+  },
+  {
+    id: "hudson-cool-outfits",
+    name: "Hudson coolest-practical outfits",
+    category: "Hudson clothing",
+    priority: "Must",
+    qty: "4-5 days + buffer",
+    status: "review",
+    contexts: ["Checked luggage", "Day bag"],
+    note: "Prioritize cool clothing, quick changes, and rash prevention.",
+    research: true
+  },
+  {
+    id: "hudson-spare-day-outfits",
+    name: "Hudson day-bag spare outfit",
+    category: "Hudson clothing",
+    priority: "Must",
+    qty: "1-2 per day bag",
+    status: "review",
+    contexts: ["Day bag", "City module", "Beach/boat module"],
+    note: "Sweat, sunscreen, food, water, and diaper mess are expected.",
+    research: false
+  },
+  {
+    id: "hudson-swim-clothes",
+    name: "Hudson swim clothes",
+    category: "Hudson clothing",
+    priority: "Core",
+    qty: "2 sets",
+    status: "research",
+    contexts: ["Checked luggage", "Beach/boat module"],
+    note: "Coolest-first, but use UPF where it does not cause overheating.",
+    research: true
+  },
+  {
+    id: "hudson-sleep-clothes",
+    name: "Hudson lightweight sleep clothes",
+    category: "Hudson clothing",
+    priority: "Core",
+    qty: "2-3",
+    status: "review",
+    contexts: ["Checked luggage", "Lodging"],
+    note: "Co-sleeping model; no travel crib baseline.",
+    research: false
+  },
+  {
+    id: "multiport-charger",
+    name: "USB-C multiport charger",
+    category: "Electronics and connectivity",
+    priority: "Must",
+    qty: "1",
+    status: "research",
+    contexts: ["Plane carry-on", "Lodging"],
+    note: "Core of compact power system.",
+    research: true
+  },
+  {
+    id: "plug-adapters",
+    name: "Italy/Greece plug adapters",
+    category: "Electronics and connectivity",
+    priority: "Must",
+    qty: "2-3",
+    status: "research",
+    contexts: ["Plane carry-on", "Lodging"],
+    note: "Italy may need Type L; Greece uses Type C/F. Verify final kit.",
+    research: true
+  },
+  {
+    id: "power-bank",
+    name: "Power bank",
+    category: "Electronics and connectivity",
+    priority: "Must",
+    qty: "1-2",
+    status: "research",
+    contexts: ["Plane carry-on", "Day bag", "Beach/boat module"],
+    note: "Must stay in carry-on for flying. Supports maps, phones, fan, and entertainment.",
+    research: true
+  },
+  {
+    id: "short-cables",
+    name: "Short charging cables",
+    category: "Electronics and connectivity",
+    priority: "Core",
+    qty: "several",
+    status: "review",
+    contexts: ["Plane carry-on", "Lodging"],
+    note: "USB-C first; include any device-specific cables still needed.",
+    research: false
+  },
+  {
+    id: "esim",
+    name: "Dual-country eSIM",
+    category: "Electronics and connectivity",
+    priority: "Core",
+    qty: "1 hub phone",
+    status: "research",
+    contexts: ["Plane carry-on", "City module"],
+    note: "Install before departure, activate on landing if provider requires it.",
+    research: true
+  },
+  {
+    id: "offline-maps-translate",
+    name: "Offline maps and Translate downloads",
+    category: "Electronics and connectivity",
+    priority: "Core",
+    qty: "both phones",
+    status: "review",
+    contexts: ["Plane carry-on", "City module"],
+    note: "Prep task as much as an electronics item.",
+    research: false
+  },
+  {
+    id: "zipper-locks",
+    name: "Mini zipper locks",
+    category: "Security",
+    priority: "Core",
+    qty: "2-4",
+    status: "research",
+    contexts: ["Transit day", "Day bag"],
+    note: "Light deterrent for zipper holes on transit days.",
+    research: true
+  },
+  {
+    id: "trackers",
+    name: "Luggage trackers",
+    category: "Security",
+    priority: "Optional",
+    qty: "per checked bag",
+    status: "review",
+    contexts: ["Checked luggage", "Transit day"],
+    note: "Use if already in your ecosystem or easy to add.",
+    research: false
+  },
+  {
+    id: "crossbody-day-bag",
+    name: "Secure parent day bag",
+    category: "Security",
+    priority: "Core",
+    qty: "1",
+    status: "review",
+    contexts: ["Day bag", "City module"],
+    note: "Lightweight security; avoid fortress gear unless preference changes.",
+    research: true
+  },
+  {
+    id: "local-diaper-resupply",
+    name: "Local diaper and wipes resupply plan",
+    category: "Consumables and resupply",
+    priority: "Core",
+    qty: "after first buffer",
+    status: "review",
+    contexts: ["Buy local backup"],
+    note: "Diapers and wipes are reasonable to restock locally after arrival buffer.",
+    research: false
+  },
+  {
+    id: "local-water-plan",
+    name: "Local bottled water plan",
+    category: "Consumables and resupply",
+    priority: "Core",
+    qty: "as needed",
+    status: "review",
+    contexts: ["Buy local backup", "Lodging"],
+    note: "Use low-sodium bottled water where formula/water plan calls for it.",
+    research: false
+  }
+];
+
+const TASKS = [
+  {
+    id: "task-formula-count",
+    name: "Calculate full formula quantity",
+    category: "Pre-trip tasks",
+    priority: "Must",
+    qty: "1 calculation",
+    status: "review",
+    contexts: ["Plane carry-on", "Checked luggage"],
+    note: "Use current daily intake, trip length, and delay buffer; decide carry-on split.",
+    research: false
+  },
+  {
+    id: "task-pediatrician",
+    name: "Confirm pediatrician dosing and ORS guidance",
+    category: "Pre-trip tasks",
+    priority: "Must",
+    qty: "1 call/message",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "Medication dosing, ibuprofen eligibility, pediatric ORS, heat/dehydration guidance.",
+    research: false
+  },
+  {
+    id: "task-car-seat-install",
+    name: "Practice travel car seat install",
+    category: "Pre-trip tasks",
+    priority: "Must",
+    qty: "before departure",
+    status: "review",
+    contexts: ["Transit day"],
+    note: "Do this after the car seat product decision.",
+    research: false
+  },
+  {
+    id: "task-stroller-test",
+    name: "Test stroller, fan, shade, and day bag together",
+    category: "Pre-trip tasks",
+    priority: "Core",
+    qty: "1 dry run",
+    status: "review",
+    contexts: ["Day bag", "City module"],
+    note: "Make sure the stroller climate setup works before Rome heat.",
+    research: false
+  },
+  {
+    id: "task-diaper-bag-pack",
+    name: "Practice-pack the high-containment diaper bag",
+    category: "Pre-trip tasks",
+    priority: "Core",
+    qty: "1 dry run",
+    status: "review",
+    contexts: ["Plane carry-on"],
+    note: "Confirm everything is reachable without unpacking the entire bag.",
+    research: false
+  },
+  {
+    id: "task-lodging-laundry",
+    name: "Confirm lodging laundry and line-dry setup",
+    category: "Pre-trip tasks",
+    priority: "Core",
+    qty: "each lodging",
+    status: "review",
+    contexts: ["Lodging"],
+    note: "Washer matters more than dryer; ask about drying rack or outdoor line.",
+    research: false
+  },
+  {
+    id: "task-lodging-ac",
+    name: "Confirm working bedroom AC",
+    category: "Pre-trip tasks",
+    priority: "Must",
+    qty: "each lodging",
+    status: "review",
+    contexts: ["Lodging"],
+    note: "Heat and sleep risk. Get written confirmation where possible.",
+    research: false
+  },
+  {
+    id: "task-esim-downloads",
+    name: "Install eSIM and offline downloads",
+    category: "Pre-trip tasks",
+    priority: "Core",
+    qty: "both phones where useful",
+    status: "review",
+    contexts: ["Plane carry-on", "City module"],
+    note: "Maps, Translate Italian/Greek, airline apps, and eSIM on hub phone.",
+    research: false
+  },
+  {
+    id: "task-airline-rules",
+    name: "Verify airline and security rules",
+    category: "Pre-trip tasks",
+    priority: "Core",
+    qty: "close to departure",
+    status: "review",
+    contexts: ["Plane carry-on", "Transit day"],
+    note: "Liquids, baby formula, stroller/car-seat check rules, power bank carry-on rules.",
+    research: false
+  },
+  {
+    id: "task-ferry-luggage",
+    name: "Check ferry luggage and stroller realities",
+    category: "Pre-trip tasks",
+    priority: "Core",
+    qty: "once booked",
+    status: "review",
+    contexts: ["Beach/boat module", "Transit day"],
+    note: "Boat plan is ferry-oriented; verify luggage handling and stroller usability.",
+    research: false
+  }
+];
+
+const STORE_KEY = "italy-greece-prep-v1";
+
+let activeView = "shopping";
+let state = loadState();
+
+function loadState() {
+  try {
+    return JSON.parse(localStorage.getItem(STORE_KEY)) || { statuses: {}, quantities: {} };
+  } catch (_error) {
+    return { statuses: {}, quantities: {} };
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+}
+
+function allRecords() {
+  return [...ITEMS, ...TASKS];
+}
+
+function getStatus(record) {
+  return state.statuses[record.id] || record.status || "review";
+}
+
+function getQty(record) {
+  return state.quantities[record.id] || record.qty || "";
+}
+
+function statusLabel(id) {
+  const match = STATUSES.find(status => status.id === id);
+  return match ? match.label : id;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function normalize(value) {
+  return String(value || "").toLowerCase();
+}
+
+function currentFilters() {
+  return {
+    search: normalize(document.getElementById("search").value),
+    status: document.getElementById("status-filter").value,
+    category: document.getElementById("category-filter").value,
+    context: document.getElementById("context-filter").value,
+    priority: document.getElementById("priority-filter").value
+  };
+}
+
+function matchesFilters(record, filters) {
+  if (filters.status !== "all" && getStatus(record) !== filters.status) return false;
+  if (filters.category !== "all" && record.category !== filters.category) return false;
+  if (filters.context !== "all" && !record.contexts.includes(filters.context)) return false;
+  if (filters.priority !== "all" && record.priority !== filters.priority) return false;
+  if (filters.search) {
+    const haystack = normalize([
+      record.name,
+      record.category,
+      record.priority,
+      record.note,
+      record.contexts.join(" "),
+      statusLabel(getStatus(record))
+    ].join(" "));
+    if (!haystack.includes(filters.search)) return false;
+  }
+  return true;
+}
+
+function filteredItems(items = ITEMS) {
+  const filters = currentFilters();
+  return items.filter(record => matchesFilters(record, filters));
+}
+
+function renderStatusOptions(selected) {
+  return STATUSES.map(status => {
+    const isSelected = status.id === selected ? " selected" : "";
+    return `<option value="${escapeHtml(status.id)}"${isSelected}>${escapeHtml(status.label)}</option>`;
+  }).join("");
+}
+
+function renderItem(record, extraContext = "") {
+  const status = getStatus(record);
+  const qty = getQty(record);
+  const contexts = record.contexts.map(context => `<span class="chip">${escapeHtml(context)}</span>`).join("");
+  const research = record.research ? '<span class="research-chip">Research</span>' : "";
+  const statusChip = status === "packed" || status === "own"
+    ? `<span class="status-chip">${escapeHtml(statusLabel(status))}</span>`
+    : "";
+  const contextNote = extraContext ? `<span class="chip">View: ${escapeHtml(extraContext)}</span>` : "";
+
+  return `
+    <article class="item" data-id="${escapeHtml(record.id)}">
+      <div class="item-main">
+        <div class="title-row">
+          <h3>${escapeHtml(record.name)}</h3>
+          <span class="priority ${escapeHtml(record.priority.toLowerCase())}">${escapeHtml(record.priority)}</span>
+          ${research}
+          ${statusChip}
+        </div>
+        <p class="note">${escapeHtml(record.note)}</p>
+        <div class="chips">
+          <span class="chip">${escapeHtml(record.category)}</span>
+          ${contextNote}
+          ${contexts}
+        </div>
+      </div>
+      <div class="controls-grid">
+        <div class="mini-field">
+          <label for="status-${escapeHtml(record.id)}">Status</label>
+          <select id="status-${escapeHtml(record.id)}" data-kind="status" data-id="${escapeHtml(record.id)}">
+            ${renderStatusOptions(status)}
+          </select>
+        </div>
+        <div class="mini-field">
+          <label for="qty-${escapeHtml(record.id)}">Quantity</label>
+          <input id="qty-${escapeHtml(record.id)}" data-kind="quantity" data-id="${escapeHtml(record.id)}" value="${escapeHtml(qty)}">
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderGrouped(titleOrder, groupKey, records, emptyText) {
+  const groups = titleOrder
+    .map(title => ({ title, records: records.filter(record => {
+      if (groupKey === "category") return record.category === title;
+      return record.contexts.includes(title);
+    })}))
+    .filter(group => group.records.length > 0);
+
+  if (groups.length === 0) {
+    return `<div class="empty">${escapeHtml(emptyText)}</div>`;
+  }
+
+  return groups.map(group => `
+    <section class="section">
+      <div class="section-head">
+        <h2>${escapeHtml(group.title)}</h2>
+        <span>${group.records.length} ${group.records.length === 1 ? "item" : "items"}</span>
+      </div>
+      <div class="item-list">
+        ${group.records.map(record => renderItem(record, groupKey === "context" ? group.title : "")).join("")}
+      </div>
+    </section>
+  `).join("");
+}
+
+function renderShopping() {
+  document.getElementById("view-note").textContent = "Shopping view groups physical items by category. Brand winners are intentionally not selected yet.";
+  return renderGrouped(CATEGORY_ORDER, "category", filteredItems(ITEMS), "No shopping items match the current filters.");
+}
+
+function renderPacking() {
+  document.getElementById("view-note").textContent = "Packing view groups physical items by bag or use context. Items can appear in more than one context.";
+  return renderGrouped(CONTEXT_ORDER, "context", filteredItems(ITEMS), "No packing items match the current filters.");
+}
+
+function renderResearch() {
+  document.getElementById("view-note").textContent = "Research view shows product or logistics decisions still needing a specific winner, quantity rule, or travel compliance check.";
+  const records = filteredItems(ITEMS).filter(record => record.research);
+  return renderGrouped(CATEGORY_ORDER, "category", records, "No research items match the current filters.");
+}
+
+function renderTasks() {
+  document.getElementById("view-note").textContent = "Task view keeps confirmations, installs, downloads, and practice runs separate from physical packing.";
+  return renderGrouped(["Pre-trip tasks"], "category", filteredItems(TASKS), "No tasks match the current filters.");
+}
+
+function renderStats() {
+  const records = allRecords();
+  const statusCounts = Object.fromEntries(STATUSES.map(status => [status.id, 0]));
+  records.forEach(record => {
+    statusCounts[getStatus(record)] = (statusCounts[getStatus(record)] || 0) + 1;
+  });
+
+  const researchCount = ITEMS.filter(item => item.research && getStatus(item) !== "skip").length;
+  const packedCount = records.filter(record => getStatus(record) === "packed").length;
+
+  const stats = [
+    { label: "Physical items", value: ITEMS.length },
+    { label: "Prep tasks", value: TASKS.length },
+    { label: "Research targets", value: researchCount },
+    { label: "Need to buy", value: statusCounts.buy || 0 },
+    { label: "Owned", value: statusCounts.own || 0 },
+    { label: "Packed", value: packedCount }
+  ];
+
+  document.getElementById("stats").innerHTML = stats.map(stat => `
+    <div class="stat">
+      <b>${escapeHtml(stat.value)}</b>
+      <span>${escapeHtml(stat.label)}</span>
+    </div>
+  `).join("");
+}
+
+function render() {
+  renderStats();
+  const view = document.getElementById("view");
+  const renderers = {
+    shopping: renderShopping,
+    packing: renderPacking,
+    research: renderResearch,
+    tasks: renderTasks
+  };
+  view.innerHTML = renderers[activeView]();
+}
+
+function setupFilters() {
+  const statusFilter = document.getElementById("status-filter");
+  statusFilter.innerHTML += STATUSES.map(status => `<option value="${escapeHtml(status.id)}">${escapeHtml(status.label)}</option>`).join("");
+
+  const categoryFilter = document.getElementById("category-filter");
+  categoryFilter.innerHTML += CATEGORY_ORDER.map(category => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join("");
+  categoryFilter.innerHTML += `<option value="Pre-trip tasks">Pre-trip tasks</option>`;
+
+  const contextFilter = document.getElementById("context-filter");
+  contextFilter.innerHTML += CONTEXT_ORDER.map(context => `<option value="${escapeHtml(context)}">${escapeHtml(context)}</option>`).join("");
+
+  ["search", "status-filter", "category-filter", "context-filter", "priority-filter"].forEach(id => {
+    document.getElementById(id).addEventListener("input", render);
+  });
+
+  document.getElementById("clear-filters").addEventListener("click", () => {
+    document.getElementById("search").value = "";
+    document.getElementById("status-filter").value = "all";
+    document.getElementById("category-filter").value = "all";
+    document.getElementById("context-filter").value = "all";
+    document.getElementById("priority-filter").value = "all";
+    render();
+  });
+
+  document.getElementById("reset-progress").addEventListener("click", () => {
+    if (!confirm("Reset saved statuses and quantity edits for this browser?")) return;
+    state = { statuses: {}, quantities: {} };
+    saveState();
+    render();
+  });
+}
+
+function setupTabs() {
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      activeView = tab.dataset.view;
+      document.querySelectorAll(".tab").forEach(other => {
+        other.setAttribute("aria-selected", other === tab ? "true" : "false");
+      });
+      render();
+    });
+  });
+}
+
+function setupEdits() {
+  document.getElementById("view").addEventListener("change", event => {
+    const target = event.target;
+    const id = target.dataset.id;
+    if (!id) return;
+    if (target.dataset.kind === "status") {
+      state.statuses[id] = target.value;
+      saveState();
+      render();
+    }
+  });
+
+  document.getElementById("view").addEventListener("input", event => {
+    const target = event.target;
+    const id = target.dataset.id;
+    if (!id) return;
+    if (target.dataset.kind === "quantity") {
+      state.quantities[id] = target.value;
+      saveState();
+      renderStats();
+    }
+  });
+}
+
+setupFilters();
+setupTabs();
+setupEdits();
+render();
+</script>
+</body>
+</html>
