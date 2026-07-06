@@ -405,6 +405,17 @@ eleventyExcludeFromCollections: true
     color: var(--ink);
   }
 
+  .rec-line a {
+    color: var(--blue);
+    font-weight: 750;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .rec-line a:hover {
+    color: var(--green);
+  }
+
   .rec-line.source span {
     color: var(--muted);
     font-size: 12px;
@@ -646,6 +657,42 @@ const CONTEXT_ORDER = [
   "Lodging",
   "Buy local backup"
 ];
+
+const PICK_URLS = {
+  "passport-holder": "https://www.amazon.com/s?k=Zoppen+RFID+family+travel+wallet+zip+around",
+  "quiet-toys": "https://www.fatbraintoys.com/toy_companies/fat_brain_toy_co/dimpl.cfm",
+  "bottle-brush": "https://www.oxo.com/on-the-go-drying-rack-with-bottle-brush.html",
+  "sterilizing-tablets": "https://www.miltonbaby.co.uk/products/sterilising/sterilising-tablets/",
+  "adult-bottles": "https://owalalife.com/products/freesip",
+  "adult-electrolytes": "https://drinklmnt.com/products/lmnt-recharge-electrolyte-drink?variant=16358367232034",
+  "pediatric-ors": "https://www.pedialyte.com/products/powder-packs/grape.html",
+  "wet-bags": "https://www.amazon.com/s?k=ALVABABY+wet+dry+bags+set+of+2",
+  "compact-blackout": "https://www.tommeetippee.com/en-us/search?text=gro%20anywhere%20blackout%20blind",
+  "hypochlorous-spray": "https://www.tower28beauty.com/products/sos-daily-facial-rescue-spray",
+  "disinfecting-wipes": "https://www.clorox.com/products/clorox-disinfecting-wipes/",
+  "thinkbaby-sunscreen": "https://thinksun.com/search?q=thinkbaby%20spf%2050%203oz",
+  "all-terrain-stroller": "https://www.babyjogger.com/search?q=city%20mini%20gt3",
+  "stroller-fan": "https://momcozy.com/search?q=portable%20stroller%20fan",
+  "hudson-sun-hat": "https://sundayafternoons.com/products/kids-play-hat",
+  "adult-water-shoes": "https://astraldesigns.com/products/loyak-ac",
+  "hudson-water-shoes": "https://www.striderite.com/search?q=phibian",
+  "dry-bag": "https://seatosummit.com/products/lightweight-dry-bag",
+  "quick-dry-towels": "https://cascadedesigns.com/search?q=PackTowl%20Personal%20Towel",
+  "travel-car-seat": "https://www.coscokids.com/scenera-next-convertible-car-seat-cc123-ck-us-en.html",
+  "car-seat-travel-bag": "https://jlchildress.com/search?q=ultimate%20backpack%20padded%20car%20seat%20travel%20bag",
+  "chris-merino-tees": "https://woolandprince.com/collections/crew-neck-t-shirts",
+  "chris-underwear": "https://www.exofficio.com/men/underwear/boxer-briefs/mens-give-n-go-2.0-sport-mesh-6-boxer-brief/AFS_613543141278.html",
+  "walking-socks": "https://darntough.com/products/mens-merino-wool-light-hiker-micro-crew-cushioned-lightweight-hiking-socks",
+  "laundry-kit": "https://www.earthbreeze.com/products/earthbreeze-ecosheets-laundry-detergent",
+  "chafe-care": "https://www.bodyglide.com/product/body/",
+  "hudson-cool-outfits": "https://www.primary.com/collections/baby",
+  "hudson-swim-clothes": "https://www.primary.com/collections/baby-swim",
+  "multiport-charger": "https://www.anker.com/products/a2667",
+  "plug-adapters": "https://www.ceptics.com/search?q=italy%20type%20l",
+  "power-bank": "https://www.anker.com/search?q=Anker%20Nano%20Power%20Bank%2010K%2045W",
+  "esim": "https://www.airalo.com/europe-esim/eurolink",
+  "zipper-locks": "https://www.amazon.com/s?k=Lewis+N.+Clark+mini+brass+travel+locks"
+};
 
 const ITEMS = [
   {
@@ -1906,6 +1953,14 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function renderRecommendationValue(record, label, value) {
+  const text = escapeHtml(value);
+  const pickUrl = record.rec.pickUrl || PICK_URLS[record.id];
+  if (label !== "Pick" || !pickUrl) return text;
+
+  return `<a href="${escapeHtml(pickUrl)}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+}
+
 function normalize(value) {
   return String(value || "").toLowerCase();
 }
@@ -1968,7 +2023,7 @@ function renderRecommendation(record) {
       ${rows.map(([label, value]) => `
         <div class="rec-line ${label === "Source" ? "source" : ""}">
           <b>${escapeHtml(label)}</b>
-          <span>${escapeHtml(value)}</span>
+          <span>${renderRecommendationValue(record, label, value)}</span>
         </div>
       `).join("")}
     </div>
