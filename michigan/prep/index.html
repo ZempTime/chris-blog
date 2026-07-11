@@ -1,0 +1,458 @@
+---
+title: Michigan Trip Packing List
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A printable packing checklist for the Michigan trip.">
+  <title>Michigan Trip Packing List</title>
+  <style>
+    :root {
+      --paper: #fffefa;
+      --background: #e8eee9;
+      --ink: #1f2922;
+      --muted: #5d6b60;
+      --line: #cdd7cf;
+      --accent: #2f6246;
+      --accent-soft: #e6f0e8;
+      --warm: #f6f0df;
+      --shadow: 0 18px 45px rgba(31, 41, 34, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: min(940px, calc(100% - 32px));
+      margin: 32px auto;
+      padding: 48px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .page-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .print-button {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font: inherit;
+      font-size: .9rem;
+      font-weight: 750;
+      padding: 10px 18px;
+    }
+
+    .print-button:hover { background: #244e37; }
+    .print-button:focus-visible { outline: 3px solid #9ec3a8; outline-offset: 3px; }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .priority {
+      padding: 22px 24px;
+      background: var(--warm);
+      border: 1px solid #dfd1ac;
+      border-radius: 9px;
+    }
+
+    .priority h2 { color: #69501d; }
+
+    .packing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .packing-group {
+      break-inside: avoid;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .packing-group h3 { color: var(--accent); }
+
+    .checklist {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li { break-inside: avoid; }
+
+    .checklist label {
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      gap: 8px;
+      align-items: start;
+      cursor: pointer;
+    }
+
+    .checklist input {
+      width: 17px;
+      height: 17px;
+      margin: 2px 0 0;
+      accent-color: var(--accent);
+    }
+
+    .checklist label:has(input:checked) span {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .compact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .compact-grid .packing-group { background: var(--accent-soft); }
+
+    .route-note {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .route-list {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .route-list li + li { margin-top: 5px; }
+
+    a { color: var(--accent); }
+
+    @media (max-width: 700px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        padding: 28px 20px 48px;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .page-header { align-items: start; }
+      .packing-grid, .compact-grid { grid-template-columns: 1fr; }
+    }
+
+    @page {
+      size: letter portrait;
+      margin: .38in;
+    }
+
+    @media print {
+      :root {
+        --paper: #fff;
+        --ink: #000;
+        --muted: #333;
+        --line: #aaa;
+        --accent: #000;
+        --accent-soft: #fff;
+        --warm: #fff;
+      }
+
+      body {
+        background: white;
+        font-size: 8.5pt;
+        line-height: 1.2;
+      }
+
+      .page {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .page-header {
+        padding-bottom: 9pt;
+        border-bottom-width: 2px;
+      }
+
+      .eyebrow { font-size: 6.5pt; }
+      h1 { font-size: 24pt; }
+      h2 { margin-bottom: 6pt; font-size: 13pt; }
+      h3 { margin-bottom: 4pt; font-size: 7.5pt; }
+      .print-button { display: none; }
+      .section { margin-top: 12pt; }
+
+      .priority,
+      .packing-group {
+        padding: 7pt 8pt;
+        border-color: #aaa;
+        border-radius: 0;
+      }
+
+      .packing-grid,
+      .compact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6pt;
+      }
+
+      .checklist { gap: 2.5pt; }
+      .checklist label { grid-template-columns: 11pt minmax(0, 1fr); gap: 3pt; }
+      .checklist input { width: 9pt; height: 9pt; margin-top: 0; }
+      .route-note { margin-bottom: 5pt; }
+      .route-list li + li { margin-top: 2pt; }
+
+      a,
+      a:visited {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Family road trip</p>
+        <h1>Michigan Packing List</h1>
+      </div>
+      <button class="print-button" type="button" onclick="window.print()">Print checklist</button>
+    </header>
+
+    <section class="section priority" aria-labelledby="car-heading">
+      <h2 id="car-heading">Keep Accessible in the Car</h2>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>Diaper-change kit, wipes, cream, changing pad, and disposal bags</span></label></li>
+        <li><label><input type="checkbox"><span>Formula, bottles, travel dispenser, and bottled water</span></label></li>
+        <li><label><input type="checkbox"><span>Child's crackers and shared meal portions</span></label></li>
+        <li><label><input type="checkbox"><span>Bibs, wipes, and leftover container</span></label></li>
+        <li><label><input type="checkbox"><span>Cooler and ice packs</span></label></li>
+        <li><label><input type="checkbox"><span>Kettle and portable power bank</span></label></li>
+        <li><label><input type="checkbox"><span>Adult snacks and drinks</span></label></li>
+        <li><label><input type="checkbox"><span>Child health kit</span></label></li>
+        <li><label><input type="checkbox"><span>Prescription medications</span></label></li>
+        <li><label><input type="checkbox"><span>Dog water, bowl, leash, and waste bags</span></label></li>
+        <li><label><input type="checkbox"><span>Travel documents, insurance information, and house access details</span></label></li>
+        <li><label><input type="checkbox"><span>Phone chargers</span></label></li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="main-packing-heading">
+      <h2 id="main-packing-heading">Main Packing</h2>
+      <div class="packing-grid">
+        <section class="packing-group" aria-labelledby="child-heading">
+          <h3 id="child-heading">Child</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Car seat and base</span></label></li>
+            <li><label><input type="checkbox"><span>Baby monitor, chargers, and stand</span></label></li>
+            <li><label><input type="checkbox"><span>Bottles and spare bottle parts</span></label></li>
+            <li><label><input type="checkbox"><span>Bottle washer and tablets</span></label></li>
+            <li><label><input type="checkbox"><span>Portable high chair</span></label></li>
+            <li><label><input type="checkbox"><span>Large pack of diapers and wipes</span></label></li>
+            <li><label><input type="checkbox"><span>Washable play mat</span></label></li>
+            <li><label><input type="checkbox"><span>Five or six favorite toys</span></label></li>
+            <li><label><input type="checkbox"><span>Books and comfort item</span></label></li>
+            <li><label><input type="checkbox"><span>Familiar sleep clothing</span></label></li>
+            <li><label><input type="checkbox"><span>Door safety guard</span></label></li>
+            <li><label><input type="checkbox"><span>Outlet covers, cabinet latches, and cord ties</span></label></li>
+            <li><label><input type="checkbox"><span>Stroller already in Chelsea</span></label></li>
+            <li><label><input type="checkbox"><span>Baby carrier (optional)</span></label></li>
+          </ul>
+        </section>
+
+        <section class="packing-group" aria-labelledby="dog-heading">
+          <h3 id="dog-heading">Dog</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Harness and seat-belt restraint</span></label></li>
+            <li><label><input type="checkbox"><span>Bowl</span></label></li>
+            <li><label><input type="checkbox"><span>Low-fat canned food</span></label></li>
+            <li><label><input type="checkbox"><span>Regular dog food</span></label></li>
+            <li><label><input type="checkbox"><span>Leash and waste bags</span></label></li>
+            <li><label><input type="checkbox"><span>Usual tick protection</span></label></li>
+            <li><label><input type="checkbox"><span>Dog towel</span></label></li>
+          </ul>
+        </section>
+
+        <section class="packing-group" aria-labelledby="kitchen-heading">
+          <h3 id="kitchen-heading">Kitchen and Coffee</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Coffee carafe/brewer</span></label></li>
+            <li><label><input type="checkbox"><span>Grounds, filters, and scoop</span></label></li>
+            <li><label><input type="checkbox"><span>Mugs and travel mugs</span></label></li>
+            <li><label><input type="checkbox"><span>Sugar, sweetener, or shelf-stable creamer</span></label></li>
+            <li><label><input type="checkbox"><span>Lidded skillet and saucepan</span></label></li>
+            <li><label><input type="checkbox"><span>Sheet pan</span></label></li>
+            <li><label><input type="checkbox"><span>Cutting board and chef's knife</span></label></li>
+            <li><label><input type="checkbox"><span>Spatula, wooden spoon, and tongs</span></label></li>
+            <li><label><input type="checkbox"><span>Can opener and colander</span></label></li>
+            <li><label><input type="checkbox"><span>Mixing bowl</span></label></li>
+            <li><label><input type="checkbox"><span>Plates, bowls, cups, and flatware</span></label></li>
+            <li><label><input type="checkbox"><span>Food-storage containers and zip bags</span></label></li>
+            <li><label><input type="checkbox"><span>Salt, pepper, and cooking oil</span></label></li>
+            <li><label><input type="checkbox"><span>Oven mitt and dish towels</span></label></li>
+          </ul>
+        </section>
+
+        <section class="packing-group" aria-labelledby="house-heading">
+          <h3 id="house-heading">House and Cleaning</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Paper towels</span></label></li>
+            <li><label><input type="checkbox"><span>Trash bags</span></label></li>
+            <li><label><input type="checkbox"><span>Disinfecting wipes or spray</span></label></li>
+            <li><label><input type="checkbox"><span>Cleaning cloths</span></label></li>
+            <li><label><input type="checkbox"><span>Dish soap and sponge</span></label></li>
+            <li><label><input type="checkbox"><span>Hand soap</span></label></li>
+            <li><label><input type="checkbox"><span>Toilet paper</span></label></li>
+            <li><label><input type="checkbox"><span>Laundry detergent and stain remover</span></label></li>
+            <li><label><input type="checkbox"><span>Child clothing container that doubles as the child's laundry bin</span></label></li>
+            <li><label><input type="checkbox"><span>Adult clothing container that doubles as the adult laundry bin</span></label></li>
+            <li><label><input type="checkbox"><span>Battery-powered smoke/CO detector</span></label></li>
+            <li><label><input type="checkbox"><span>Compact fan</span></label></li>
+            <li><label><input type="checkbox"><span>Power strips and extension cords</span></label></li>
+            <li><label><input type="checkbox"><span>Family toiletries</span></label></li>
+          </ul>
+        </section>
+
+        <section class="packing-group" aria-labelledby="bedding-heading">
+          <h3 id="bedding-heading">Bedding and Clothing</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Twin sheets</span></label></li>
+            <li><label><input type="checkbox"><span>Waterproof mattress protector</span></label></li>
+            <li><label><input type="checkbox"><span>Adult and extra pillows</span></label></li>
+            <li><label><input type="checkbox"><span>Light blankets</span></label></li>
+            <li><label><input type="checkbox"><span>Bath towels, hand towels, and washcloths</span></label></li>
+            <li><label><input type="checkbox"><span>Six-day casual clothing rotation</span></label></li>
+            <li><label><input type="checkbox"><span>Warm and rain layer for everyone</span></label></li>
+            <li><label><input type="checkbox"><span>One nice outfit and shoes per adult</span></label></li>
+          </ul>
+        </section>
+
+        <section class="packing-group" aria-labelledby="outdoors-heading">
+          <h3 id="outdoors-heading">Swim and Outdoors</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Swimsuits and rash guards</span></label></li>
+            <li><label><input type="checkbox"><span>Swim diapers</span></label></li>
+            <li><label><input type="checkbox"><span>Sun hats and sunglasses</span></label></li>
+            <li><label><input type="checkbox"><span>Sunscreen</span></label></li>
+            <li><label><input type="checkbox"><span>Sandals or water shoes</span></label></li>
+            <li><label><input type="checkbox"><span>Beach towels</span></label></li>
+            <li><label><input type="checkbox"><span>Wet bag</span></label></li>
+            <li><label><input type="checkbox"><span>Child life jacket if boating</span></label></li>
+            <li><label><input type="checkbox"><span>Dog life jacket if boating</span></label></li>
+            <li><label><input type="checkbox"><span>Insect repellent</span></label></li>
+            <li><label><input type="checkbox"><span>Tick-removal tool</span></label></li>
+            <li><label><input type="checkbox"><span>Lightweight long layers</span></label></li>
+          </ul>
+        </section>
+
+        <section class="packing-group" aria-labelledby="work-heading">
+          <h3 id="work-heading">Remote Work</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"><span>Laptop and charger</span></label></li>
+            <li><label><input type="checkbox"><span>Mouse and headset</span></label></li>
+            <li><label><input type="checkbox"><span>Starlink kit, router, stand, and cables</span></label></li>
+            <li><label><input type="checkbox"><span>Outdoor-rated extension cord</span></label></li>
+            <li><label><input type="checkbox"><span>Surge protector</span></label></li>
+            <li><label><input type="checkbox"><span>Starlink account/app access</span></label></li>
+            <li><label><input type="checkbox"><span>Additional device chargers</span></label></li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="section compact-grid" aria-label="Arrival packing">
+      <section class="packing-group" aria-labelledby="first-night-heading">
+        <h2 id="first-night-heading">First-Night Bin</h2>
+        <ul class="checklist">
+          <li><label><input type="checkbox"><span>Sheets, blankets, pillows, and towels</span></label></li>
+          <li><label><input type="checkbox"><span>Toiletries and toilet paper</span></label></li>
+          <li><label><input type="checkbox"><span>Cleaning starter kit</span></label></li>
+          <li><label><input type="checkbox"><span>Child bedtime items</span></label></li>
+          <li><label><input type="checkbox"><span>Chargers</span></label></li>
+          <li><label><input type="checkbox"><span>Coffee setup</span></label></li>
+          <li><label><input type="checkbox"><span>Two mornings of shelf-stable breakfast food</span></label></li>
+        </ul>
+      </section>
+
+      <section class="packing-group" aria-labelledby="buy-heading">
+        <h2 id="buy-heading">Buy in Chelsea</h2>
+        <ul class="checklist">
+          <li><label><input type="checkbox"><span>First-night dinner and groceries</span></label></li>
+          <li><label><input type="checkbox"><span>Perishable breakfast foods</span></label></li>
+          <li><label><input type="checkbox"><span>Bottled water for the dog</span></label></li>
+          <li><label><input type="checkbox"><span>Additional diapers if needed</span></label></li>
+          <li><label><input type="checkbox"><span>Additional cleaning or laundry supplies if needed</span></label></li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="section packing-group" aria-labelledby="stops-heading">
+      <h2 id="stops-heading">Optional Route Stops</h2>
+      <p class="route-note">Visit only when timing and everyone's mood allow:</p>
+      <ul class="route-list">
+        <li><a href="https://www.bigthingssmalltown.com/">Casey, Illinois — Big Things in a Small Town</a></li>
+        <li><a href="https://www.in.gov/dnr/state-parks/parks-lakes/mounds-state-park/">Mounds State Park</a></li>
+        <li><a href="https://secure.in.gov/dnr/state-parks/parks-lakes/pokagon-state-parktrine-state-recreation-area/">Pokagon State Park</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
