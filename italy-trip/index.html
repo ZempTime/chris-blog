@@ -77,6 +77,7 @@ eleventyExcludeFromCollections: true
     }
 
     .topnav a:hover { color: var(--italy-dark); background: #f2eadc; }
+    .topnav a[aria-current="location"] { color: white; background: var(--sea-dark); }
 
     .hero {
       position: relative;
@@ -173,6 +174,32 @@ eleventyExcludeFromCollections: true
     .route-stop:not(:last-child)::after { content: "→"; position: absolute; right: -7px; color: var(--gold); font-size: 21px; }
     .route-stop b { display: block; font-family: var(--serif); }
     .route-stop small { color: var(--muted); }
+
+    .geography-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .map-card { overflow: hidden; padding: 0; }
+    .map-card-copy { padding: 18px 20px 20px; }
+    .map-card-copy h3 { margin-bottom: 6px; }
+    .map-card-copy p { margin: 5px 0; color: var(--muted); font-size: 14px; }
+    .map-frame { overflow-x: auto; border-bottom: 1px solid var(--line); background: #dcebea; }
+    .map-frame svg { display: block; width: 100%; height: auto; }
+    .map-note { color: var(--muted); font-size: 11px; }
+    .map-swipe { display: none; }
+    .place-key { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+    .place-key article { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,253,248,.78); }
+    .place-key h3 { margin: 0 0 5px; font-size: 19px; }
+    .place-key p { margin: 0; color: var(--muted); font-size: 13px; }
+    .route-chain { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 18px; margin-top: 16px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+    .chain-stop { position: relative; min-width: 0; }
+    .chain-stop:not(:last-child)::after { content: "→"; position: absolute; top: 17px; right: -15px; color: var(--gold); font-size: 20px; }
+    .chain-icon { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 8px; border-radius: 50%; color: white; background: var(--sea-dark); font-size: 18px; }
+    .chain-stop b { display: block; font-size: 13px; }
+    .chain-stop small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+    .node-table { margin-top: 16px; overflow-x: auto; }
+    .node-table table { width: 100%; min-width: 760px; border-collapse: collapse; }
+    .node-table th, .node-table td { padding: 11px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .node-table th { color: var(--sea-dark); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+    .node-table tr:last-child td { border-bottom: 0; }
+    .node-table a { color: var(--sea-dark); font-weight: 800; }
 
     .phase { margin-top: 30px; }
     .phase-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: #eee6d8; }
@@ -316,6 +343,11 @@ eleventyExcludeFromCollections: true
       .practical-grid { grid-template-columns: 1fr; }
       .practical-card.wide { grid-column: auto; }
       .cheat-grid { grid-template-columns: 1fr; }
+      .place-key { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .route-chain { grid-template-columns: 1fr; gap: 10px; }
+      .chain-stop { display: grid; grid-template-columns: 42px 1fr; gap: 9px; align-items: center; }
+      .chain-stop:not(:last-child)::after { content: "↓"; top: auto; right: auto; left: 14px; bottom: -13px; }
+      .chain-icon { grid-row: 1 / span 2; margin: 0; }
     }
 
     @media (max-width: 650px) {
@@ -332,6 +364,14 @@ eleventyExcludeFromCollections: true
       .logistics { overflow-x: auto; }
       .logistics table { min-width: 650px; }
       .data-choice { grid-template-columns: 1fr; }
+      .geography-grid, .place-key { grid-template-columns: 1fr; }
+      .map-frame svg { min-width: 520px; }
+      .map-swipe { display: block; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
     }
   </style>
 </head>
@@ -339,6 +379,7 @@ eleventyExcludeFromCollections: true
   <nav class="topnav" aria-label="Trip sections">
     <span class="brand">Italy + Greece ’26</span>
     <a href="#snapshot">Snapshot</a>
+    <a href="#geography">Route map</a>
     <a href="#itinerary">Itinerary</a>
     <a href="#decisions">Group questions</a>
     <a href="#actions">Actions</a>
@@ -394,6 +435,122 @@ eleventyExcludeFromCollections: true
       </div>
     </section>
 
+    <section id="geography">
+      <div class="section-head">
+        <p class="eyebrow">Make the route real</p>
+        <h2>Where everything is</h2>
+        <p>Puglia is the heel of Italy. Crete is the only Greek island on this itinerary; Athens is on the mainland. The maps are deliberately schematic—use them to understand relationships, then use live navigation for actual driving.</p>
+        <p class="map-swipe">On a phone, swipe each map sideways to read every label.</p>
+      </div>
+
+      <div class="geography-grid">
+        <article class="card map-card">
+          <div class="map-frame">
+            <svg viewBox="0 0 560 330" role="img" aria-labelledby="italy-map-title italy-map-desc">
+              <title id="italy-map-title">Schematic map of the Italy portion of the trip</title>
+              <desc id="italy-map-desc">Rome and Fiumicino are in central western Italy. The group drives southeast across Italy to Conversano in Puglia, near Bari, Monopoli, Alberobello, and Matera.</desc>
+              <rect width="560" height="330" fill="#dcebea"/>
+              <path d="M190 20 C220 42 223 75 242 99 C262 125 258 150 286 173 C316 198 349 215 389 216 L433 192 L478 209 L500 247 L476 300 L439 283 L418 245 L378 247 L337 229 L294 215 L260 190 L229 159 L213 119 L181 82 Z" fill="#eee2c8" stroke="#b7aa8c" stroke-width="3"/>
+              <path d="M405 211 L456 194 L493 218 L477 299 L442 283 L420 244 Z" fill="#e1c98d" stroke="#c48d2c" stroke-width="3"/>
+              <path d="M82 140 C170 126 274 170 427 227" fill="none" stroke="#0b5261" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 8"/>
+              <g fill="#a73f32" stroke="white" stroke-width="3">
+                <circle cx="82" cy="140" r="8"/><circle cx="120" cy="126" r="8"/><circle cx="427" cy="227" r="9"/><circle cx="449" cy="193" r="7"/><circle cx="468" cy="243" r="7"/><circle cx="421" cy="266" r="7"/><circle cx="367" cy="245" r="7"/>
+              </g>
+              <g fill="#20332f" font-family="system-ui, sans-serif" font-size="13" font-weight="700">
+                <text x="38" y="165">FCO airport</text><text x="112" y="112">Rome</text><text x="408" y="214">Conversano</text><text x="455" y="181">Bari / BRI</text><text x="475" y="240">Monopoli</text><text x="414" y="288">Alberobello</text><text x="326" y="268">Matera</text>
+              </g>
+              <text x="210" y="138" fill="#0b5261" font-family="system-ui, sans-serif" font-size="12" font-weight="800">DRIVE SOUTHEAST ACROSS ITALY</text>
+            </svg>
+          </div>
+          <div class="map-card-copy">
+            <h3>Italy: Rome to the heel</h3>
+            <p>Rome and FCO sit on Italy’s west side. Puglia is far southeast on the Adriatic side—the “heel” of the boot—so 27 August is a full cross-country driving day, not a short transfer.</p>
+            <p>Conversano is the sleeping base. Monopoli is the nearby coast; Alberobello is inland trulli country. Matera is west of the Puglia cluster in the neighboring Basilicata region.</p>
+            <p class="map-note">Schematic, not to scale. Driving times depend on the exact lodging, traffic, toll route, and stops.</p>
+          </div>
+        </article>
+
+        <article class="card map-card">
+          <div class="map-frame">
+            <svg viewBox="0 0 560 330" role="img" aria-labelledby="greece-map-title greece-map-desc">
+              <title id="greece-map-title">Schematic map of the Greece portion of the trip</title>
+              <desc id="greece-map-desc">Athens is on mainland Greece north of Crete. Crete contains Chania, Rethymno, Heraklion Airport, and Knossos. Santorini and Mykonos are shown for context but are not on this trip.</desc>
+              <rect width="560" height="330" fill="#dcebea"/>
+              <path d="M90 18 L220 18 L271 62 L245 111 L176 124 L125 94 L74 100 L52 62 Z" fill="#eee2c8" stroke="#b7aa8c" stroke-width="3"/>
+              <path d="M76 252 C137 230 214 238 278 244 C351 251 423 231 492 250 L467 286 C398 277 328 291 255 279 C185 270 125 282 83 274 Z" fill="#e1c98d" stroke="#c48d2c" stroke-width="3"/>
+              <path d="M304 251 C284 202 248 149 190 93" fill="none" stroke="#0b5261" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 8"/>
+              <g fill="#a73f32" stroke="white" stroke-width="3"><circle cx="190" cy="93" r="9"/><circle cx="304" cy="251" r="9"/><circle cx="221" cy="254" r="8"/><circle cx="125" cy="260" r="8"/><circle cx="327" cy="270" r="7"/></g>
+              <g fill="#60716b" stroke="white" stroke-width="2"><circle cx="260" cy="173" r="6"/><circle cx="320" cy="122" r="6"/></g>
+              <g fill="#20332f" font-family="system-ui, sans-serif" font-size="13" font-weight="700">
+                <text x="164" y="78">Athens / ATH</text><text x="281" y="237">Heraklion / HER</text><text x="190" y="279">Rethymno</text><text x="88" y="285">Chania / CHQ</text><text x="331" y="286">Knossos</text>
+              </g>
+              <g fill="#60716b" font-family="system-ui, sans-serif" font-size="11"><text x="269" y="177">Santorini · not this trip</text><text x="329" y="126">Mykonos · not this trip</text></g>
+              <text x="341" y="314" fill="#0b5261" font-family="system-ui, sans-serif" font-size="12" font-weight="800">CRETE · ONLY ISLAND ON THE ROUTE</text>
+            </svg>
+          </div>
+          <div class="map-card-copy">
+            <h3>Greece: Crete, then mainland Athens</h3>
+            <p>The group flies from Bari to Heraklion on Crete’s north coast. A Rethymno-area base is a road compromise between Heraklion/Knossos to the east and Chania to the west.</p>
+            <p>Athens is back on mainland Greece. The planned Crete → Athens leg is a domestic flight, not a ferry. Santorini and Mykonos are useful landmarks, but neither is part of this trip.</p>
+            <p class="map-note">Rethymno has no airport leg in this plan: use HER or CHQ, then drive.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="place-key" aria-label="What makes each base special">
+        <article><h3>Rome</h3><p>Ancient imperial center plus Vatican City: Colosseum, Forum, Pantheon, Vatican Museums, dense walkable history.</p></article>
+        <article><h3>Puglia</h3><p>Olive country, masserie, Adriatic towns, beaches, trulli, and orecchiette. The experience is regional and car-based.</p></article>
+        <article><h3>Crete</h3><p>Large, mountainous island with Minoan history, gorges, north-coast towns, beaches, and a distinct food culture.</p></article>
+        <article><h3>Athens</h3><p>Mainland capital built around the Acropolis: ancient sites inside a modern city, then the cleanest launch back to Rome.</p></article>
+      </div>
+
+      <div class="section-head" style="margin-top:24px">
+        <h2 style="font-size:28px">Places you’ll hear us mention</h2>
+      </div>
+      <div class="place-key" aria-label="Smaller places along the route">
+        <article><h3>Conversano</h3><p>Our Puglia sleeping base and masseria location—not Bari city. A quieter hub for the surrounding coast and inland towns.</p></article>
+        <article><h3>Monopoli</h3><p>Compact Adriatic port, old town, small coves, and an easy seaside outing from the base.</p></article>
+        <article><h3>Alberobello</h3><p>Inland UNESCO town famous for <em>trulli</em>, the conical dry-stone homes. Distinctive and popular; earlier is calmer.</p></article>
+        <article><h3>Matera</h3><p>Ancient stone-and-cave city in Basilicata, not Puglia. Spectacular but steep and uneven—use Hudson’s carrier.</p></article>
+        <article><h3>Heraklion</h3><p>Crete’s arrival airport and eastern urban anchor. Knossos is nearby; this is not necessarily the vacation base.</p></article>
+        <article><h3>Knossos</h3><p>The major Minoan palace site near Heraklion. From a Rethymno-area base, treat it as the day’s one substantial eastbound outing.</p></article>
+        <article><h3>Rethymno</h3><p>Venetian/Ottoman old town near the middle of Crete’s north coast. Proposed compromise base between east and west.</p></article>
+        <article><h3>Chania</h3><p>Western Crete’s atmospheric Venetian harbor and old town, plus the gateway direction for many western beaches and gorges.</p></article>
+      </div>
+
+      <div class="callout">
+        <strong>Drive-time intuition:</strong> Rome/FCO → Conversano is being planned as roughly six hours door to door with paperwork and stops. From a Rethymno-area base, Chania is roughly an hour west, while Knossos/Heraklion is roughly 75–90 minutes east before parking and Hudson stops. Recalculate from the exact villa before booking fixed activities.
+      </div>
+
+      <div class="callout">
+        <strong>What is Volotea?</strong> It is a Barcelona-based low-cost <em>airline</em> serving direct routes between European cities—not a train company, ferry, or combined ticket. For this trip, Volotea is the airplane from <b>Bari Airport (BRI)</b> to <b>Heraklion Airport (HER)</b> on 1 September. The low base fare is why baggage, Priority boarding, and seat choices must be checked separately. <a href="https://www.volotea.com/en/about-volotea/">About Volotea</a> · <a href="https://www.volotea.com/en/baggage/">Baggage rules</a>
+      </div>
+
+      <div class="route-chain" aria-label="Door-to-door transport chain">
+        <div class="chain-stop"><span class="chain-icon">✈</span><b>FCO</b><small>Arrive outside Rome; transfer into the city.</small></div>
+        <div class="chain-stop"><span class="chain-icon">🚗</span><b>Rome → Puglia</b><small>Collect two cars at FCO; cross-country drive.</small></div>
+        <div class="chain-stop"><span class="chain-icon">✈</span><b>BRI → HER</b><small>Return cars at Bari Airport; booked Volotea flight.</small></div>
+        <div class="chain-stop"><span class="chain-icon">🚗</span><b>Crete</b><small>Two rentals; road trips from the chosen base.</small></div>
+        <div class="chain-stop"><span class="chain-icon">✈</span><b>Crete → ATH</b><small>Direct domestic flight; airport still to be chosen.</small></div>
+        <div class="chain-stop"><span class="chain-icon">🏛</span><b>Athens</b><small>City stay; airport transfers for split departures.</small></div>
+        <div class="chain-stop"><span class="chain-icon">✈</span><b>ATH → FCO</b><small>Direct flight, then FCO overnight/departures.</small></div>
+      </div>
+
+      <article class="card node-table">
+        <h3>Which airport or station actually matters?</h3>
+        <table>
+          <thead><tr><th>Place</th><th>Node</th><th>How this trip uses it</th><th>What not to confuse it with</th></tr></thead>
+          <tbody>
+            <tr><td>Rome</td><td><b>FCO</b> · Fiumicino airport</td><td>International arrival/departure and 27 August rental pickup. Pre-booked vehicles are the working city-transfer plan.</td><td>Roma Termini is the main city rail station, but no intercity train leg is currently planned.</td></tr>
+            <tr><td>Puglia</td><td><b>BRI</b> · Bari airport</td><td>Return both cars and fly to Heraklion at 7:20am. The rental area/terminal—not Bari city—is the critical node.</td><td>Bari Centrale and the airport rail station exist, but neither replaces the early rental-return solution.</td></tr>
+            <tr><td>Crete</td><td><b>HER</b> · Heraklion; <b>CHQ</b> · Chania</td><td>HER arrival is confirmed. The outbound airport depends on the still-unbooked Athens flight. Crete movement is by rental car.</td><td>Rethymno is a base between the airports, not an airport or rail station.</td></tr>
+            <tr><td>Athens</td><td><b>ATH</b> · Athens airport</td><td>Arrival from Crete, Ari/Kai departure, then remaining group’s flight to FCO.</td><td><a href="https://www.aia.gr/en/traveller/transportation-airport/public-transportation-airport">Metro Line 3</a> reaches the center, but nine travelers plus luggage may still favor pre-booked vehicles.</td></tr>
+          </tbody>
+        </table>
+        <p class="map-note">There is no planned ferry or intercity train in the core route. If that changes, the relevant port/station should be added here before booking.</p>
+      </article>
+    </section>
+
     <section id="itinerary">
       <div class="section-head">
         <p class="eyebrow">Current proposed shape</p>
@@ -411,17 +568,18 @@ eleventyExcludeFromCollections: true
         <div class="phase-title"><h3>Rome → Puglia</h3><span>Mon 24–Thu 27 Aug</span></div>
         <div class="days">
           <article class="day travel-day">
-            <span class="status proposed">Recovery default</span>
+            <span class="status proposed">Arrival + adult split</span>
             <h4>Mon 24 · Arrive</h4>
             <p class="movement">✈ Separate FCO arrivals → Rome Airbnb</p>
-            <p class="main-plan">Airport transfers, bags to the Airbnb, food, daylight, naps, early bed.</p>
-            <p>Optional: a short Trevi walk only if people feel genuinely good.</p>
-            <p class="baby">Hudson: arrival buffer stays accessible; no fixed evening commitment.</p>
+            <p class="main-plan">Airport transfers, bags to the Airbnb, food, daylight, and naps. Some adults will likely form an evening Colosseum subgroup.</p>
+            <div class="split-lanes"><div><b>Adult subgroup</b>Linked evening Colosseum tour; attendance and booking still need confirmation.</div><div><b>Hudson / recovery</b>The linked tour excludes under-sixes and strollers, so Hudson and at least one parent keep a recovery evening.</div></div>
+            <p class="baby">A separate family-compatible Colosseum visit with Hudson remains proposed for Wednesday morning.</p>
             <div class="travel-detail">
               <div class="travel-row"><span>Stay</span><b>Rome Airbnb · confirmed 24–27 Aug</b></div>
               <div class="travel-row"><span>Flight</span><b>Chris Z + Maddie + Hudson: Delta 206 · DTW Sun 23 at 8:10pm → FCO</b></div>
               <div class="travel-row"><span>Arrival</span><b class="need">Delta 206 Rome arrival time + other flight details needed</b></div>
               <div class="travel-row"><span>Transfer</span><b class="need">Airport vehicles + early bag drop needed</b></div>
+              <div class="travel-row"><span>Evening</span><b class="need">Adult subgroup headcount + tour booking needed</b></div>
             </div>
           </article>
           <article class="day">
@@ -439,7 +597,7 @@ eleventyExcludeFromCollections: true
           <article class="day">
             <span class="status proposed">Family option</span>
             <h4>Wed 26 · Short official Colosseum visit</h4>
-            <p class="main-plan">Proposed 8:30am official self-guided entry for Chris Z, wife, and Hudson; maximum 75 minutes.</p>
+            <p class="main-plan">Chris Z and Maddie hope to visit with Hudson. Proposed solution: 8:30am official self-guided entry with a maximum 75-minute Colosseum visit.</p>
             <p>Replace Spello with a lower-transfer Rome day. Forum and Palatine are optional.</p>
             <p class="baby">Hudson: soft carrier and a compact diaper kit; no rigid group tour.</p>
             <div class="travel-detail">
@@ -509,6 +667,7 @@ eleventyExcludeFromCollections: true
         <ul class="confirm-list">
           <li><b>Vatican attendance</b><span>Who is in or out for 25 August at 7:45am?</span></li>
           <li><b>Rome arrival details</b><span>Flight number, airport, local arrival time, and checked-bag count for each arrival party.</span></li>
+          <li><b>Monday Colosseum subgroup</b><span>Which adults want the linked evening tour, and what are its exact start and meeting times?</span></li>
           <li><b>Individual luggage</b><span>Checked and cabin bag count, approximate size/weight, and unusual items.</span></li>
           <li><b>Drivers</b><span>Who is willing and eligible to drive in Italy and Greece?</span></li>
           <li><b>Crete base priorities</b><span>Whether Rethymno works, or whether Chania, Knossos, Marathi, or a particular class should drive the location.</span></li>
@@ -539,24 +698,24 @@ eleventyExcludeFromCollections: true
             <button class="action-choice" type="button" data-action="athens-stay" aria-pressed="false" aria-controls="action-detail"><span class="action-number">6</span><span class="action-label">Book Athens stay</span><span class="action-date">6–9 Sep</span></button>
             <button class="action-choice" type="button" data-action="fco-stay" aria-pressed="false" aria-controls="action-detail"><span class="action-number">7</span><span class="action-label">Book FCO overnight</span><span class="action-date">9 Sep</span></button>
             <button class="action-choice" type="button" data-action="mmr" aria-pressed="false" aria-controls="action-detail"><span class="action-number">8</span><span class="action-label">Settle Hudson’s MMR</span><span class="action-date">Before 9 Aug</span></button>
+            <button class="action-choice" type="button" data-action="colosseum" aria-pressed="false" aria-controls="action-detail"><span class="action-number">9</span><span class="action-label">Two Colosseum plans</span><span class="action-date">24 + 26 Aug</span></button>
           </div>
         </article>
         <article class="card action-group soon">
           <span class="status open">Within a week</span>
           <h3>Close the seams</h3>
           <div class="action-list">
-            <button class="action-choice" type="button" data-action="rome-lodging" aria-pressed="false" aria-controls="action-detail"><span class="action-number">9</span><span class="action-label">Confirm Rome lodging details</span><span class="action-date">24–27 Aug</span></button>
-            <button class="action-choice" type="button" data-action="rome-transfers" aria-pressed="false" aria-controls="action-detail"><span class="action-number">10</span><span class="action-label">Book Rome transfers</span><span class="action-date">24 + 27 Aug</span></button>
-            <button class="action-choice" type="button" data-action="insurance" aria-pressed="false" aria-controls="action-detail"><span class="action-number">11</span><span class="action-label">Choose travel insurance</span><span class="action-date">Now</span></button>
-            <button class="action-choice" type="button" data-action="car-seat" aria-pressed="false" aria-controls="action-detail"><span class="action-number">12</span><span class="action-label">Practice the baby gear system</span><span class="action-date">By early Aug</span></button>
-            <button class="action-choice" type="button" data-action="offline" aria-pressed="false" aria-controls="action-detail"><span class="action-number">13</span><span class="action-label">Prepare phones + offline docs</span><span class="action-date">By 16 Aug</span></button>
+            <button class="action-choice" type="button" data-action="rome-lodging" aria-pressed="false" aria-controls="action-detail"><span class="action-number">10</span><span class="action-label">Confirm Rome lodging details</span><span class="action-date">24–27 Aug</span></button>
+            <button class="action-choice" type="button" data-action="rome-transfers" aria-pressed="false" aria-controls="action-detail"><span class="action-number">11</span><span class="action-label">Book Rome transfers</span><span class="action-date">24 + 27 Aug</span></button>
+            <button class="action-choice" type="button" data-action="insurance" aria-pressed="false" aria-controls="action-detail"><span class="action-number">12</span><span class="action-label">Choose travel insurance</span><span class="action-date">Now</span></button>
+            <button class="action-choice" type="button" data-action="car-seat" aria-pressed="false" aria-controls="action-detail"><span class="action-number">13</span><span class="action-label">Practice the baby gear system</span><span class="action-date">By early Aug</span></button>
+            <button class="action-choice" type="button" data-action="offline" aria-pressed="false" aria-controls="action-detail"><span class="action-number">14</span><span class="action-label">Prepare phones + offline docs</span><span class="action-date">By 16 Aug</span></button>
           </div>
         </article>
         <article class="card action-group later">
           <span class="status proposed">After transport</span>
           <h3>Add the fun</h3>
           <div class="action-list">
-            <button class="action-choice" type="button" data-action="colosseum" aria-pressed="false" aria-controls="action-detail"><span class="action-number">14</span><span class="action-label">Family Colosseum plan</span><span class="action-date">26 Aug</span></button>
             <button class="action-choice" type="button" data-action="classes" aria-pressed="false" aria-controls="action-detail"><span class="action-number">15</span><span class="action-label">Cooking classes</span><span class="action-date">25 Aug–5 Sep</span></button>
             <button class="action-choice" type="button" data-action="puglia-days" aria-pressed="false" aria-controls="action-detail"><span class="action-number">16</span><span class="action-label">Matera + Alberobello</span><span class="action-date">29–30 Aug</span></button>
             <button class="action-choice" type="button" data-action="beach" aria-pressed="false" aria-controls="action-detail"><span class="action-number">17</span><span class="action-label">Beach day</span><span class="action-date">31 Aug</span></button>
@@ -796,6 +955,7 @@ eleventyExcludeFromCollections: true
         meta: ["Flight: Tue 1 Sep", "BRI 7:20am → HER 10:05am", "All 9 travelers"],
         problem: "The flight is booked but paid baggage is not. Until every traveler declares their load, we cannot buy the cheapest useful allowance or know whether the two Italy and Crete cars can actually hold everyone’s luggage.",
         known: [
+          "Volotea is a Barcelona-based low-cost European airline. It operates the booked Bari-to-Heraklion airplane flight; it is not a train or ferry service.",
           "A standard fare includes one 40 × 30 × 20cm under-seat bag per ticketed passenger; Hudson’s infant fare has no separate baggage allowance.",
           "Priority adds one 55 × 40 × 25cm cabin bag; the two cabin pieces may weigh 10kg combined.",
           "Checked bags are sold as 10kg, 20kg, or 25kg. Volotea says web/app purchase is cheaper than airport purchase and permits additions until 2.5 hours before departure.",
@@ -930,13 +1090,13 @@ eleventyExcludeFromCollections: true
         checks: ["Install airline apps, WhatsApp, offline Google Maps, and offline Italian/Greek Translate packs; add taxi/transit apps only if the group will use them.", "Store passport photo pages, insurance, flight/hotel/car details, local-language addresses, Hudson records, and emergency numbers offline.", "Always pay card terminals in euros; carry a small cash reserve and keep backup cards separate.", "Use only the official EU site for ETIAS status; do not pay third-party application sites."], source: '<a href="https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en">Official EU EES/ETIAS status</a>'
       },
       "colosseum": {
-        status: ["Decide before 27 Jul", "open"], title: "Family Colosseum plan",
-        meta: ["Proposed: Wed 26 Aug at 8:30am", "Sales: 30 days ahead", "Chris Z + Maddie + Hudson"],
-        problem: "The linked evening tour excludes children under six and strollers, so it cannot be the family-of-three plan. The lower-risk alternative is an official morning timed entry with a carrier and permission to stop early.",
-        known: ["Official standard entry is proposed for 8:30am on 26 Aug, with a maximum 75-minute Colosseum visit and Forum/Palatine treated as optional.", "Hudson needs a free named under-18 ticket. Official timed sales open 30 days ahead, so the target on-sale date is 27 Jul for a 26 Aug visit."],
-        options: [["Official 8:30am entry — recommended", "Parents self-guide, use carrier/small diaper kit, and leave when Hudson is done."], ["Parents alternate", "One parent visits with an adult subgroup while the other has Hudson, then swap only if ticket timing and energy make it reasonable."], ["Skip this trip", "Vatican is already a major early outing; skipping protects recovery and packing before Puglia." ]],
-        needed: ["Chris Z + Maddie accept/decline; confirm desired entry time before sales open.", "Final official infant/gear rules at purchase."],
-        checks: ["Buy from the official site when the date opens; avoid locking the family into a long third-party tour.", "Keep 25 Aug afternoon quiet and 26 Aug evening early."], source: '<a href="https://colosseo.it/en/tickets/colosseum-roman-forum-palatine/">Official Colosseum tickets</a>'
+        status: ["Two decisions", "open"], title: "Monday adult tour + family Colosseum",
+        meta: ["Adult subgroup: Mon 24 evening", "Family proposal: Wed 26 at 8:30am", "Both unbooked"],
+        problem: "The likely Monday evening tour can work for an adult subgroup, but its supplier excludes children under six and strollers. It does not solve Chris Z and Maddie’s hope to see the Colosseum with Hudson.",
+        known: ["Some adults will likely attend the linked evening tour on arrival day; headcount, exact time, and booking remain open.", "Official standard entry is separately proposed for 8:30am on 26 Aug, with a maximum 75-minute Colosseum visit and Forum/Palatine optional.", "Hudson needs a free named under-18 ticket. Official timed sales open 30 days ahead, so the target on-sale date is 27 Jul for a 26 Aug visit."],
+        options: [["Two-track plan — recommended", "Adult subgroup uses the Monday evening tour; Chris Z + Maddie + Hudson use short official entry Wednesday morning."], ["Parent alternation", "One parent joins Monday while the other recovers with Hudson; Wednesday remains optional based on energy."], ["Adult tour only", "Simpler schedule, but does not achieve the family’s hope to see it with Hudson." ]],
+        needed: ["Monday adult subgroup headcount and actual tour start/meeting time.", "Chris Z + Maddie accept/decline Wednesday; confirm desired official entry time before sales open.", "Final official infant/gear rules at purchase."],
+        checks: ["Do not book the Monday supplier for Hudson.", "Buy Wednesday entry from the official site when the date opens; use carrier/small diaper kit and permission to leave early.", "Keep 25 Aug afternoon quiet and 26 Aug evening early."], source: '<a href="https://colosseo.it/en/tickets/colosseum-roman-forum-palatine/">Official Colosseum tickets</a>'
       },
       "classes": {
         status: ["After transport", "proposed"], title: "Choose cooking classes",
@@ -1036,6 +1196,54 @@ eleventyExcludeFromCollections: true
       });
     });
     showAction("volotea");
+
+    const sectionNav = document.querySelector(".topnav");
+    const sectionLinks = [...sectionNav.querySelectorAll('a[href^="#"]')];
+    const observedSections = sectionLinks
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let currentSectionId = "";
+    let navFramePending = false;
+
+    const updateCurrentSection = () => {
+      const marker = window.scrollY + sectionNav.offsetHeight + Math.min(180, window.innerHeight * .28);
+      let activeSection = observedSections[0];
+      observedSections.forEach((section) => {
+        if (section.offsetTop <= marker) activeSection = section;
+      });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+        activeSection = observedSections[observedSections.length - 1];
+      }
+      if (!activeSection || activeSection.id === currentSectionId) return;
+      currentSectionId = activeSection.id;
+      sectionLinks.forEach((link) => {
+        if (link.getAttribute("href") === `#${currentSectionId}`) {
+          link.setAttribute("aria-current", "location");
+          const targetLeft = link.offsetLeft - (sectionNav.clientWidth - link.offsetWidth) / 2;
+          sectionNav.scrollTo({ left: Math.max(0, targetLeft), behavior: reduceMotion.matches ? "auto" : "smooth" });
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const scheduleSectionUpdate = () => {
+      if (navFramePending) return;
+      navFramePending = true;
+      window.requestAnimationFrame(() => {
+        updateCurrentSection();
+        navFramePending = false;
+      });
+    };
+
+    window.addEventListener("scroll", scheduleSectionUpdate, { passive: true });
+    window.addEventListener("resize", scheduleSectionUpdate);
+    sectionLinks.forEach((link) => link.addEventListener("click", () => {
+      currentSectionId = "";
+      window.setTimeout(updateCurrentSection, 50);
+    }));
+    updateCurrentSection();
   </script>
 
 </body>
