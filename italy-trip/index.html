@@ -1,375 +1,598 @@
 ---
-title: Italy & Greece Family Trip Plan
+title: Italy + Greece 2026 Group Trip Plan
 eleventyExcludeFromCollections: true
 ---
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Italy & Greece — Family Trip Plan</title>
-<style>
-  :root {
-    /* Aegean theme */
-    --bg: #f4f9fb;
-    --surface: #ffffff;
-    --ink: #16323f;
-    --muted: #557085;
-    --accent: #1a7ea3;
-    --accent-2: #0f5e7a;
-    --gold: #d9a441;
-    --line: #d7e6ec;
-    --shadow: 0 6px 24px rgba(22,50,63,.10);
-    --radius: 16px;
-    --band: linear-gradient(135deg,#1a7ea3,#0f5e7a);
-    --font-head: "Georgia", "Times New Roman", serif;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The shared Italy and Greece group itinerary, decisions, and action plan for August and September 2026.">
+  <title>Italy + Greece 2026 — Group Trip Plan</title>
+  <style>
+    :root {
+      --paper: #f7f3eb;
+      --surface: #fffdf8;
+      --ink: #20332f;
+      --muted: #60716b;
+      --line: #d9ddd4;
+      --italy: #a73f32;
+      --italy-dark: #6f261f;
+      --sea: #14788a;
+      --sea-dark: #0b5261;
+      --olive: #66733a;
+      --gold: #c48d2c;
+      --shadow: 0 16px 40px rgba(44, 54, 47, .09);
+      --radius: 18px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: var(--font-body); line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1,h2,h3 { font-family: var(--font-head); line-height: 1.2; }
-  a { color: var(--accent); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(196, 141, 44, .13), transparent 28rem),
+        var(--paper);
+      font-family: var(--sans);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ---- top nav ---- */
-  nav.top {
-    position: sticky; top: 0; z-index: 50;
-    background: var(--surface); border-bottom: 1px solid var(--line);
-    display: flex; gap: 4px; align-items: center;
-    padding: 8px 16px; overflow-x: auto; box-shadow: var(--shadow);
-  }
-  nav.top .brand { font-family: var(--font-head); font-weight: 700; color: var(--accent-2); margin-right: 12px; white-space: nowrap; }
-  nav.top a {
-    text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600;
-    padding: 6px 12px; border-radius: 999px; white-space: nowrap;
-  }
-  nav.top a:hover { color: var(--accent); background: var(--bg); }
+    a { color: var(--sea-dark); }
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.12; }
+    button { font: inherit; }
 
-  /* ---- hero ---- */
-  header.hero {
-    background: var(--band); color: #fff; padding: 64px 20px 56px; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  header.hero::after {
-    content: "〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜";
-    position: absolute; bottom: 6px; left: 0; right: 0; text-align: center;
-    color: rgba(255,255,255,.25); font-size: 22px; letter-spacing: -2px; overflow: hidden; white-space: nowrap;
-  }
-  header.hero h1 { font-size: clamp(30px, 6vw, 54px); margin: 0 0 8px; }
-  header.hero p { font-size: clamp(15px, 2.5vw, 19px); opacity: .95; margin: 6px 0; }
-  .keyfacts { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
-  .keyfacts span {
-    background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3);
-    padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
-  }
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 9px max(14px, calc((100vw - 1120px) / 2));
+      overflow-x: auto;
+      background: rgba(255, 253, 248, .95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
 
-  main { max-width: 940px; margin: 0 auto; padding: 0 18px 80px; }
-  section { padding: 44px 0 8px; scroll-margin-top: 64px; }
-  section > h2 {
-    font-size: clamp(24px, 4vw, 34px); margin: 0 0 6px; color: var(--accent-2);
-    display: flex; align-items: center; gap: 10px;
-  }
-  section > .sub { color: var(--muted); margin: 0 0 22px; font-size: 15px; }
+    .topnav .brand {
+      margin-right: 8px;
+      color: var(--italy-dark);
+      font: 700 16px var(--serif);
+      white-space: nowrap;
+    }
 
-  .card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 22px 24px; margin: 16px 0;
-  }
-  .card h3 { margin: 0 0 4px; color: var(--ink); font-size: 21px; }
-  .card .tag { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
-    color: var(--accent-2); background: var(--bg); border:1px solid var(--line); padding:3px 10px; border-radius:999px; margin-bottom:8px;}
+    .topnav a {
+      padding: 7px 11px;
+      color: var(--muted);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-  /* itinerary comparison */
-  .itin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; }
-  .itin { border-top: 5px solid var(--accent); }
-  .itin.best { border-top-color: var(--gold); }
-  .itin .verdict { font-size: 13px; color: var(--muted); font-style: italic; margin: 6px 0 12px; }
-  .itin ul { padding-left: 18px; margin: 8px 0; }
-  .itin li { margin: 5px 0; font-size: 14.5px; }
-  .pill { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:6px; vertical-align:middle;}
-  .pill.baby { background:#e7f3f7; color:#0f5e7a; }
-  .pill.gp { background:#fdf1e0; color:#8a5a12; }
+    .topnav a:hover { color: var(--italy-dark); background: #f2eadc; }
 
-  /* timeline */
-  .timeline { list-style: none; padding: 0; margin: 0; }
-  .timeline li { position: relative; padding: 0 0 18px 26px; border-left: 2px solid var(--line); }
-  .timeline li::before { content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px;
-    border-radius:50%; background: var(--accent); border:2px solid var(--surface); }
-  .timeline li:last-child { border-left-color: transparent; }
-  .timeline .day { font-weight:700; color: var(--accent-2); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 20px 64px;
+      color: white;
+      background:
+        linear-gradient(115deg, rgba(75, 22, 19, .2), rgba(4, 64, 75, .12)),
+        linear-gradient(115deg, var(--italy-dark), var(--italy) 46%, var(--sea));
+    }
 
-  table { width:100%; border-collapse: collapse; font-size: 14.5px; margin: 8px 0; }
-  th,td { text-align:left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--accent-2); font-size: 13px; text-transform: uppercase; letter-spacing:.03em; }
-  tr:last-child td { border-bottom: none; }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -160px;
+      top: -240px;
+      border: 55px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
 
-  .checklist { columns: 2; column-gap: 28px; }
-  .checklist label { display:block; break-inside: avoid; font-size:14.5px; margin:5px 0; cursor:pointer; }
-  .checklist input { margin-right:8px; }
-  @media(max-width:640px){ .checklist { columns: 1; } }
+    .hero-inner { position: relative; z-index: 1; max-width: 1080px; margin: auto; }
+    .eyebrow { margin: 0 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; opacity: .83; }
+    .hero h1 { max-width: 850px; margin: 0; font-size: clamp(40px, 7vw, 74px); }
+    .hero .dek { max-width: 760px; margin: 16px 0 0; font-size: clamp(16px, 2.4vw, 21px); opacity: .92; }
 
-  .callout { border-left: 4px solid var(--gold); background: var(--bg); padding: 12px 16px; border-radius: 8px; margin: 14px 0; font-size: 14.5px; }
-  .callout.warn { border-left-color: var(--accent); }
-  .callout b { color: var(--accent-2); }
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 26px;
+    }
 
-  details { border:1px solid var(--line); border-radius: 10px; margin:8px 0; background: var(--surface); }
-  details summary { cursor:pointer; padding: 12px 16px; font-weight:600; color: var(--accent-2); }
-  details[open] summary { border-bottom:1px solid var(--line); }
-  details .body { padding: 6px 16px 14px; }
+    .facts span {
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      font-size: 13px;
+      font-weight: 700;
+    }
 
-  footer { text-align:center; color: var(--muted); font-size:13px; padding: 30px 16px 60px; }
-</style>
+    main { max-width: 1120px; margin: auto; padding: 12px 18px 90px; }
+    section { padding-top: 58px; scroll-margin-top: 54px; }
+    .section-head { max-width: 760px; margin-bottom: 22px; }
+    .section-head h2 { margin: 0; color: var(--italy-dark); font-size: clamp(29px, 4vw, 42px); }
+    .section-head p { margin: 8px 0 0; color: var(--muted); }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 22px; }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+    .grid { display: grid; gap: 16px; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .status {
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .confirmed { color: #24562e; background: #e5f0df; }
+    .proposed { color: #145b69; background: #dff0f2; }
+    .open { color: #7a4b0d; background: #f7e9ca; }
+    .conflict { color: #862d24; background: #f4ded9; }
+
+    .snapshot { margin-top: -34px; position: relative; z-index: 2; }
+    .snapshot .card { min-height: 100%; }
+    .snapshot strong { display: block; margin-bottom: 4px; font: 700 20px var(--serif); }
+
+    .route {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: #eee6d8;
+    }
+
+    .route-stop { position: relative; padding: 8px 12px; text-align: center; }
+    .route-stop:not(:last-child)::after { content: "→"; position: absolute; right: -7px; color: var(--gold); font-size: 21px; }
+    .route-stop b { display: block; font-family: var(--serif); }
+    .route-stop small { color: var(--muted); }
+
+    .phase { margin-top: 24px; }
+    .phase-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 9px; border-bottom: 2px solid var(--line); }
+    .phase-title h3 { margin: 0; color: var(--sea-dark); font-size: 27px; }
+    .phase-title span { color: var(--muted); font-size: 13px; }
+
+    .days { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+    .day { padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,253,248,.8); }
+    .day h4 { margin: 0 0 7px; font-size: 17px; }
+    .day p { margin: 6px 0; color: var(--muted); font-size: 14px; }
+    .day .main-plan { color: var(--ink); font-weight: 700; }
+    .day .baby { color: var(--sea-dark); }
+
+    .callout { margin: 18px 0; padding: 15px 18px; border-left: 5px solid var(--gold); border-radius: 8px; background: #f6ead3; }
+    .callout strong { color: var(--italy-dark); }
+    .callout.warn { border-color: var(--italy); background: #f5e2de; }
+
+    .decision-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .decision { display: flex; flex-direction: column; }
+    .decision .ask { margin: 0; font: 700 21px var(--serif); }
+    .decision .recommendation { margin: 12px 0; padding: 11px 13px; border-radius: 10px; color: var(--sea-dark); background: #e5f1f1; }
+    .decision .why { color: var(--muted); font-size: 14px; }
+
+    .reply-box {
+      margin-top: 20px;
+      padding: 22px;
+      color: white;
+      border-radius: var(--radius);
+      background: linear-gradient(125deg, var(--sea-dark), var(--sea));
+      box-shadow: var(--shadow);
+    }
+
+    .reply-box h3 { margin: 0; font-size: 26px; }
+    .reply-box p { max-width: 760px; }
+    .reply-box pre { padding: 16px; overflow-x: auto; border: 1px solid rgba(255,255,255,.22); border-radius: 12px; background: rgba(0,0,0,.13); white-space: pre-wrap; font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 15px;
+      color: var(--ink);
+      border: 0;
+      border-radius: 999px;
+      background: white;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .copy-status { display: inline-block; margin-left: 10px; font-size: 13px; opacity: .82; }
+
+    .action-columns { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16px; }
+    .actions ul { margin: 10px 0 0; padding-left: 20px; }
+    .actions li { margin: 8px 0; }
+    .actions.now { border-top: 6px solid var(--italy); }
+    .actions.soon { border-top: 6px solid var(--gold); }
+    .actions.later { border-top: 6px solid var(--olive); }
+
+    .logistics table { width: 100%; border-collapse: collapse; }
+    .logistics th, .logistics td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .logistics th { color: var(--sea-dark); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    .logistics tr:last-child td { border-bottom: 0; }
+
+    .prep-card { display: grid; grid-template-columns: 1.5fr auto; align-items: center; gap: 20px; color: white; background: linear-gradient(120deg, var(--olive), #84934c); }
+    .prep-card h3 { font-size: 30px; }
+    .prep-card .button { white-space: nowrap; }
+
+    .source-note { color: var(--muted); font-size: 13px; }
+    footer { padding: 36px 18px 60px; color: var(--muted); text-align: center; }
+
+    @media (max-width: 850px) {
+      .grid.three, .action-columns { grid-template-columns: 1fr; }
+      .grid.two, .decision-grid { grid-template-columns: 1fr; }
+      .route { grid-template-columns: 1fr; }
+      .route-stop:not(:last-child)::after { content: "↓"; left: 50%; right: auto; bottom: -15px; top: auto; }
+      .prep-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 650px) {
+      .hero { padding-top: 52px; }
+      main { padding-inline: 12px; }
+      section { padding-top: 46px; }
+      .days { grid-template-columns: 1fr; }
+      .card { padding: 18px; }
+      .phase-title { align-items: flex-start; flex-direction: column; }
+      .logistics { overflow-x: auto; }
+      .logistics table { min-width: 650px; }
+    }
+  </style>
 </head>
 <body>
+  <nav class="topnav" aria-label="Trip sections">
+    <span class="brand">Italy + Greece ’26</span>
+    <a href="#snapshot">Snapshot</a>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#decisions">Group questions</a>
+    <a href="#actions">Actions</a>
+    <a href="#logistics">Luggage + Hudson</a>
+    <a href="#prep">Packing prep</a>
+  </nav>
 
-<nav class="top">
-  <span class="brand">🇬🇷 Καλώς ήρθατε</span>
-  <a href="#overview">Overview</a>
-  <a href="#itineraries">Itineraries</a>
-  <a href="#health">Health</a>
-  <a href="#flights">Flights</a>
-  <a href="#getting-around">Getting Around</a>
-  <a href="#lodging">Lodging</a>
-  <a href="#apps">Apps &amp; Data</a>
-  <a href="#packing">Packing</a>
-  <a href="#learn">Good to Know</a>
-</nav>
-
-<header class="hero">
-  <h1>Italy &amp; Greece, Together</h1>
-  <p>A multigenerational family trip — three generations, one big adventure.</p>
-  <p style="opacity:.85; font-size:15px;">Departing ~August 24, 2026 · Italy first, then Greece</p>
-  <div class="keyfacts">
-    <span>👶 1 baby (Hudson)</span>
-    <span>👵 grandparents aboard</span>
-    <span>🗓️ ~2–3 weeks</span>
-    <span>🏛️ Italy → 🏝️ Greece</span>
-  </div>
-</header>
-
-<main>
-
-  <section id="overview">
-    <h2>The Plan, In One Breath</h2>
-    <p class="sub">Everything on this page is built around two things that make our trip special (and specific): a one-year-old, and grandparents who'd rather stroll than sprint.</p>
-    <div class="card">
-      <p style="margin-top:0">We're keeping it <b>slow and warm</b>: a home base or two rather than a city-a-day sprint. That single choice quietly solves three problems at once — it's gentle on Hudson's nap schedule, kind to less-mobile grandparents, and it keeps us out of the densest crowds during peak-season August. Cities and big sights still happen; we just do them in unhurried day-trips and come home to a familiar bed.</p>
-      <div class="callout"><b>The north star:</b> nobody should be exhausted, nobody should be rushed, and every day should have a "do nothing" escape hatch built in.</div>
-    </div>
-  </section>
-
-  <section id="itineraries">
-    <h2>Three Ways To Do It</h2>
-    <p class="sub">Same spirit, different shapes. Pick by how much moving-around feels good for the group. All start in Italy and finish in Greece.</p>
-
-    <div class="itin-grid">
-      <div class="card itin best">
-        <span class="tag">Recommended</span>
-        <h3>A · The Slow Homebase</h3>
-        <p class="verdict">Least moving, most rest. Best fit for a baby + grandparents.</p>
-        <ul>
-          <li><b>Week 1 — Umbria/Tuscan countryside villa</b> <span class="pill gp">flat, calm</span><br>One house, kitchen, pool. Day trips to hill towns at our own pace.</li>
-          <li><b>Week 2 — Crete (Chania/Rethymno)</b> <span class="pill baby">accessible island</span><br>One base on Greece's most accessible island. Beach mornings, tavernas, ruins optional.</li>
-          <li>Two homes, two unpackings, the whole trip. That's it.</li>
-        </ul>
-      </div>
-
-      <div class="card itin">
-        <span class="tag">Balanced</span>
-        <h3>B · A Taste of the Icons</h3>
-        <p class="verdict">One great city up front, then slow down.</p>
-        <ul>
-          <li><b>Days 1–4 — Rome</b> <span class="pill gp">golf-cart tours</span><br>The big sights, done seated where possible. Central, elevator hotel.</li>
-          <li><b>Days 5–9 — Tuscan/Umbrian base</b> <span class="pill baby">recover &amp; rest</span></li>
-          <li><b>Days 10–16 — Crete or Corfu</b> <span class="pill baby">accessible island</span></li>
-          <li>More variety; more transit. Front-loads the busy part.</li>
-        </ul>
-      </div>
-
-      <div class="card itin">
-        <span class="tag">Ambitious</span>
-        <h3>C · The Grand Tour</h3>
-        <p class="verdict">See the most; accept more packing/unpacking.</p>
-        <ul>
-          <li><b>Rome (3) → Florence (3)</b> <span class="pill gp">busiest</span></li>
-          <li><b>Athens (2–3)</b> — Acropolis, then out</li>
-          <li><b>One accessible island (5)</b> <span class="pill baby">the reward</span></li>
-          <li>Most memories per mile, most fatigue per day. Only if the group has strong energy.</li>
-        </ul>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Shared group explainer · updated 12 July 2026</p>
+      <h1>Italy + Greece, together</h1>
+      <p class="dek">The booked route, the workable day-by-day shape, and the questions we need to answer before the remaining pieces disappear.</p>
+      <div class="facts">
+        <span>24 Aug–11 Sep</span>
+        <span>8 adults + Hudson</span>
+        <span>Rome → Puglia → Crete → Athens → Rome</span>
+        <span>Infant-paced, easy subgroup opt-outs</span>
       </div>
     </div>
+  </header>
 
-    <div class="callout warn"><b>Why islands matter:</b> Greece has ~200+ inhabited islands but only a handful are truly friendly to strollers, wheels, and tired knees. We favor <b>Crete, Corfu, or Syros</b> and steer clear of the stair-mazes (Santorini, we love you, but not this trip).</div>
-
-    <details>
-      <summary>See Option A as a day-by-day timeline</summary>
-      <div class="body">
-        <ul class="timeline">
-          <li><span class="day">Day 1</span> — Fly to Rome (or nearest hub), private transfer to the countryside. Collapse.</li>
-          <li><span class="day">Days 2–6</span> — Villa life. One low-key hill-town day-trip every other day (Orvieto, Assisi, Montepulciano). Midday rest for everyone.</li>
-          <li><span class="day">Day 7</span> — Short flight to Crete. Settle into home base #2.</li>
-          <li><span class="day">Days 8–13</span> — Beaches, Chania old town (flat harborfront), Rethymno (has accessibility ramps), tavernas. Palace of Knossos as an optional half-day.</li>
-          <li><span class="day">Day 14</span> — Fly home from Crete (or via Athens).</li>
-        </ul>
+  <main>
+    <section id="snapshot" class="snapshot">
+      <div class="grid three">
+        <article class="card">
+          <span class="status confirmed">Confirmed</span>
+          <strong>Rome + Vatican</strong>
+          <span>Rome Airbnb, 24–27 August. Vatican Museums and Sistine Chapel tour, 25 August at 7:45am.</span>
+        </article>
+        <article class="card">
+          <span class="status confirmed">Confirmed</span>
+          <strong>Puglia + Crete flight</strong>
+          <span>Conversano masseria, 27 August–1 September. Bari–Heraklion flight departs at 7:20am.</span>
+        </article>
+        <article class="card">
+          <span class="status open">Needs action</span>
+          <strong>Cars, bags, Crete + Athens</strong>
+          <span>Second Italy car, paid Volotea bags, Crete base/cars, Greek flights, and final hotels remain open.</span>
+        </article>
       </div>
-    </details>
-  </section>
 
-  <section id="health">
-    <h2>The One Health Thing 👶</h2>
-    <p class="sub">Short version for the family. (Chris has the full sourced write-up.)</p>
-    <div class="card">
-      <p style="margin-top:0">Measles is circulating in Europe (and honestly, in the US too right now), so Hudson's MMR vaccine timing matters. The plan: get him his measles shot <b>about a month before we fly</b> so he's fully protected on arrival, not still building immunity. Every adult traveling is already fully vaccinated, so <b>nobody in our group can pass it to him</b> — the only thing left to manage is crowds, which is exactly why we're going slow and rural-first.</p>
-      <table>
-        <tr><th>What</th><th>Why it's handled</th></tr>
-        <tr><td>Hudson's protection</td><td>Early MMR dose → ~4 weeks to build immunity before wheels-up</td></tr>
-        <tr><td>The rest of us</td><td>All fully vaccinated → can't be a bridge to the baby</td></tr>
-        <tr><td>Crowds</td><td>Slow/rural itinerary keeps exposure low during peak season</td></tr>
-        <tr><td>Worst case</td><td>Travel medical insurance + a pediatric hospital scouted near each base</td></tr>
-      </table>
-      <div class="callout"><b>Please make sure</b> your own MMR is up to date (2 doses) before the trip — it protects Hudson, not just you.</div>
-    </div>
-  </section>
-
-  <section id="flights">
-    <h2>Flights &amp; The Long Haul ✈️</h2>
-    <p class="sub">The plane is the hardest part with a baby and the easiest to smooth for grandparents.</p>
-    <div class="card">
-      <table>
-        <tr><th>For the baby</th><th>For the grandparents</th></tr>
-        <tr>
-          <td>
-            • Consider buying Hudson his own seat + car seat — safest &amp; easiest on a long-haul<br>
-            • Request a <b>bassinet</b> at booking (widebody bulkhead)<br>
-            • Gate-check stroller + car seat (free)<br>
-            • Bottle/nurse on takeoff &amp; landing for his ears<br>
-            • Pack 2× diapers/snacks for delays
-          </td>
-          <td>
-            • Request <b>wheelchair/airport assistance</b> on every flight (free!) — biggest single win<br>
-            • Aisle seats near a lavatory<br>
-            • Compression socks + walk breaks<br>
-            • Meds in carry-on, original bottles<br>
-            • Board early with the family
-          </td>
-        </tr>
-      </table>
-      <div class="callout warn"><b>Do first:</b> Hudson needs <b>his own passport</b> (both parents apply in person — weeks of lead time), and everyone's passport must be valid <b>6+ months past our return</b>.</div>
-    </div>
-  </section>
-
-  <section id="getting-around">
-    <h2>Getting Around 🚕</h2>
-    <p class="sub">Italy is cobblestones and hills; Greece is uneven and sunny. We move gently.</p>
-    <div class="card">
-      <ul>
-        <li><b>Private transfers over trains-with-connections</b> when we move as a full group with luggage + baby. Door to door beats hauling.</li>
-        <li><b>In cities:</b> seated options — Rome even has golf-cart tours of the big sights. Rent a wheelchair/rollator locally (via a pharmacy) for long days, even just in case.</li>
-        <li><b>Taxis:</b> use <b>FreeNow</b> or <b>Bolt</b> apps (Uber is weak in Italy/Greece).</li>
-        <li><b>Venice, if we go:</b> vaporetto water buses dodge the bridge stairs.</li>
-        <li><b>Islands:</b> we pick accessible ones on purpose (Crete/Corfu/Syros).</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="lodging">
-    <h2>Where We Stay 🏡</h2>
-    <p class="sub">One rule solves it: kitchen + a confirmed elevator.</p>
-    <div class="card">
-      <ul>
-        <li><b>Apartments/villas with a kitchen</b> — nap space, bottle-warming, laundry, and family dinners in when going out is too much.</li>
-        <li><b>Confirm the elevator ("lift") explicitly</b> — European "first floor" often means a flight of stairs with no lift.</li>
-        <li><b>Book accessible rooms EARLY</b> — city hotels have only 1–2 and they sell out months ahead.</li>
-        <li>Request a <b>crib/pack-'n-play</b> in advance; pick places near a pharmacy and hospital.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="apps">
-    <h2>Apps &amp; Staying Connected 📱</h2>
-    <p class="sub">Install everything before we leave. One parent's phone becomes the group hotspot.</p>
-    <div class="card">
-      <table>
-        <tr><th>App</th><th>For</th></tr>
-        <tr><td><b>Google Maps</b> (download offline)</td><td>Navigation everywhere</td></tr>
-        <tr><td><b>Google Translate</b> (offline IT + GR)</td><td>Menus, signs, pharmacy labels — camera mode is magic</td></tr>
-        <tr><td><b>WhatsApp</b></td><td>Europe's default — hosts, drivers, restaurants</td></tr>
-        <tr><td><b>FreeNow / Bolt</b></td><td>Taxis &amp; rides</td></tr>
-        <tr><td><b>Trenitalia / Italo</b></td><td>Italian trains</td></tr>
-        <tr><td><b>Ferryhopper</b></td><td>Greek island ferries</td></tr>
-        <tr><td><b>XE Currency</b></td><td>Offline € ↔ $ conversion</td></tr>
-      </table>
-      <div class="callout"><b>Data:</b> get an <b>eSIM</b> that covers both countries (Airalo = easiest, Holafly = unlimited). Keep your US line on for bank text codes. <b>ETIAS:</b> Europe's new €20 travel authorization may launch late 2026 — Chris is watching the official site; if it's live by August, we'll each need one.</div>
-    </div>
-  </section>
-
-  <section id="packing">
-    <h2>Packing Checklist ✅</h2>
-    <p class="sub">Tap to check off. (Nothing saves — it's just a visual list.)</p>
-    <div class="card">
-      <h3 style="font-size:17px;margin-top:0">Baby (Hudson)</h3>
-      <div class="checklist">
-        <label><input type="checkbox">Travel stroller</label>
-        <label><input type="checkbox">Baby carrier (for cobblestones/airports)</label>
-        <label><input type="checkbox">Hudson's usual sunscreen (EU formulas differ!)</label>
-        <label><input type="checkbox">2× diapers &amp; wipes for flight delays</label>
-        <label><input type="checkbox">Familiar formula/snacks/purees</label>
-        <label><input type="checkbox">Comfort lovey + white-noise app</label>
-        <label><input type="checkbox">Portable blackout window cover</label>
-        <label><input type="checkbox">Infant meds kit + thermometer</label>
-        <label><input type="checkbox">Plane entertainment (painter's tape!)</label>
-        <label><input type="checkbox">Birth certificate (carry-on)</label>
+      <div class="route" aria-label="Trip route">
+        <div class="route-stop"><b>Rome</b><small>24–27 Aug</small></div>
+        <div class="route-stop"><b>Conversano</b><small>27 Aug–1 Sep</small></div>
+        <div class="route-stop"><b>Crete</b><small>1–6 Sep</small></div>
+        <div class="route-stop"><b>Athens</b><small>6–9 Sep</small></div>
+        <div class="route-stop"><b>Rome / FCO</b><small>9–11 Sep</small></div>
       </div>
-      <h3 style="font-size:17px">Everyone</h3>
-      <div class="checklist">
-        <label><input type="checkbox">Hypochlorous acid spray (hands/faces on plane)</label>
-        <label><input type="checkbox">Mini zipper lock for backpacks</label>
-        <label><input type="checkbox">Water shoes + wet bags</label>
-        <label><input type="checkbox">Handheld/stroller fan</label>
-        <label><input type="checkbox">Water bottles + electrolyte packets</label>
-        <label><input type="checkbox">Single passport holder (all together)</label>
-        <label><input type="checkbox">Headphones</label>
-        <label><input type="checkbox">Full change of clothes in carry-on</label>
-        <label><input type="checkbox">Universal adapter (IT: C/F/L · GR: C/F) + power strip</label>
-        <label><input type="checkbox">Battery pack</label>
-        <label><input type="checkbox">No-foreign-fee credit cards + some € cash</label>
-        <label><input type="checkbox">Document copies (cloud + offline)</label>
+
+      <div class="callout warn">
+        <strong>Two draft entries cannot happen:</strong> the 1 September Lecce morning and 8:00am Bari car return conflict with the 7:20am flight. The operational plan needs an approximately 4:15am masseria departure and an early-hours car return.
       </div>
-      <h3 style="font-size:17px">Grandparents</h3>
-      <div class="checklist">
-        <label><input type="checkbox">Broken-in walking shoes</label>
-        <label><input type="checkbox">Folding cane / trekking pole</label>
-        <label><input type="checkbox">Compression socks (flight)</label>
-        <label><input type="checkbox">Full meds supply + generic-name list</label>
-        <label><input type="checkbox">Airport-assistance confirmation</label>
-        <label><input type="checkbox">Emergency-contact card</label>
+    </section>
+
+    <section id="itinerary">
+      <div class="section-head">
+        <p class="eyebrow">Current proposed shape</p>
+        <h2>Day by day</h2>
+        <p>Confirmed bookings are identified. Everything else is a recommendation or an option until the group accepts it.</p>
       </div>
-    </div>
-  </section>
 
-  <section id="learn">
-    <h2>Good To Know Before We Go 🗺️</h2>
-    <div class="card">
-      <ul>
-        <li><b>Meals run late.</b> Italian dinner is 8pm+, Greek even later; shops often close midday. We'll do early or apartment dinners for Hudson and the grandparents.</li>
-        <li><b>Tipping is modest</b> — service is often included ("coperto"). No US-style 20%.</li>
-        <li><b>August is hot &amp; peak.</b> Out in the mornings/evenings, rest midday. Book Greek ferries ahead.</li>
-        <li><b>A few words go far:</b> <i>grazie / ευχαριστώ</i> (thank you), <i>per favore / παρακαλώ</i> (please). Translate app covers the rest.</li>
-        <li><b>Pharmacies</b> (farmacia / φαρμακείο) are excellent for minor stuff — often faster than a doctor.</li>
-      </ul>
-    </div>
-  </section>
+      <div class="phase">
+        <div class="phase-title"><h3>Rome</h3><span>Mon 24–Thu 27 Aug</span></div>
+        <div class="days">
+          <article class="day">
+            <span class="status proposed">Recovery default</span>
+            <h4>Mon 24 · Arrive</h4>
+            <p class="main-plan">Airport transfers, bags to the Airbnb, food, daylight, naps, early bed.</p>
+            <p>Optional: a short Trevi walk only if people feel genuinely good.</p>
+            <p class="baby">Hudson: arrival buffer stays accessible; no fixed evening commitment.</p>
+          </article>
+          <article class="day">
+            <span class="status confirmed">Booked 7:45am</span>
+            <h4>Tue 25 · Vatican + Sistine Chapel</h4>
+            <p class="main-plan">Arrive before the operator’s meeting time, tour, then protect the afternoon for rest.</p>
+            <p>Keep dinner simple. Pasta class remains open.</p>
+            <p class="baby">Hudson: operator must confirm infant and stroller/carrier rules.</p>
+          </article>
+          <article class="day">
+            <span class="status proposed">Family option</span>
+            <h4>Wed 26 · Short official Colosseum visit</h4>
+            <p class="main-plan">Proposed 8:30am official self-guided entry for Chris Z, wife, and Hudson; maximum 75 minutes.</p>
+            <p>Replace Spello with a lower-transfer Rome day. Forum and Palatine are optional.</p>
+            <p class="baby">Hudson: soft carrier and a compact diaper kit; no rigid group tour.</p>
+          </article>
+          <article class="day">
+            <span class="status open">Car capacity open</span>
+            <h4>Thu 27 · Drive to Conversano</h4>
+            <p class="main-plan">Collect two luggage-capable cars and treat the drive as a six-hour door-to-door transfer.</p>
+            <p>Pool, groceries, and bed on arrival.</p>
+            <p class="baby">Hudson: practiced rear-facing travel car seat and planned stops.</p>
+          </article>
+        </div>
+      </div>
 
-</main>
+      <div class="phase">
+        <div class="phase-title"><h3>Puglia</h3><span>Thu 27 Aug–Tue 1 Sep</span></div>
+        <div class="days">
+          <article class="day"><span class="status proposed">Slow</span><h4>Fri 28 · Monopoli</h4><p class="main-plan">Empty morning, groceries, optional harbor and seaside dinner.</p></article>
+          <article class="day"><span class="status proposed">Optional subgroup</span><h4>Sat 29 · Matera</h4><p class="main-plan">Carrier-friendly Sassi route for those who want it; masseria escape hatch for everyone else.</p></article>
+          <article class="day"><span class="status proposed">One main event</span><h4>Sun 30 · Alberobello</h4><p class="main-plan">Trulli plus a possible orecchiette class after child/duration details are checked.</p></article>
+          <article class="day"><span class="status proposed">Pack early</span><h4>Mon 31 · Beach</h4><p class="main-plan">Nearby beach, fuel cars, fully pack before dinner, very early night.</p></article>
+          <article class="day"><span class="status conflict">4:15am target</span><h4>Tue 1 · Bari → Heraklion</h4><p class="main-plan">Remove Lecce. Early car return, 7:20am Volotea flight, Crete cars, direct to villa.</p><p class="baby">Hudson: register stroller + car seat; retain the soft carrier through baggage claim.</p></article>
+        </div>
+      </div>
 
-<footer>
-  Made with love for the whole family · See you in Italy 🇮🇹 &amp; Greece 🇬🇷<br>
-  <span style="opacity:.7">Details still firming up — this page will keep updating.</span>
-</footer>
+      <div class="phase">
+        <div class="phase-title"><h3>Crete</h3><span>Tue 1–Sun 6 Sep</span></div>
+        <div class="days">
+          <article class="day"><span class="status open">Base unbooked</span><h4>Tue 1 · Arrive</h4><p class="main-plan">Rethymno area is the recommended compromise. No sightseeing with luggage in cars.</p></article>
+          <article class="day"><span class="status proposed">Recovery</span><h4>Wed 2 · Pool + nearby town</h4><p class="main-plan">Do not combine Knossos and Chania after the early Puglia start.</p></article>
+          <article class="day"><span class="status proposed">Split day</span><h4>Thu 3 · Gorge/coast or pool</h4><p class="main-plan">Active subgroup and Hudson/rest subgroup; rotate the parent rest role.</p></article>
+          <article class="day"><span class="status proposed">Choose one</span><h4>Fri 4 · Knossos or rest</h4><p class="main-plan">If Knossos wins, go early and make it the only major outing.</p></article>
+          <article class="day"><span class="status proposed">Choose one</span><h4>Sat 5 · Chania or cooking</h4><p class="main-plan">One main event rather than forcing both into a long day.</p></article>
+          <article class="day"><span class="status open">Flight unbooked</span><h4>Sun 6 · Crete → Athens</h4><p class="main-plan">Transfer-day default. Move Marathi Beach unless a deliberately late flight preserves a generous buffer.</p></article>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-title"><h3>Athens + departures</h3><span>Sun 6–Fri 11 Sep</span></div>
+        <div class="days">
+          <article class="day"><span class="status proposed">Infant-paced</span><h4>Mon 7 · Acropolis + Plaka</h4><p class="main-plan">Acropolis at opening, midday rest, Plaka dinner. Agora optional or moved to Tuesday.</p></article>
+          <article class="day"><span class="status confirmed">First split</span><h4>Tue 8 · Ari + Kai depart</h4><p class="main-plan">Separate airport transfer; remaining group chooses Agora, museum, or café day.</p></article>
+          <article class="day"><span class="status open">Flight unbooked</span><h4>Wed 9 · Athens → Rome</h4><p class="main-plan">Direct morning/midday flight and FCO-area overnight for the departing group.</p></article>
+          <article class="day"><span class="status confirmed">Departures</span><h4>Thu 10–Fri 11</h4><p class="main-plan">Detroit group departs Thursday. Chris + Nicole depart Friday after a final Rome night.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <div class="section-head">
+        <p class="eyebrow">For the group</p>
+        <h2>Questions to resolve</h2>
+        <p>This page is shareable, but it is not a synchronized voting system. Reply in the group chat; accepted answers will be written into the private trip repository.</p>
+      </div>
+
+      <div class="decision-grid">
+        <article class="card decision">
+          <span class="status open">Reply now</span>
+          <p class="ask">Are you in for the Vatican?</p>
+          <div class="recommendation"><b>Known:</b> 25 August at 7:45am; Vatican Museums + Sistine Chapel.</div>
+          <p class="why">We need attendance before transfer capacity and any booking adjustment are finalized.</p>
+        </article>
+        <article class="card decision">
+          <span class="status open">Reply now</span>
+          <p class="ask">What are you bringing?</p>
+          <div class="recommendation"><b>Send:</b> checked-bag count/size, cabin-bag count/size, and unusual items.</div>
+          <p class="why">Volotea bags cost extra, and advertised car seats do not tell us whether nine people’s luggage will fit.</p>
+        </article>
+        <article class="card decision">
+          <span class="status proposed">Recommended default</span>
+          <p class="ask">Is a Rethymno-area Crete base okay?</p>
+          <div class="recommendation"><b>Recommendation:</b> yes—it balances Heraklion, Knossos, Chania, and western activities.</div>
+          <p class="why">Speak up if Chania, Knossos, Marathi, or a particular cooking class is the priority.</p>
+        </article>
+        <article class="card decision">
+          <span class="status open">Rank interests</span>
+          <p class="ask">Which activities are worth fixing to the calendar?</p>
+          <div class="recommendation"><b>Choose three:</b> pasta, orecchiette, Cretan cooking, Matera, Alberobello, Knossos, Chania, hike, beach club.</div>
+          <p class="why">We will preserve subgroup flexibility instead of making every activity mandatory.</p>
+        </article>
+        <article class="card decision">
+          <span class="status open">Reply now</span>
+          <p class="ask">Who is willing to drive?</p>
+          <div class="recommendation"><b>Reply separately:</b> Italy yes/no; Greece yes/no.</div>
+          <p class="why">Both countries need two vehicles and more than one confident driver.</p>
+        </article>
+        <article class="card decision">
+          <span class="status proposed">Arrival default</span>
+          <p class="ask">How ambitious should arrival night be?</p>
+          <div class="recommendation"><b>Recommendation:</b> recovery, with a short Trevi walk only if energetic.</div>
+          <p class="why">The supplied Colosseum tour excludes Hudson and precedes the 7:45am Vatican morning.</p>
+        </article>
+      </div>
+
+      <div class="reply-box">
+        <h3>Copy this into the group chat</h3>
+        <p>One compact reply gives the planning repo enough information to close the next set of bookings.</p>
+        <pre id="reply-template">Vatican: IN / OUT
+Arrival evening: REST / TREVI IF ENERGETIC / ADULT COLOSSEUM INTEREST
+Bags: [name — checked count/size, cabin count/size, unusual items]
+Driving: ITALY YES/NO; GREECE YES/NO
+Crete base: RETHYMNO OK / OTHER PRIORITY: ____
+Top 3 activities: 1) ____ 2) ____ 3) ____
+Activities I am happy to split for: ____
+Food/room/schedule constraints not yet captured: ____</pre>
+        <button class="button" id="copy-reply" type="button">Copy reply template</button>
+        <span class="copy-status" id="copy-status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section id="actions">
+      <div class="section-head">
+        <p class="eyebrow">Operational queue</p>
+        <h2>What needs to happen next</h2>
+      </div>
+      <div class="action-columns">
+        <article class="card actions now">
+          <span class="status conflict">Now</span>
+          <h3>Close the route</h3>
+          <ul>
+            <li>Collect bag counts and buy Volotea baggage online.</li>
+            <li>Fix the Bari rental return and add the second Italy car.</li>
+            <li>Choose and book the Crete base.</li>
+            <li>Book Crete–Athens and Athens–Rome direct flights.</li>
+            <li>Book Greek cars, Athens lodging, and the FCO overnight.</li>
+            <li>Settle Hudson’s MMR schedule with his pediatrician.</li>
+          </ul>
+        </article>
+        <article class="card actions soon">
+          <span class="status open">Within a week</span>
+          <h3>Close the seams</h3>
+          <ul>
+            <li>Confirm Airbnb early bag drop and all lodging practicalities.</li>
+            <li>Book Rome airport transfers from actual arrivals + bag count.</li>
+            <li>Buy travel insurance covering Hudson and evacuation.</li>
+            <li>Practice car-seat installation and the stroller/carrier handoff.</li>
+            <li>Store offline copies of documents and bookings.</li>
+          </ul>
+        </article>
+        <article class="card actions later">
+          <span class="status proposed">After transport</span>
+          <h3>Add the fun</h3>
+          <ul>
+            <li>Cooking classes.</li>
+            <li>Matera/Alberobello guide choices.</li>
+            <li>Beach club.</li>
+            <li>Mountain taverna and fixed dinners.</li>
+            <li>Final flight and transfer reconfirmations.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="logistics">
+      <div class="section-head">
+        <p class="eyebrow">The practical layer</p>
+        <h2>Luggage + Hudson</h2>
+        <p>Two systems determine whether the route feels easy: cars sized from a real bag manifest, and Hudson’s critical gear staying accessible.</p>
+      </div>
+
+      <div class="card logistics">
+        <table>
+          <thead><tr><th>Leg</th><th>People + bags</th><th>Hudson plan</th></tr></thead>
+          <tbody>
+            <tr><td>FCO → Rome</td><td>Pre-booked minibus or coordinated vehicles; bags direct to confirmed drop.</td><td>Written child-seat arrangement or install the family seat.</td></tr>
+            <tr><td>Rome → Puglia</td><td>Two rentals sized from the manifest—not seat count alone.</td><td>Rear-facing travel seat; stroller in the roomiest vehicle.</td></tr>
+            <tr><td>Bari → Heraklion</td><td>Paid checked bags; delay kit in cabin.</td><td>Stroller + car seat registered free; soft carrier retained.</td></tr>
+            <tr><td>Crete</td><td>Two rentals, same cargo-fit test as Italy.</td><td>Same practiced rear-facing installation.</td></tr>
+            <tr><td>Athens → Rome</td><td>Carrier-specific baggage rechecked before purchase.</td><td>Infant and baby-equipment record confirmed on every booking.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <article class="card">
+          <span class="status proposed">Family-of-three baseline</span>
+          <h3>Volotea load</h3>
+          <ul>
+            <li>Two paid 20kg checked bags.</li>
+            <li>Stroller + travel car seat as two free baby-equipment items.</li>
+            <li>Under-seat diaper/Hudson bag assigned to the lap-infant adult.</li>
+            <li>Priority for at least one parent if an overhead delay kit is needed.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="status proposed">Always accessible</span>
+          <h3>Hudson transit kit</h3>
+          <ul>
+            <li>Formula/food and diapers for the travel day plus 24–48 hours.</li>
+            <li>Changes of clothes, medicine, thermometer, documents, comfort item.</li>
+            <li>Soft carrier for gates, baggage claim, stairs, and stroller failure.</li>
+            <li>Never put every formula container or critical item in one checked bag.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="prep">
+      <div class="card prep-card">
+        <div>
+          <p class="eyebrow">Parent-focused tool</p>
+          <h3>Packing, shopping + gear prep</h3>
+          <p>The detailed prep tool tracks what the family owns, needs to buy, and where each item belongs. It is separate from the group itinerary so everyone else does not have to navigate bottle brushes and stroller fans.</p>
+        </div>
+        <a class="button" href="/trips/prep/">Open packing prep →</a>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-head">
+        <p class="eyebrow">How this stays trustworthy</p>
+        <h2>Repository first, website second</h2>
+        <p>The private trip repository retains the original itinerary document and booking messages, separates confirmed facts from proposals, and records accepted decisions. This page is the shareable explanation of that record—not a parallel source of truth.</p>
+      </div>
+      <p class="source-note">Sensitive Airbnb invitation tokens, reservation codes, passport details, and exact private addresses are deliberately excluded from this public page.</p>
+    </section>
+  </main>
+
+  <footer>
+    Italy + Greece · 24 August–11 September 2026 · Updated from the private trip record on 12 July 2026
+  </footer>
+
+  <script>
+    const copyButton = document.querySelector("#copy-reply");
+    const copyStatus = document.querySelector("#copy-status");
+    const replyTemplate = document.querySelector("#reply-template");
+
+    copyButton.addEventListener("click", async () => {
+      const text = replyTemplate.textContent.trim();
+
+      try {
+        await navigator.clipboard.writeText(text);
+        copyStatus.textContent = "Copied.";
+      } catch (error) {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(replyTemplate);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        copyStatus.textContent = "Select and copy the highlighted text.";
+      }
+    });
+  </script>
 </body>
 </html>
