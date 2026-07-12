@@ -174,17 +174,32 @@ eleventyExcludeFromCollections: true
     .route-stop b { display: block; font-family: var(--serif); }
     .route-stop small { color: var(--muted); }
 
-    .phase { margin-top: 24px; }
-    .phase-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 9px; border-bottom: 2px solid var(--line); }
+    .phase { margin-top: 30px; }
+    .phase-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: #eee6d8; }
     .phase-title h3 { margin: 0; color: var(--sea-dark); font-size: 27px; }
     .phase-title span { color: var(--muted); font-size: 13px; }
 
-    .days { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
-    .day { padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,253,248,.8); }
-    .day h4 { margin: 0 0 7px; font-size: 17px; }
-    .day p { margin: 6px 0; color: var(--muted); font-size: 14px; }
+    .timeline-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .timeline-legend span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--surface); font-size: 12px; font-weight: 800; }
+    .timeline-legend .movement-key { color: var(--sea-dark); border-color: var(--sea); background: #e8f1ef; }
+    .days { position: relative; display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 0; padding-left: 18px; }
+    .days::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+    .day { position: relative; display: grid; grid-template-columns: 155px minmax(0, 1fr); column-gap: 20px; padding: 17px 19px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,253,248,.82); }
+    .day::before { content: ""; position: absolute; left: -18px; top: 26px; width: 10px; height: 10px; border: 3px solid var(--bg); border-radius: 50%; background: var(--olive); }
+    .day > .status, .day > h4 { grid-column: 1; }
+    .day > .status { align-self: start; justify-self: start; }
+    .day > h4 { grid-row: 2 / span 8; margin: 0; color: var(--italy-dark); font-size: 19px; line-height: 1.2; }
+    .day > p, .day > .travel-detail, .day > .split-lanes { grid-column: 2; }
+    .day p { margin: 5px 0; color: var(--muted); font-size: 14px; }
     .day .main-plan { color: var(--ink); font-weight: 700; }
     .day .baby { color: var(--sea-dark); }
+
+    .day.travel-day { border-left: 6px solid var(--sea); background: #f5faf9; }
+    .day.travel-day::before { background: var(--sea); }
+    .movement { margin: 0 0 8px !important; padding: 8px 11px; border-radius: 8px; color: white !important; background: var(--sea-dark); font-weight: 900; letter-spacing: .01em; }
+    .split-lanes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 9px; }
+    .split-lanes div { padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: #fffdf8; color: var(--muted); font-size: 13px; }
+    .split-lanes b { display: block; margin-bottom: 2px; color: var(--sea-dark); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
 
     .travel-detail { display: grid; gap: 6px; margin-top: 13px; padding-top: 11px; border-top: 1px solid var(--line); }
     .travel-row { display: grid; grid-template-columns: 82px 1fr; gap: 9px; font-size: 12.5px; }
@@ -307,7 +322,10 @@ eleventyExcludeFromCollections: true
       .hero { padding-top: 52px; }
       main { padding-inline: 12px; }
       section { padding-top: 46px; }
-      .days { grid-template-columns: 1fr; }
+      .day { grid-template-columns: 1fr; gap: 4px; }
+      .day > .status, .day > h4, .day > p, .day > .travel-detail, .day > .split-lanes { grid-column: 1; grid-row: auto; }
+      .day > h4 { margin-bottom: 7px; }
+      .split-lanes { grid-template-columns: 1fr; }
       .travel-row { grid-template-columns: 72px 1fr; }
       .card { padding: 18px; }
       .phase-title { align-items: flex-start; flex-direction: column; }
@@ -380,15 +398,22 @@ eleventyExcludeFromCollections: true
       <div class="section-head">
         <p class="eyebrow">Current proposed shape</p>
         <h2>Day by day</h2>
-        <p>Confirmed bookings are identified. Everything else is a recommendation or an option until the group accepts it.</p>
+        <p>Read straight down the journey. Movement, the day’s main anchor, Hudson/subgroup options, overnight location, and anything still open stay visible together.</p>
+        <div class="timeline-legend" aria-label="Timeline legend">
+          <span class="movement-key">Dark movement band = transfer / departure</span>
+          <span>Green = confirmed</span>
+          <span>Gold = needs a decision</span>
+          <span>Red = actual conflict</span>
+        </div>
       </div>
 
       <div class="phase">
-        <div class="phase-title"><h3>Rome</h3><span>Mon 24–Thu 27 Aug</span></div>
+        <div class="phase-title"><h3>Rome → Puglia</h3><span>Mon 24–Thu 27 Aug</span></div>
         <div class="days">
-          <article class="day">
+          <article class="day travel-day">
             <span class="status proposed">Recovery default</span>
             <h4>Mon 24 · Arrive</h4>
+            <p class="movement">✈ Separate FCO arrivals → Rome Airbnb</p>
             <p class="main-plan">Airport transfers, bags to the Airbnb, food, daylight, naps, early bed.</p>
             <p>Optional: a short Trevi walk only if people feel genuinely good.</p>
             <p class="baby">Hudson: arrival buffer stays accessible; no fixed evening commitment.</p>
@@ -423,9 +448,10 @@ eleventyExcludeFromCollections: true
               <div class="travel-row"><span>Stay</span><b>Rome Airbnb · confirmed</b></div>
             </div>
           </article>
-          <article class="day">
+          <article class="day travel-day">
             <span class="status open">Car capacity open</span>
             <h4>Thu 27 · Drive to Conversano</h4>
+            <p class="movement">🚗 Rome / FCO → Conversano · roughly six hours door to door</p>
             <p class="main-plan">Collect two luggage-capable cars and treat the drive as a six-hour door-to-door transfer.</p>
             <p>Pool, groceries, and bed on arrival.</p>
             <p class="baby">Hudson: practiced rear-facing travel car seat and planned stops.</p>
@@ -439,35 +465,35 @@ eleventyExcludeFromCollections: true
       </div>
 
       <div class="phase">
-        <div class="phase-title"><h3>Puglia</h3><span>Thu 27 Aug–Tue 1 Sep</span></div>
+        <div class="phase-title"><h3>Puglia → Crete</h3><span>Fri 28 Aug–Tue 1 Sep</span></div>
         <div class="days">
-          <article class="day"><span class="status proposed">Slow</span><h4>Fri 28 · Monopoli</h4><p class="main-plan">Empty morning, groceries, optional harbor and seaside dinner.</p></article>
-          <article class="day"><span class="status proposed">Optional subgroup</span><h4>Sat 29 · Matera</h4><p class="main-plan">Carrier-friendly Sassi route for those who want it; masseria escape hatch for everyone else.</p></article>
-          <article class="day"><span class="status proposed">One main event</span><h4>Sun 30 · Alberobello</h4><p class="main-plan">Trulli plus a possible orecchiette class after child/duration details are checked.</p></article>
-          <article class="day"><span class="status proposed">Pack early</span><h4>Mon 31 · Beach</h4><p class="main-plan">Nearby beach, fuel cars, fully pack before dinner, very early night.</p></article>
-          <article class="day"><span class="status conflict">4:15am target</span><h4>Tue 1 · Bari → Heraklion</h4><p class="main-plan">Remove Lecce. Early car return, 7:20am Volotea flight, Crete cars, direct to villa.</p><p class="baby">Hudson: register stroller + car seat; retain the soft carrier through baggage claim.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b>Volotea · BRI 7:20am → HER 10:05am · confirmed</b></div><div class="travel-row"><span>Bags</span><b class="need">Paid baggage, Priority, seats, and infant record needed</b></div><div class="travel-row"><span>Cars</span><b class="need">Early Bari return + two Greek rentals needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Crete villa not booked</b></div></div></article>
+          <article class="day"><span class="status proposed">Slow</span><h4>Fri 28 · Monopoli</h4><p class="main-plan">Empty morning, groceries, optional harbor and seaside dinner.</p><div class="travel-detail"><div class="travel-row"><span>Sleep</span><b>Masseria MonteFieno · confirmed</b></div></div></article>
+          <article class="day"><span class="status proposed">Optional subgroup</span><h4>Sat 29 · Matera</h4><p class="main-plan">Carrier-friendly Sassi route for those who want it; no mandatory full-group walking day.</p><div class="split-lanes"><div><b>Active subgroup</b>Short Matera route with an early start.</div><div><b>Hudson / rest</b>Partial route or masseria escape hatch.</div></div><div class="travel-detail"><div class="travel-row"><span>Sleep</span><b>Masseria MonteFieno · confirmed</b></div></div></article>
+          <article class="day"><span class="status proposed">One main event</span><h4>Sun 30 · Alberobello</h4><p class="main-plan">Trulli plus at most one orecchiette class after child/duration details are checked.</p><div class="travel-detail"><div class="travel-row"><span>Open</span><b class="need">Self-guided versus guide; class attendance</b></div><div class="travel-row"><span>Sleep</span><b>Masseria MonteFieno · confirmed</b></div></div></article>
+          <article class="day"><span class="status proposed">Pack early</span><h4>Mon 31 · Beach + reset</h4><p class="main-plan">Nearby morning beach, fuel/return cars under the chosen plan, fully pack before dinner, very early night.</p><div class="travel-detail"><div class="travel-row"><span>Open</span><b class="need">Beach choice + final Bari return procedure</b></div><div class="travel-row"><span>Sleep</span><b>Masseria MonteFieno · final night confirmed</b></div></div></article>
+          <article class="day travel-day"><span class="status conflict">4:15am target</span><h4>Tue 1 · Bari → Heraklion</h4><p class="movement">🚗 Conversano → BRI · ✈ 7:20am → HER 10:05am · 🚗 Crete base</p><p class="main-plan">Remove Lecce. Early car return, flight to Heraklion, two Crete cars, then direct to the villa.</p><p class="baby">Hudson: register stroller + car seat; retain the soft carrier through baggage claim.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b>Volotea · BRI 7:20am → HER 10:05am · confirmed</b></div><div class="travel-row"><span>Bags</span><b class="need">Paid baggage, Priority, seats, and infant record needed</b></div><div class="travel-row"><span>Cars</span><b class="need">Written early Bari return + two Crete rentals needed</b></div><div class="travel-row"><span>Sleep</span><b class="need">Crete villa not booked</b></div></div></article>
         </div>
       </div>
 
       <div class="phase">
-        <div class="phase-title"><h3>Crete</h3><span>Tue 1–Sun 6 Sep</span></div>
+        <div class="phase-title"><h3>Crete → Athens</h3><span>Wed 2–Sun 6 Sep</span></div>
         <div class="days">
-          <article class="day"><span class="status open">Base unbooked</span><h4>Tue 1 · Arrive</h4><p class="main-plan">Rethymno area is the recommended compromise. No sightseeing with luggage in cars.</p><div class="travel-detail"><div class="travel-row"><span>Arrival</span><b>Heraklion 10:05am · confirmed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Two rental cars + villa drive needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Crete base and exact address needed</b></div></div></article>
-          <article class="day"><span class="status proposed">Recovery</span><h4>Wed 2 · Pool + nearby town</h4><p class="main-plan">Do not combine Knossos and Chania after the early Puglia start.</p></article>
-          <article class="day"><span class="status proposed">Split day</span><h4>Thu 3 · Gorge/coast or pool</h4><p class="main-plan">Active subgroup and Hudson/rest subgroup; rotate the parent rest role.</p></article>
-          <article class="day"><span class="status proposed">Choose one</span><h4>Fri 4 · Knossos or rest</h4><p class="main-plan">If Knossos wins, go early and make it the only major outing.</p></article>
-          <article class="day"><span class="status proposed">Choose one</span><h4>Sat 5 · Chania or cooking</h4><p class="main-plan">One main event rather than forcing both into a long day.</p></article>
-          <article class="day"><span class="status open">Flight unbooked</span><h4>Sun 6 · Crete → Athens</h4><p class="main-plan">Transfer-day default. Move Marathi Beach unless a deliberately late flight preserves a generous buffer.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Airport, airline, flight number, and time needed</b></div><div class="travel-row"><span>Cars</span><b class="need">Greek rental return airport/time needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Athens hotel not booked</b></div></div></article>
+          <article class="day"><span class="status proposed">Recovery</span><h4>Wed 2 · Pool + nearby town</h4><p class="main-plan">No major sightseeing after the 4:15am Puglia start. Do not combine Knossos and Chania.</p><div class="travel-detail"><div class="travel-row"><span>Sleep</span><b class="need">Crete villa not booked</b></div></div></article>
+          <article class="day"><span class="status proposed">Split day</span><h4>Thu 3 · Gorge/coast or pool</h4><p class="main-plan">Make this the explicit subgroup day and rotate the parent rest role.</p><div class="split-lanes"><div><b>Active subgroup</b>Gorge or coast outing chosen from the final base.</div><div><b>Hudson / rest</b>Pool, nearby town, and predictable naps.</div></div><div class="travel-detail"><div class="travel-row"><span>Sleep</span><b class="need">Crete villa not booked</b></div></div></article>
+          <article class="day"><span class="status proposed">Choose one</span><h4>Fri 4 · Knossos or rest</h4><p class="main-plan">If Knossos wins, go early and make it the only major outing; otherwise retain the rest day.</p><div class="travel-detail"><div class="travel-row"><span>Dinner</span><b class="need">Nearby taverna after villa location is known</b></div><div class="travel-row"><span>Sleep</span><b class="need">Crete villa not booked</b></div></div></article>
+          <article class="day"><span class="status proposed">Choose one</span><h4>Sat 5 · Chania or cooking</h4><p class="main-plan">One main event rather than forcing both into a long day.</p><div class="split-lanes"><div><b>Main option</b>Chania early or one Cretan cooking class.</div><div><b>Opt-out</b>Villa / nearby town without holding the group.</div></div><div class="travel-detail"><div class="travel-row"><span>Sleep</span><b class="need">Crete villa · final night not booked</b></div></div></article>
+          <article class="day travel-day"><span class="status open">Flight unbooked</span><h4>Sun 6 · Crete → Athens</h4><p class="movement">🚗 Crete car return → ✈ HER/CHQ → ATH → Athens lodging</p><p class="main-plan">Transfer-day default. Move Marathi Beach unless a deliberately late flight preserves a generous buffer.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Airport, airline, flight number, and time needed</b></div><div class="travel-row"><span>Cars</span><b class="need">Greek rental return airport/time needed</b></div><div class="travel-row"><span>Sleep</span><b class="need">Athens lodging not booked</b></div></div></article>
         </div>
       </div>
 
       <div class="phase">
-        <div class="phase-title"><h3>Athens + departures</h3><span>Sun 6–Fri 11 Sep</span></div>
+        <div class="phase-title"><h3>Athens → departures</h3><span>Mon 7–Fri 11 Sep</span></div>
         <div class="days">
-          <article class="day"><span class="status proposed">Infant-paced</span><h4>Mon 7 · Acropolis + Plaka</h4><p class="main-plan">Acropolis at opening, midday rest, Plaka dinner. Agora optional or moved to Tuesday.</p></article>
-          <article class="day"><span class="status confirmed">First split</span><h4>Tue 8 · Ari + Kai depart</h4><p class="main-plan">Separate airport transfer; remaining group chooses Agora, museum, or café day.</p><div class="travel-detail"><div class="travel-row"><span>Route</span><b>Athens → Kansas City · confirmed</b></div><div class="travel-row"><span>Flight</span><b class="need">Airline, flight number, and departure time needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Athens airport vehicle needed</b></div></div></article>
-          <article class="day"><span class="status open">Flight unbooked</span><h4>Wed 9 · Athens → Rome</h4><p class="main-plan">Direct morning/midday flight and FCO-area overnight for the departing group.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Direct ATH → FCO flight for remaining seven needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Fiumicino-area hotel for 9 Sep needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Group + luggage airport transfer needed</b></div></div></article>
-          <article class="day"><span class="status confirmed">Departures</span><h4>Thu 10–Fri 11</h4><p class="main-plan">Detroit group departs Thursday. Chris + Nicole depart Friday after a final Rome night.</p><div class="travel-detail"><div class="travel-row"><span>Thu flight</span><b>Chris Z + Maddie + Hudson: Delta 207 · FCO 9:00am → DTW</b></div><div class="travel-row"><span>Thu details</span><b class="need">Denise + John exact flight details still needed</b></div><div class="travel-row"><span>Fri route</span><b>Chris + Nicole depart Rome · flight details needed</b></div><div class="travel-row"><span>Transfers</span><b class="need">FCO hotel shuttle/private vehicles needed</b></div></div></article>
+          <article class="day"><span class="status proposed">Infant-paced</span><h4>Mon 7 · Acropolis + Plaka</h4><p class="main-plan">Acropolis at opening, midday rest, Plaka dinner. Agora is optional or moves to Tuesday.</p><div class="travel-detail"><div class="travel-row"><span>Open</span><b class="need">Official Acropolis tickets when the date opens</b></div><div class="travel-row"><span>Sleep</span><b class="need">Athens lodging not booked</b></div></div></article>
+          <article class="day travel-day"><span class="status confirmed">First group split</span><h4>Tue 8 · Ari + Kai depart</h4><p class="movement">✈ Ari + Kai: Athens → Kansas City · remaining group stays in Athens</p><p class="main-plan">Separate airport transfer; remaining group chooses Agora, museum, or café day based on energy.</p><div class="split-lanes"><div><b>Departure pair</b>Dedicated airport vehicle around the confirmed flight.</div><div><b>Remaining group</b>One optional local outing; no airport round-trip obligation.</div></div><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Airline, flight number, and departure time needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Athens airport vehicle needed</b></div><div class="travel-row"><span>Sleep</span><b class="need">Athens lodging · final night not booked</b></div></div></article>
+          <article class="day travel-day"><span class="status open">Flight unbooked</span><h4>Wed 9 · Athens → Rome</h4><p class="movement">✈ ATH → FCO · direct morning/midday target</p><p class="main-plan">Use the afternoon as delay buffer and sleep near FCO for Thursday’s early departures.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Direct ATH → FCO flight for remaining seven needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Group + luggage airport vehicle needed</b></div><div class="travel-row"><span>Sleep</span><b class="need">FCO hotel for departing group; Chris + Nicole plan needed</b></div></div></article>
+          <article class="day travel-day"><span class="status confirmed">Delta booked</span><h4>Thu 10 · Detroit departure</h4><p class="movement">✈ FCO 9:00am → DTW · Chris Z + Maddie + Hudson</p><p class="main-plan">Pre-dawn hotel transfer. Denise + John’s exact Detroit-bound flight still needs to be recorded.</p><div class="split-lanes"><div><b>Detroit group</b>FCO departure with all bags and Hudson’s airport kit.</div><div><b>Chris + Nicole</b>Remain for one final Rome night.</div></div><div class="travel-detail"><div class="travel-row"><span>Flight</span><b>Delta 207 · confirmed for Chris Z + Maddie + Hudson</b></div><div class="travel-row"><span>Open</span><b class="need">Denise + John flight; transfers; Chris + Nicole lodging</b></div></div></article>
+          <article class="day travel-day"><span class="status confirmed">Final departure</span><h4>Fri 11 · Chris + Nicole depart</h4><p class="movement">✈ Rome departure → onward routing</p><p class="main-plan">Final airport transfer closes the trip.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Airline, flight number, departure time, and airport needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Final Rome/FCO vehicle needed</b></div></div></article>
         </div>
       </div>
     </section>
