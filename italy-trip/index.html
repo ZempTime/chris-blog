@@ -186,28 +186,23 @@ eleventyExcludeFromCollections: true
     .day .main-plan { color: var(--ink); font-weight: 700; }
     .day .baby { color: var(--sea-dark); }
 
+    .travel-detail { display: grid; gap: 6px; margin-top: 13px; padding-top: 11px; border-top: 1px solid var(--line); }
+    .travel-row { display: grid; grid-template-columns: 82px 1fr; gap: 9px; font-size: 12.5px; }
+    .travel-row span { color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    .travel-row b { font-family: var(--sans); font-weight: 700; }
+    .travel-row b.need { color: var(--italy); }
+
     .callout { margin: 18px 0; padding: 15px 18px; border-left: 5px solid var(--gold); border-radius: 8px; background: #f6ead3; }
     .callout strong { color: var(--italy-dark); }
     .callout.warn { border-color: var(--italy); background: #f5e2de; }
 
-    .decision-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .decision { display: flex; flex-direction: column; }
-    .decision .ask { margin: 0; font: 700 21px var(--serif); }
-    .decision .recommendation { margin: 12px 0; padding: 11px 13px; border-radius: 10px; color: var(--sea-dark); background: #e5f1f1; }
-    .decision .why { color: var(--muted); font-size: 14px; }
-
-    .reply-box {
-      margin-top: 20px;
-      padding: 22px;
-      color: white;
-      border-radius: var(--radius);
-      background: linear-gradient(125deg, var(--sea-dark), var(--sea));
-      box-shadow: var(--shadow);
-    }
-
-    .reply-box h3 { margin: 0; font-size: 26px; }
-    .reply-box p { max-width: 760px; }
-    .reply-box pre { padding: 16px; overflow-x: auto; border: 1px solid rgba(255,255,255,.22); border-radius: 12px; background: rgba(0,0,0,.13); white-space: pre-wrap; font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .confirm-card { max-width: 860px; }
+    .confirm-list { display: grid; gap: 0; margin: 0; padding: 0 0 0 24px; }
+    .confirm-list li { padding: 15px 10px 15px 4px; border-bottom: 1px solid var(--line); }
+    .confirm-list li:last-child { border-bottom: 0; }
+    .confirm-list li::marker { color: var(--sea); }
+    .confirm-list b { display: block; font-family: var(--serif); font-size: 18px; }
+    .confirm-list span { color: var(--muted); font-size: 14px; }
 
     .button {
       display: inline-flex;
@@ -225,9 +220,7 @@ eleventyExcludeFromCollections: true
     }
 
     .button:hover { transform: translateY(-1px); }
-    .copy-status { display: inline-block; margin-left: 10px; font-size: 13px; opacity: .82; }
-
-    .action-columns { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16px; }
+    .action-columns { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 860px; }
     .actions ul { margin: 10px 0 0; padding-left: 20px; }
     .actions li { margin: 8px 0; }
     .actions.now { border-top: 6px solid var(--italy); }
@@ -243,12 +236,11 @@ eleventyExcludeFromCollections: true
     .prep-card h3 { font-size: 30px; }
     .prep-card .button { white-space: nowrap; }
 
-    .source-note { color: var(--muted); font-size: 13px; }
     footer { padding: 36px 18px 60px; color: var(--muted); text-align: center; }
 
     @media (max-width: 850px) {
-      .grid.three, .action-columns { grid-template-columns: 1fr; }
-      .grid.two, .decision-grid { grid-template-columns: 1fr; }
+      .grid.three { grid-template-columns: 1fr; }
+      .grid.two { grid-template-columns: 1fr; }
       .route { grid-template-columns: 1fr; }
       .route-stop:not(:last-child)::after { content: "↓"; left: 50%; right: auto; bottom: -15px; top: auto; }
       .prep-card { grid-template-columns: 1fr; }
@@ -259,6 +251,7 @@ eleventyExcludeFromCollections: true
       main { padding-inline: 12px; }
       section { padding-top: 46px; }
       .days { grid-template-columns: 1fr; }
+      .travel-row { grid-template-columns: 72px 1fr; }
       .card { padding: 18px; }
       .phase-title { align-items: flex-start; flex-direction: column; }
       .logistics { overflow-x: auto; }
@@ -340,6 +333,12 @@ eleventyExcludeFromCollections: true
             <p class="main-plan">Airport transfers, bags to the Airbnb, food, daylight, naps, early bed.</p>
             <p>Optional: a short Trevi walk only if people feel genuinely good.</p>
             <p class="baby">Hudson: arrival buffer stays accessible; no fixed evening commitment.</p>
+            <div class="travel-detail">
+              <div class="travel-row"><span>Stay</span><b>Rome Airbnb · confirmed 24–27 Aug</b></div>
+              <div class="travel-row"><span>Flight</span><b>Chris Z + Maddie + Hudson: Delta 206 · DTW Sun 23 at 8:10pm → FCO</b></div>
+              <div class="travel-row"><span>Arrival</span><b class="need">Delta 206 Rome arrival time + other flight details needed</b></div>
+              <div class="travel-row"><span>Transfer</span><b class="need">Airport vehicles + early bag drop needed</b></div>
+            </div>
           </article>
           <article class="day">
             <span class="status confirmed">Booked 7:45am</span>
@@ -347,6 +346,11 @@ eleventyExcludeFromCollections: true
             <p class="main-plan">Arrive before the operator’s meeting time, tour, then protect the afternoon for rest.</p>
             <p>Keep dinner simple. Pasta class remains open.</p>
             <p class="baby">Hudson: operator must confirm infant and stroller/carrier rules.</p>
+            <div class="travel-detail">
+              <div class="travel-row"><span>Tickets</span><b>Vatican + Sistine Chapel · confirmed</b></div>
+              <div class="travel-row"><span>Transfer</span><b class="need">Meeting point, report time, and vehicles needed</b></div>
+              <div class="travel-row"><span>Stay</span><b>Rome Airbnb · confirmed</b></div>
+            </div>
           </article>
           <article class="day">
             <span class="status proposed">Family option</span>
@@ -354,6 +358,11 @@ eleventyExcludeFromCollections: true
             <p class="main-plan">Proposed 8:30am official self-guided entry for Chris Z, wife, and Hudson; maximum 75 minutes.</p>
             <p>Replace Spello with a lower-transfer Rome day. Forum and Palatine are optional.</p>
             <p class="baby">Hudson: soft carrier and a compact diaper kit; no rigid group tour.</p>
+            <div class="travel-detail">
+              <div class="travel-row"><span>Tickets</span><b class="need">Official timed Colosseum entry not booked</b></div>
+              <div class="travel-row"><span>Local move</span><b>Short taxi/transit from Airbnb; no luggage</b></div>
+              <div class="travel-row"><span>Stay</span><b>Rome Airbnb · confirmed</b></div>
+            </div>
           </article>
           <article class="day">
             <span class="status open">Car capacity open</span>
@@ -361,6 +370,11 @@ eleventyExcludeFromCollections: true
             <p class="main-plan">Collect two luggage-capable cars and treat the drive as a six-hour door-to-door transfer.</p>
             <p>Pool, groceries, and bed on arrival.</p>
             <p class="baby">Hudson: practiced rear-facing travel car seat and planned stops.</p>
+            <div class="travel-detail">
+              <div class="travel-row"><span>Vehicle 1</span><b>Tiguan-class FCO 8:00am → Bari · confirmed</b></div>
+              <div class="travel-row"><span>Vehicle 2</span><b class="need">Luggage-capable second rental needed</b></div>
+              <div class="travel-row"><span>Stay</span><b>Masseria MonteFieno · confirmed 27 Aug–1 Sep</b></div>
+            </div>
           </article>
         </div>
       </div>
@@ -372,19 +386,19 @@ eleventyExcludeFromCollections: true
           <article class="day"><span class="status proposed">Optional subgroup</span><h4>Sat 29 · Matera</h4><p class="main-plan">Carrier-friendly Sassi route for those who want it; masseria escape hatch for everyone else.</p></article>
           <article class="day"><span class="status proposed">One main event</span><h4>Sun 30 · Alberobello</h4><p class="main-plan">Trulli plus a possible orecchiette class after child/duration details are checked.</p></article>
           <article class="day"><span class="status proposed">Pack early</span><h4>Mon 31 · Beach</h4><p class="main-plan">Nearby beach, fuel cars, fully pack before dinner, very early night.</p></article>
-          <article class="day"><span class="status conflict">4:15am target</span><h4>Tue 1 · Bari → Heraklion</h4><p class="main-plan">Remove Lecce. Early car return, 7:20am Volotea flight, Crete cars, direct to villa.</p><p class="baby">Hudson: register stroller + car seat; retain the soft carrier through baggage claim.</p></article>
+          <article class="day"><span class="status conflict">4:15am target</span><h4>Tue 1 · Bari → Heraklion</h4><p class="main-plan">Remove Lecce. Early car return, 7:20am Volotea flight, Crete cars, direct to villa.</p><p class="baby">Hudson: register stroller + car seat; retain the soft carrier through baggage claim.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b>Volotea · BRI 7:20am → HER 10:05am · confirmed</b></div><div class="travel-row"><span>Bags</span><b class="need">Paid baggage, Priority, seats, and infant record needed</b></div><div class="travel-row"><span>Cars</span><b class="need">Early Bari return + two Greek rentals needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Crete villa not booked</b></div></div></article>
         </div>
       </div>
 
       <div class="phase">
         <div class="phase-title"><h3>Crete</h3><span>Tue 1–Sun 6 Sep</span></div>
         <div class="days">
-          <article class="day"><span class="status open">Base unbooked</span><h4>Tue 1 · Arrive</h4><p class="main-plan">Rethymno area is the recommended compromise. No sightseeing with luggage in cars.</p></article>
+          <article class="day"><span class="status open">Base unbooked</span><h4>Tue 1 · Arrive</h4><p class="main-plan">Rethymno area is the recommended compromise. No sightseeing with luggage in cars.</p><div class="travel-detail"><div class="travel-row"><span>Arrival</span><b>Heraklion 10:05am · confirmed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Two rental cars + villa drive needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Crete base and exact address needed</b></div></div></article>
           <article class="day"><span class="status proposed">Recovery</span><h4>Wed 2 · Pool + nearby town</h4><p class="main-plan">Do not combine Knossos and Chania after the early Puglia start.</p></article>
           <article class="day"><span class="status proposed">Split day</span><h4>Thu 3 · Gorge/coast or pool</h4><p class="main-plan">Active subgroup and Hudson/rest subgroup; rotate the parent rest role.</p></article>
           <article class="day"><span class="status proposed">Choose one</span><h4>Fri 4 · Knossos or rest</h4><p class="main-plan">If Knossos wins, go early and make it the only major outing.</p></article>
           <article class="day"><span class="status proposed">Choose one</span><h4>Sat 5 · Chania or cooking</h4><p class="main-plan">One main event rather than forcing both into a long day.</p></article>
-          <article class="day"><span class="status open">Flight unbooked</span><h4>Sun 6 · Crete → Athens</h4><p class="main-plan">Transfer-day default. Move Marathi Beach unless a deliberately late flight preserves a generous buffer.</p></article>
+          <article class="day"><span class="status open">Flight unbooked</span><h4>Sun 6 · Crete → Athens</h4><p class="main-plan">Transfer-day default. Move Marathi Beach unless a deliberately late flight preserves a generous buffer.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Airport, airline, flight number, and time needed</b></div><div class="travel-row"><span>Cars</span><b class="need">Greek rental return airport/time needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Athens hotel not booked</b></div></div></article>
         </div>
       </div>
 
@@ -392,9 +406,9 @@ eleventyExcludeFromCollections: true
         <div class="phase-title"><h3>Athens + departures</h3><span>Sun 6–Fri 11 Sep</span></div>
         <div class="days">
           <article class="day"><span class="status proposed">Infant-paced</span><h4>Mon 7 · Acropolis + Plaka</h4><p class="main-plan">Acropolis at opening, midday rest, Plaka dinner. Agora optional or moved to Tuesday.</p></article>
-          <article class="day"><span class="status confirmed">First split</span><h4>Tue 8 · Ari + Kai depart</h4><p class="main-plan">Separate airport transfer; remaining group chooses Agora, museum, or café day.</p></article>
-          <article class="day"><span class="status open">Flight unbooked</span><h4>Wed 9 · Athens → Rome</h4><p class="main-plan">Direct morning/midday flight and FCO-area overnight for the departing group.</p></article>
-          <article class="day"><span class="status confirmed">Departures</span><h4>Thu 10–Fri 11</h4><p class="main-plan">Detroit group departs Thursday. Chris + Nicole depart Friday after a final Rome night.</p></article>
+          <article class="day"><span class="status confirmed">First split</span><h4>Tue 8 · Ari + Kai depart</h4><p class="main-plan">Separate airport transfer; remaining group chooses Agora, museum, or café day.</p><div class="travel-detail"><div class="travel-row"><span>Route</span><b>Athens → Kansas City · confirmed</b></div><div class="travel-row"><span>Flight</span><b class="need">Airline, flight number, and departure time needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Athens airport vehicle needed</b></div></div></article>
+          <article class="day"><span class="status open">Flight unbooked</span><h4>Wed 9 · Athens → Rome</h4><p class="main-plan">Direct morning/midday flight and FCO-area overnight for the departing group.</p><div class="travel-detail"><div class="travel-row"><span>Flight</span><b class="need">Direct ATH → FCO flight for remaining seven needed</b></div><div class="travel-row"><span>Stay</span><b class="need">Fiumicino-area hotel for 9 Sep needed</b></div><div class="travel-row"><span>Transfer</span><b class="need">Group + luggage airport transfer needed</b></div></div></article>
+          <article class="day"><span class="status confirmed">Departures</span><h4>Thu 10–Fri 11</h4><p class="main-plan">Detroit group departs Thursday. Chris + Nicole depart Friday after a final Rome night.</p><div class="travel-detail"><div class="travel-row"><span>Thu flight</span><b>Chris Z + Maddie + Hudson: Delta 207 · FCO 9:00am → DTW</b></div><div class="travel-row"><span>Thu details</span><b class="need">Denise + John exact flight details still needed</b></div><div class="travel-row"><span>Fri route</span><b>Chris + Nicole depart Rome · flight details needed</b></div><div class="travel-row"><span>Transfers</span><b class="need">FCO hotel shuttle/private vehicles needed</b></div></div></article>
         </div>
       </div>
     </section>
@@ -403,62 +417,21 @@ eleventyExcludeFromCollections: true
       <div class="section-head">
         <p class="eyebrow">For the group</p>
         <h2>Questions to resolve</h2>
-        <p>This page is shareable, but it is not a synchronized voting system. Reply in the group chat; accepted answers will be written into the private trip repository.</p>
+        <p>Pieces of information still needed to close the route and bookings. Use these to guide the group chat.</p>
       </div>
 
-      <div class="decision-grid">
-        <article class="card decision">
-          <span class="status open">Reply now</span>
-          <p class="ask">Are you in for the Vatican?</p>
-          <div class="recommendation"><b>Known:</b> 25 August at 7:45am; Vatican Museums + Sistine Chapel.</div>
-          <p class="why">We need attendance before transfer capacity and any booking adjustment are finalized.</p>
-        </article>
-        <article class="card decision">
-          <span class="status open">Reply now</span>
-          <p class="ask">What are you bringing?</p>
-          <div class="recommendation"><b>Send:</b> checked-bag count/size, cabin-bag count/size, and unusual items.</div>
-          <p class="why">Volotea bags cost extra, and advertised car seats do not tell us whether nine people’s luggage will fit.</p>
-        </article>
-        <article class="card decision">
-          <span class="status proposed">Recommended default</span>
-          <p class="ask">Is a Rethymno-area Crete base okay?</p>
-          <div class="recommendation"><b>Recommendation:</b> yes—it balances Heraklion, Knossos, Chania, and western activities.</div>
-          <p class="why">Speak up if Chania, Knossos, Marathi, or a particular cooking class is the priority.</p>
-        </article>
-        <article class="card decision">
-          <span class="status open">Rank interests</span>
-          <p class="ask">Which activities are worth fixing to the calendar?</p>
-          <div class="recommendation"><b>Choose three:</b> pasta, orecchiette, Cretan cooking, Matera, Alberobello, Knossos, Chania, hike, beach club.</div>
-          <p class="why">We will preserve subgroup flexibility instead of making every activity mandatory.</p>
-        </article>
-        <article class="card decision">
-          <span class="status open">Reply now</span>
-          <p class="ask">Who is willing to drive?</p>
-          <div class="recommendation"><b>Reply separately:</b> Italy yes/no; Greece yes/no.</div>
-          <p class="why">Both countries need two vehicles and more than one confident driver.</p>
-        </article>
-        <article class="card decision">
-          <span class="status proposed">Arrival default</span>
-          <p class="ask">How ambitious should arrival night be?</p>
-          <div class="recommendation"><b>Recommendation:</b> recovery, with a short Trevi walk only if energetic.</div>
-          <p class="why">The supplied Colosseum tour excludes Hudson and precedes the 7:45am Vatican morning.</p>
-        </article>
-      </div>
-
-      <div class="reply-box">
-        <h3>Copy this into the group chat</h3>
-        <p>One compact reply gives the planning repo enough information to close the next set of bookings.</p>
-        <pre id="reply-template">Vatican: IN / OUT
-Arrival evening: REST / TREVI IF ENERGETIC / ADULT COLOSSEUM INTEREST
-Bags: [name — checked count/size, cabin count/size, unusual items]
-Driving: ITALY YES/NO; GREECE YES/NO
-Crete base: RETHYMNO OK / OTHER PRIORITY: ____
-Top 3 activities: 1) ____ 2) ____ 3) ____
-Activities I am happy to split for: ____
-Food/room/schedule constraints not yet captured: ____</pre>
-        <button class="button" id="copy-reply" type="button">Copy reply template</button>
-        <span class="copy-status" id="copy-status" aria-live="polite"></span>
-      </div>
+      <article class="card confirm-card">
+        <ul class="confirm-list">
+          <li><b>Vatican attendance</b><span>Who is in or out for 25 August at 7:45am?</span></li>
+          <li><b>Rome arrival details</b><span>Flight number, airport, local arrival time, and checked-bag count for each arrival party.</span></li>
+          <li><b>Individual luggage</b><span>Checked and cabin bag count, approximate size/weight, and unusual items.</span></li>
+          <li><b>Drivers</b><span>Who is willing and eligible to drive in Italy and Greece?</span></li>
+          <li><b>Crete base priorities</b><span>Whether Rethymno works, or whether Chania, Knossos, Marathi, or a particular class should drive the location.</span></li>
+          <li><b>Activity priorities</b><span>Top choices among the cooking classes, Matera, Alberobello, Knossos, Chania, hike, and beach club.</span></li>
+          <li><b>Whole-group versus subgroup activities</b><span>Which experiences need everyone together and which are easy to split for.</span></li>
+          <li><b>Unrecorded constraints</b><span>Food, room-sharing, sleep, health, mobility, or schedule requirements.</span></li>
+        </ul>
+      </article>
     </section>
 
     <section id="actions">
@@ -559,40 +532,11 @@ Food/room/schedule constraints not yet captured: ____</pre>
       </div>
     </section>
 
-    <section id="sources">
-      <div class="section-head">
-        <p class="eyebrow">How this stays trustworthy</p>
-        <h2>Repository first, website second</h2>
-        <p>The private trip repository retains the original itinerary document and booking messages, separates confirmed facts from proposals, and records accepted decisions. This page is the shareable explanation of that record—not a parallel source of truth.</p>
-      </div>
-      <p class="source-note">Sensitive Airbnb invitation tokens, reservation codes, passport details, and exact private addresses are deliberately excluded from this public page.</p>
-    </section>
   </main>
 
   <footer>
     Italy + Greece · 24 August–11 September 2026 · Updated from the private trip record on 12 July 2026
   </footer>
 
-  <script>
-    const copyButton = document.querySelector("#copy-reply");
-    const copyStatus = document.querySelector("#copy-status");
-    const replyTemplate = document.querySelector("#reply-template");
-
-    copyButton.addEventListener("click", async () => {
-      const text = replyTemplate.textContent.trim();
-
-      try {
-        await navigator.clipboard.writeText(text);
-        copyStatus.textContent = "Copied.";
-      } catch (error) {
-        const selection = window.getSelection();
-        const range = document.createRange();
-        range.selectNodeContents(replyTemplate);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        copyStatus.textContent = "Select and copy the highlighted text.";
-      }
-    });
-  </script>
 </body>
 </html>
