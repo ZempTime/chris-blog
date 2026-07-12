@@ -220,12 +220,64 @@ eleventyExcludeFromCollections: true
     }
 
     .button:hover { transform: translateY(-1px); }
-    .action-columns { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 860px; }
-    .actions ul { margin: 10px 0 0; padding-left: 20px; }
-    .actions li { margin: 8px 0; }
-    .actions.now { border-top: 6px solid var(--italy); }
-    .actions.soon { border-top: 6px solid var(--gold); }
-    .actions.later { border-top: 6px solid var(--olive); }
+    .action-workspace { display: grid; grid-template-columns: minmax(300px, .85fr) minmax(430px, 1.35fr); gap: 18px; align-items: start; }
+    .action-groups { display: grid; gap: 16px; }
+    .action-group { padding: 18px; }
+    .action-group.now { border-top: 6px solid var(--italy); }
+    .action-group.soon { border-top: 6px solid var(--gold); }
+    .action-group.later { border-top: 6px solid var(--olive); }
+    .action-group h3 { margin: 8px 0 12px; font-size: 21px; }
+    .action-list { display: grid; gap: 8px; }
+    .action-choice {
+      display: grid;
+      grid-template-columns: 30px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      padding: 10px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fffdf8;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .action-choice:hover { border-color: var(--sea); transform: translateY(-1px); }
+    .action-choice[aria-pressed="true"] { border-color: var(--sea-dark); background: #e8f1ef; box-shadow: inset 4px 0 0 var(--sea); }
+    .action-number { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: white; background: var(--sea-dark); font-size: 12px; font-weight: 900; }
+    .action-label { font-weight: 800; line-height: 1.25; }
+    .action-date { color: var(--muted); font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .action-brief { position: sticky; top: 68px; min-height: 590px; border-top: 6px solid var(--sea); }
+    .action-brief h3 { margin: 9px 0 6px; font-size: 31px; }
+    .brief-meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 18px; }
+    .brief-meta span { padding: 6px 9px; border-radius: 999px; color: var(--sea-dark); background: #e8f1ef; font-size: 12px; font-weight: 900; }
+    .brief-problem { padding: 14px 16px; border-left: 4px solid var(--italy); border-radius: 8px; background: #f5e2de; }
+    .brief-section { padding-top: 16px; }
+    .brief-section + .brief-section { margin-top: 14px; border-top: 1px solid var(--line); }
+    .brief-section h4 { margin: 0 0 8px; color: var(--sea-dark); font-size: 13px; text-transform: uppercase; letter-spacing: .07em; }
+    .brief-section ul { margin: 0; padding-left: 20px; }
+    .brief-section li { margin: 7px 0; }
+    .brief-options { display: grid; gap: 8px; }
+    .brief-option { padding: 11px 12px; border: 1px solid var(--line); border-radius: 9px; background: #fffdf8; }
+    .brief-option b { display: block; margin-bottom: 3px; }
+    .brief-option span { color: var(--muted); font-size: 13px; }
+    .brief-source { color: var(--muted); font-size: 12px; }
+    .brief-source a { color: var(--sea-dark); font-weight: 800; }
+
+    .practical-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .practical-card h3 { margin-bottom: 8px; }
+    .practical-card ul { margin: 10px 0 0; padding-left: 20px; }
+    .practical-card li { margin: 8px 0; }
+    .practical-card .mini-note { margin-top: 13px; padding: 10px 12px; border-radius: 8px; color: var(--muted); background: #f4efe6; font-size: 13px; }
+    .practical-card.wide { grid-column: 1 / -1; }
+    .cheat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 16px; }
+    .cheat-grid h4 { margin: 0 0 7px; color: var(--sea-dark); font-size: 15px; }
+    .cheat-grid ul { margin-top: 0; }
+    .data-choice { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 13px; }
+    .data-choice div { padding: 11px; border: 1px solid var(--line); border-radius: 9px; background: #fffdf8; }
+    .data-choice b { display: block; margin-bottom: 4px; }
+    .data-choice span { color: var(--muted); font-size: 12px; }
 
     .logistics table { width: 100%; border-collapse: collapse; }
     .logistics th, .logistics td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -244,6 +296,11 @@ eleventyExcludeFromCollections: true
       .route { grid-template-columns: 1fr; }
       .route-stop:not(:last-child)::after { content: "↓"; left: 50%; right: auto; bottom: -15px; top: auto; }
       .prep-card { grid-template-columns: 1fr; }
+      .action-workspace { grid-template-columns: 1fr; }
+      .action-brief { position: static; min-height: 0; }
+      .practical-grid { grid-template-columns: 1fr; }
+      .practical-card.wide { grid-column: auto; }
+      .cheat-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 650px) {
@@ -256,6 +313,7 @@ eleventyExcludeFromCollections: true
       .phase-title { align-items: flex-start; flex-direction: column; }
       .logistics { overflow-x: auto; }
       .logistics table { min-width: 650px; }
+      .data-choice { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -267,6 +325,7 @@ eleventyExcludeFromCollections: true
     <a href="#decisions">Group questions</a>
     <a href="#actions">Actions</a>
     <a href="#logistics">Luggage + Hudson</a>
+    <a href="#practical">Before you go</a>
     <a href="#prep">Packing prep</a>
   </nav>
 
@@ -438,41 +497,59 @@ eleventyExcludeFromCollections: true
       <div class="section-head">
         <p class="eyebrow">Operational queue</p>
         <h2>What needs to happen next</h2>
+        <p>Select an item to see the actual problem, relevant dates, choices, prerequisites, and the information needed to close it.</p>
       </div>
-      <div class="action-columns">
-        <article class="card actions now">
+      <div class="action-workspace">
+        <div class="action-groups" aria-label="Trip actions">
+        <article class="card action-group now">
           <span class="status conflict">Now</span>
           <h3>Close the route</h3>
-          <ul>
-            <li>Collect bag counts and buy Volotea baggage online.</li>
-            <li>Fix the Bari rental return and add the second Italy car.</li>
-            <li>Choose and book the Crete base.</li>
-            <li>Book Crete–Athens and Athens–Rome direct flights.</li>
-            <li>Book Greek cars, Athens lodging, and the FCO overnight.</li>
-            <li>Settle Hudson’s MMR schedule with his pediatrician.</li>
-          </ul>
+          <div class="action-list">
+            <button class="action-choice" type="button" data-action="volotea" aria-pressed="true" aria-controls="action-detail"><span class="action-number">1</span><span class="action-label">Volotea bags</span><span class="action-date">1 Sep</span></button>
+            <button class="action-choice" type="button" data-action="italy-cars" aria-pressed="false" aria-controls="action-detail"><span class="action-number">2</span><span class="action-label">Bari return + second car</span><span class="action-date">27 Aug–1 Sep</span></button>
+            <button class="action-choice" type="button" data-action="crete-base" aria-pressed="false" aria-controls="action-detail"><span class="action-number">3</span><span class="action-label">Choose Crete base</span><span class="action-date">1–6 Sep</span></button>
+            <button class="action-choice" type="button" data-action="greek-flights" aria-pressed="false" aria-controls="action-detail"><span class="action-number">4</span><span class="action-label">Book Greek flights</span><span class="action-date">6 + 9 Sep</span></button>
+            <button class="action-choice" type="button" data-action="greek-cars" aria-pressed="false" aria-controls="action-detail"><span class="action-number">5</span><span class="action-label">Book Crete cars</span><span class="action-date">1–6 Sep</span></button>
+            <button class="action-choice" type="button" data-action="athens-stay" aria-pressed="false" aria-controls="action-detail"><span class="action-number">6</span><span class="action-label">Book Athens stay</span><span class="action-date">6–9 Sep</span></button>
+            <button class="action-choice" type="button" data-action="fco-stay" aria-pressed="false" aria-controls="action-detail"><span class="action-number">7</span><span class="action-label">Book FCO overnight</span><span class="action-date">9 Sep</span></button>
+            <button class="action-choice" type="button" data-action="mmr" aria-pressed="false" aria-controls="action-detail"><span class="action-number">8</span><span class="action-label">Settle Hudson’s MMR</span><span class="action-date">Before 9 Aug</span></button>
+          </div>
         </article>
-        <article class="card actions soon">
+        <article class="card action-group soon">
           <span class="status open">Within a week</span>
           <h3>Close the seams</h3>
-          <ul>
-            <li>Confirm Airbnb early bag drop and all lodging practicalities.</li>
-            <li>Book Rome airport transfers from actual arrivals + bag count.</li>
-            <li>Buy travel insurance covering Hudson and evacuation.</li>
-            <li>Practice car-seat installation and the stroller/carrier handoff.</li>
-            <li>Store offline copies of documents and bookings.</li>
-          </ul>
+          <div class="action-list">
+            <button class="action-choice" type="button" data-action="rome-lodging" aria-pressed="false" aria-controls="action-detail"><span class="action-number">9</span><span class="action-label">Confirm Rome lodging details</span><span class="action-date">24–27 Aug</span></button>
+            <button class="action-choice" type="button" data-action="rome-transfers" aria-pressed="false" aria-controls="action-detail"><span class="action-number">10</span><span class="action-label">Book Rome transfers</span><span class="action-date">24 + 27 Aug</span></button>
+            <button class="action-choice" type="button" data-action="insurance" aria-pressed="false" aria-controls="action-detail"><span class="action-number">11</span><span class="action-label">Choose travel insurance</span><span class="action-date">Now</span></button>
+            <button class="action-choice" type="button" data-action="car-seat" aria-pressed="false" aria-controls="action-detail"><span class="action-number">12</span><span class="action-label">Practice the baby gear system</span><span class="action-date">By early Aug</span></button>
+            <button class="action-choice" type="button" data-action="offline" aria-pressed="false" aria-controls="action-detail"><span class="action-number">13</span><span class="action-label">Prepare phones + offline docs</span><span class="action-date">By 16 Aug</span></button>
+          </div>
         </article>
-        <article class="card actions later">
+        <article class="card action-group later">
           <span class="status proposed">After transport</span>
           <h3>Add the fun</h3>
-          <ul>
-            <li>Cooking classes.</li>
-            <li>Matera/Alberobello guide choices.</li>
-            <li>Beach club.</li>
-            <li>Mountain taverna and fixed dinners.</li>
-            <li>Final flight and transfer reconfirmations.</li>
-          </ul>
+          <div class="action-list">
+            <button class="action-choice" type="button" data-action="colosseum" aria-pressed="false" aria-controls="action-detail"><span class="action-number">14</span><span class="action-label">Family Colosseum plan</span><span class="action-date">26 Aug</span></button>
+            <button class="action-choice" type="button" data-action="classes" aria-pressed="false" aria-controls="action-detail"><span class="action-number">15</span><span class="action-label">Cooking classes</span><span class="action-date">25 Aug–5 Sep</span></button>
+            <button class="action-choice" type="button" data-action="puglia-days" aria-pressed="false" aria-controls="action-detail"><span class="action-number">16</span><span class="action-label">Matera + Alberobello</span><span class="action-date">29–30 Aug</span></button>
+            <button class="action-choice" type="button" data-action="beach" aria-pressed="false" aria-controls="action-detail"><span class="action-number">17</span><span class="action-label">Beach day</span><span class="action-date">31 Aug</span></button>
+            <button class="action-choice" type="button" data-action="dinners" aria-pressed="false" aria-controls="action-detail"><span class="action-number">18</span><span class="action-label">Taverna + fixed dinners</span><span class="action-date">After lodging</span></button>
+            <button class="action-choice" type="button" data-action="reconfirm" aria-pressed="false" aria-controls="action-detail"><span class="action-number">19</span><span class="action-label">Final reconfirmations</span><span class="action-date">16–22 Aug</span></button>
+          </div>
+        </article>
+        </div>
+
+        <article id="action-detail" class="card action-brief" tabindex="-1" aria-live="polite" aria-labelledby="brief-title">
+          <span id="brief-status" class="status conflict">Decide now</span>
+          <h3 id="brief-title">Volotea bags</h3>
+          <div id="brief-meta" class="brief-meta"></div>
+          <p id="brief-problem" class="brief-problem"></p>
+          <div class="brief-section"><h4>What we know</h4><ul id="brief-known"></ul></div>
+          <div class="brief-section"><h4>Realistic options</h4><div id="brief-options" class="brief-options"></div></div>
+          <div class="brief-section"><h4>Information needed to decide</h4><ul id="brief-needed"></ul></div>
+          <div class="brief-section"><h4>Practical booking check</h4><ul id="brief-checks"></ul></div>
+          <p id="brief-source" class="brief-source"></p>
         </article>
       </div>
     </section>
@@ -521,6 +598,154 @@ eleventyExcludeFromCollections: true
       </div>
     </section>
 
+    <section id="practical">
+      <div class="section-head">
+        <p class="eyebrow">Phones, apps + street-level details</p>
+        <h2>Before you go</h2>
+        <p>A small setup pass prevents the trip from depending on live signal, one person’s inbox, or airport improvisation.</p>
+      </div>
+
+      <div class="practical-grid">
+        <article class="card practical-card">
+          <span class="status open">Decide by 16 Aug</span>
+          <h3>How phone data should work</h3>
+          <p>Choose per household after comparing the carrier’s full-trip cost with a Europe-region eSIM. The phone must be unlocked to use another provider’s eSIM.</p>
+          <div class="data-choice">
+            <div><b>Carrier roaming</b><span>Easiest; keeps normal calling/data. Price the entire 20-day trip, not one day.</span></div>
+            <div><b>Europe eSIM</b><span>Usually better value for data. Install before flying; examples include Airalo, Saily, and Holafly.</span></div>
+            <div><b>Hybrid — practical default</b><span>Keep the U.S. line active for calls/SMS, use the eSIM for cellular data, and disable U.S.-line data roaming.</span></div>
+          </div>
+          <ul>
+            <li>Confirm the phone is unlocked, supports dual SIM/eSIM, and will not charge for passive international use.</li>
+            <li>Keep the U.S. number available if banks or airlines use SMS; use WhatsApp for the group and local businesses.</li>
+            <li>Save the eSIM activation instructions offline. Do not remove the eSIM until everyone is home.</li>
+          </ul>
+        </article>
+
+        <article class="card practical-card">
+          <span class="status proposed">Install + sign in</span>
+          <h3>Essential apps</h3>
+          <ul>
+            <li><b>Google Maps:</b> download Rome, Puglia, Crete, and Athens offline; save every lodging, airport, rental desk, hospital, and fixed booking.</li>
+            <li><b>Google Translate:</b> download Italian and Greek; the camera mode helps with signs and menus.</li>
+            <li><b>Delta + each intra-Europe airline:</b> sign in before travel and confirm Hudson is visible where relevant.</li>
+            <li><b>WhatsApp:</b> primary group thread and common contact method for hosts, drivers, and smaller businesses.</li>
+            <li><b>Bank/card apps:</b> turn on transaction alerts and make sure both parents can freeze their own cards.</li>
+          </ul>
+          <p class="mini-note">Take screenshots/PDFs anyway. An installed app can still log out, hide a booking, or fail without data.</p>
+        </article>
+
+        <article class="card practical-card">
+          <span class="status proposed">Useful, not mandatory</span>
+          <h3>Apps for this route</h3>
+          <ul>
+            <li><b>FreeNow or itTaxi:</b> useful for licensed city taxis; for nine people plus bags, pre-booked vans are still more dependable.</li>
+            <li><b>Flighty or FlightAware:</b> optional shared flight-status layer; airline notifications remain primary.</li>
+            <li><b>TheFork:</b> optional restaurant discovery/reservations, especially after lodging locations are fixed.</li>
+            <li><b>Rental-company apps/accounts:</b> useful for smart check-in, contracts, damage photos, and roadside contacts.</li>
+            <li><b>Apple/Google Wallet:</b> add cards and eligible boarding passes, but carry physical cards for rental deposits.</li>
+          </ul>
+          <p class="mini-note"><b>Skip for now:</b> Ferryhopper unless a ferry is added; Trenitalia/Italo unless a train leg is added; Rome2Rio can explore options but should not be the authority for a critical transfer.</p>
+        </article>
+
+        <article class="card practical-card">
+          <span class="status proposed">Money + movement</span>
+          <h3>Small habits that matter</h3>
+          <ul>
+            <li>When a card terminal offers dollars or euros, choose <b>euros</b> and let the card network perform the conversion.</li>
+            <li>Carry two physical cards on different networks, stored separately, plus modest euro cash for small businesses and contingencies.</li>
+            <li>Tipping is not a U.S.-style obligation; check for service/cover charges and round or add a small amount for good service.</li>
+            <li>Use licensed white taxis in Rome. FCO to central Rome is currently a fixed €55 per vehicle within the Aurelian Walls.</li>
+            <li>Keep bags zipped and in front in crowded stations/sights; place trackers in checked bags and baby-equipment bags if already owned.</li>
+          </ul>
+        </article>
+
+        <article class="card practical-card">
+          <span class="status proposed">Offline for both parents</span>
+          <h3>Documents + emergency layer</h3>
+          <ul>
+            <li>Passports, insurance, flight/stay/car confirmations, local-language addresses, Hudson’s health record, and emergency contacts.</li>
+            <li>Car-seat/stroller manuals, correct-install photos, driver licenses + IDPs, and rental return instructions.</li>
+            <li>One encrypted shared offline folder, plus a small paper backup separated from the passports.</li>
+            <li>Emergency number in Italy and Greece: <b>112</b>. Save the travel-insurance assistance number and nearby pediatric care after lodging is fixed.</li>
+            <li>ETIAS is currently scheduled for the last quarter of 2026, after this trip; recheck only on the official EU site shortly before departure.</li>
+          </ul>
+        </article>
+
+        <article class="card practical-card">
+          <span class="status confirmed">Trip rhythm</span>
+          <h3>How to make the itinerary feel good</h3>
+          <ul>
+            <li>One major fixed activity per day is the default. A second item should be nearby, optional, and easy to abandon.</li>
+            <li>Transfer days are transfer days. The day after the 4:15am Puglia departure is protected recovery time.</li>
+            <li>Use early mornings for major sights, protect midday rest, and favor walkable dinners or aperitivo over another cross-city reservation.</li>
+            <li>Subgroups are a feature: not every adult has to attend every outing, and the parent staying with Hudson should rotate.</li>
+            <li>Book official attraction sites first; use marketplaces only when their tour format adds real value.</li>
+          </ul>
+        </article>
+
+        <article class="card practical-card wide">
+          <span class="status proposed">American traveler cheat sheet</span>
+          <h3>Things that are easy to miss</h3>
+          <div class="cheat-grid">
+            <div>
+              <h4>Passport + border</h4>
+              <ul>
+                <li>Every traveler—including Hudson—needs a passport issued within the last 10 years and valid at least three months after leaving the EU. Check now; six months of remaining validity is the comfortable buffer.</li>
+                <li>Italy and Greece are both in Schengen. EES is operating, so the first external-border arrival may include a facial image/fingerprints and take longer than the old stamp-only process.</li>
+                <li>Carry proof of lodging and onward/return travel offline. ETIAS is not currently expected before this trip.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Power + plugs</h4>
+              <ul>
+                <li>Italy and Greece use about 230V, not U.S. 120V. A plug adapter changes the prongs; it does <b>not</b> change voltage.</li>
+                <li>Phones/laptops usually say “100–240V” and need only an adapter. Check every label.</li>
+                <li>Do not plug a 120V-only hair tool, kettle, bottle device, or other heater into 230V. Buy/borrow a local appliance or use a truly dual-voltage model.</li>
+                <li>Bring compact Type C/F-compatible adapters; Italy can also use Type L outlets.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Driving</h4>
+              <ul>
+                <li>Road signs and speeds are metric. <i>Benzina</i> means gasoline; <i>gasolio</i> means diesel—check the fuel door and contract before filling.</li>
+                <li>Avoid ZTL restricted city-center zones even if navigation suggests the route. Camera fines can follow later.</li>
+                <li>At Italian tolls, avoid Telepass-only lanes unless the rental explicitly includes it; keep the entry ticket and use a card/cash lane.</li>
+                <li>Automatics and large vehicles are less plentiful than in the U.S.; reserve the required class and transmission explicitly.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Restaurants + shops</h4>
+              <ul>
+                <li><i>Coperto</i> is a per-person cover charge, not a tip. Water and bread may be charged; ask for <i>acqua naturale</i> (still) or <i>frizzante</i> (sparkling).</li>
+                <li>Dinner often starts later than in the U.S. Aperitivo can bridge the family’s early hunger without forcing a formal meal.</li>
+                <li>Smaller southern businesses may close for an afternoon <i>riposo</i>; check same-day hours before a special drive.</li>
+                <li>Coffee standing at the bar can cost less than table service. The posted table price controls, so ask before sitting in landmark areas.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Tickets + toilets</h4>
+              <ul>
+                <li>If a paper Italian regional train ticket is ever added, validate it at the station before boarding. Current digital regional tickets auto-validate for the selected departure.</li>
+                <li>For tap-in/tap-out systems, use the same physical card or device at both ends; each rider generally needs a separate payment method.</li>
+                <li>Carry a few €1/€2 coins: some public toilets, lockers, small parking areas, or beach facilities may require cash.</li>
+                <li>In Greece, follow restroom signs about toilet paper; older plumbing often uses a nearby bin instead of flushing paper.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Baby + pharmacy language</h4>
+              <ul>
+                <li>A <i>farmacia</i> / φαρμακείο is the first stop for many minor needs; look for the green cross and check after-hours duty listings.</li>
+                <li>Do not assume a taxi, transfer, or rental includes an acceptable infant seat—get the arrangement in writing or install the family seat.</li>
+                <li>Elevators, A/C, washers, high chairs, and cribs are not automatic lodging amenities. Confirm each one that matters.</li>
+                <li>Use the carrier for cobbles, stairs, Matera, and the gap between aircraft and baggage-claim stroller return.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="prep">
       <div class="card prep-card">
         <div>
@@ -537,6 +762,255 @@ eleventyExcludeFromCollections: true
   <footer>
     Italy + Greece · 24 August–11 September 2026 · Updated from the private trip record on 12 July 2026
   </footer>
+
+  <script>
+    const actionDetails = {
+      "volotea": {
+        status: ["Decide now", "conflict"], title: "Volotea bags",
+        meta: ["Flight: Tue 1 Sep", "BRI 7:20am → HER 10:05am", "All 9 travelers"],
+        problem: "The flight is booked but paid baggage is not. Until every traveler declares their load, we cannot buy the cheapest useful allowance or know whether the two Italy and Crete cars can actually hold everyone’s luggage.",
+        known: [
+          "A standard fare includes one 40 × 30 × 20cm under-seat bag per ticketed passenger; Hudson’s infant fare has no separate baggage allowance.",
+          "Priority adds one 55 × 40 × 25cm cabin bag; the two cabin pieces may weigh 10kg combined.",
+          "Checked bags are sold as 10kg, 20kg, or 25kg. Volotea says web/app purchase is cheaper than airport purchase and permits additions until 2.5 hours before departure.",
+          "Hudson may have two free checked baby-equipment items, such as the stroller and car seat. They must be registered at the counter; the stroller returns at baggage claim."
+        ],
+        options: [
+          ["Lean cabin plan", "Personal item only for light packers; cheapest, but unrealistic for the whole trip unless laundry and sharing are deliberate."],
+          ["Shared checked-bag plan", "Pool 20kg/25kg checked bags across couples, then give each adult one under-seat item. Usually the simplest group baseline."],
+          ["Parent resilience plan", "For Chris Z + Maddie + Hudson: two 20kg checked bags, free stroller + car seat, and Priority for at least one parent so the delay kit stays overhead."]
+        ],
+        needed: ["Each person: under-seat item, overhead bag, checked-bag count, approximate dimensions, and expected weight.", "Who is willing to share checked capacity with a partner.", "Any unusually large items, medicine, formula, or gear that must stay in the cabin."],
+        checks: ["Buy only after recording the manifest; then use that same manifest to size both sets of rental cars.", "Confirm Hudson appears correctly as an infant and that stroller/car-seat handling is attached to the booking.", "Do not pack all formula, medicine, or Hudson essentials in checked luggage."],
+        source: '<a href="https://www.volotea.com/en/baggage/">Volotea baggage rules</a> · <a href="https://www.volotea.com/en/your-booking/families/">Volotea family rules</a>'
+      },
+      "italy-cars": {
+        status: ["Conflict", "conflict"], title: "Bari return + second Italy car",
+        meta: ["Rental: Thu 27 Aug–Tue 1 Sep", "Flight leaves Bari 7:20am", "8 adults + Hudson"],
+        problem: "The current Tiguan seats only five, and its 8:00am Bari return occurs 40 minutes after the flight departs. A nominal seat count also ignores nine people’s bags, stroller, and car seat.",
+        known: [
+          "A practical airport target is about 5:20am; the working plan leaves Conversano around 4:15am.",
+          "Locauto/National Bari publishes 8:00am–11:00pm desk hours. Its booking form accepts earlier return times, but the actual key-drop, inspection, shuttle, and end-of-liability process still need written confirmation.",
+          "Pickup requires each rental’s primary driver to meet license/age rules and bring the physical payment card required for that vehicle/deposit. Digital-only cards are not accepted.",
+          "Italy requires a valid license plus an IDP or official translation. The practical low-risk choice is for every possible U.S. driver to obtain an IDP before departure and carry it with the physical U.S. license.",
+          "Hudson needs an approved rear-facing child restraint. The family plans to bring and practice its own seat."
+        ],
+        options: [
+          ["Written after-hours return", "Keep both cars overnight, confirm the exact lot/key box and shuttle/walk, photograph fuel and condition, and obtain written confirmation of when responsibility ends."],
+          ["Return 31 Aug + private transfer", "Return both cars while the desk is open, then pre-book a luggage-capable 4:15am transfer from the masseria. Less return ambiguity; more transfer cost and no cars that night."],
+          ["Change provider", "Move both rentals to a company with a verified 24-hour staffed return or an explicit after-hours process compatible with a 5:20am terminal arrival."]
+        ],
+        needed: ["Complete bag manifest with approximate dimensions—not just bag count.", "At least two named primary drivers; ideally one additional driver per car for the six-hour Rome–Puglia day.", "Which drivers will obtain IDPs, their license tenure/age, and who has a physical card with adequate deposit capacity.", "Quote for Tiguan + luggage-capable 7-seat MPV/van versus two larger five-seat vehicles.", "Written answer from National/Locauto on early return, inspection, keys, shuttle/walk, fuel, and liability."],
+        checks: ["Price one-way fees, extra-driver fees, automatic transmission, mileage, fuel policy, toll handling, deductible/deposit, theft coverage, and roadside assistance.", "Confirm the actual booked vehicle class permits the planned number of occupants after installing Hudson’s seat.", "Avoid ZTL city-center driving; confirm parking at the masseria and day-trip parking plans.", "Photograph both cars at pickup and return; keep fuel/toll receipts."],
+        source: '<a href="https://www.locautorent.com/en/car-rental/locations/apulia-offices/bari/airport/">Locauto Bari details</a> · <a href="https://travel.state.gov/en/international-travel/planning/guidance/driving-transportation.html">U.S. State Department driving guidance</a> · <a href="https://europa.eu/youreurope/citizens/travel/driving-abroad/road-rules-and-safety/italy/index_en.htm">EU Italy road rules</a>'
+      },
+      "crete-base": {
+        status: ["Book next", "open"], title: "Choose the Crete base",
+        meta: ["5 nights: Tue 1–Sun 6 Sep", "Arrive Heraklion 10:05am", "Two-car parking needed"],
+        problem: "The base determines airport choice for the Athens flight, rental-car hours, daily drive burden, and whether Knossos, Chania, beach time, or a class is realistic. Waiting on a perfect activity list risks losing the lodging that makes the route work.",
+        known: ["Rethymno is the current compromise between the fixed Heraklion arrival and western Crete priorities.", "The first day follows a roughly 4:15am Puglia departure; it should end at the lodging, not at Knossos.", "The villa needs sleeping-room A/C, washer, clear bed plan, two-car parking, manageable stairs, high chair, and a pool arrangement safe for Hudson."],
+        options: [["Rethymno area — recommended", "Balanced for Heraklion arrival, Chania access, and a lower-key base; still requires driving for both east and west sights."], ["Heraklion area", "Best for arrival and Knossos; longest drives for Chania and western beaches."], ["Chania area", "Best for western priorities and town evenings; long transfer after the early flight and weak fit if Knossos matters."]],
+        needed: ["Group’s must-have priority: Chania, Knossos, beach, cooking class, or mostly villa time.", "Bedroom/bed-sharing assignments and budget ceiling.", "Whether a safely enclosed pool is mandatory or a pool-free property is acceptable."],
+        checks: ["Use a cancellable rate where practical; verify the address before booking cars and the 6 Sep flight.", "Ask for photos/details of pool barriers, stairs, cribs, washer, parking approach, and bedroom A/C.", "Choose at most one major outing per full day; protect 2 Sep as recovery."], source: "Trip-planning recommendation; lodging remains unbooked."
+      },
+      "greek-flights": {
+        status: ["Book next", "open"], title: "Book Crete → Athens → Rome",
+        meta: ["Crete → Athens: Sun 6 Sep", "Athens → FCO: Wed 9 Sep", "Direct flights preferred"],
+        problem: "These two flights anchor the remaining lodging, car return, and transfers. The 9 Sep leg must also protect the 9:00am Delta departure on 10 Sep; returning to Rome on departure morning is not workable.",
+        known: ["The Crete airport must match the chosen base/rental return; Heraklion is the default unless the group intentionally accepts a different-airport plan.", "A 6 Sep beach outing conflicts with an unknown flight and car return.", "The Detroit family should sleep near FCO on 9 Sep for the 9:00am departure."],
+        options: [["6 Sep late morning / early afternoon", "Easiest transfer-day rhythm and leaves time to settle in Athens before dinner."], ["6 Sep evening", "Preserves more Crete time but makes the day longer and amplifies delay/child-bedtime cost."], ["9 Sep morning / midday — recommended", "Creates a useful delay buffer and a calm FCO-area evening before the next morning’s long-haul flight."]],
+        needed: ["Exact traveler split on each flight, including Ari + Kai’s 8 Sep departure and Chris + Nicole’s final routing.", "Chosen Crete airport and bag allowances for every fare.", "Hudson infant details, seat adjacency, change terms, and whether bags can be pooled."],
+        checks: ["Compare total price after bags and seats, not headline fare.", "Prefer direct flights and avoid separate-ticket same-day international connections.", "Do not schedule a major 6 Sep activity until the flight is booked."], source: "Route recommendation; check live schedules and fare rules before purchase."
+      },
+      "greek-cars": {
+        status: ["After base", "open"], title: "Book the Crete cars",
+        meta: ["Pickup Tue 1 Sep after 10:05am", "Return Sun 6 Sep before flight", "8 adults + Hudson"],
+        problem: "Two vehicles are needed, but booking them before the base and outbound airport are chosen can create a costly one-way return or excessive driving. Cargo capacity must match the Volotea manifest.",
+        known: ["The same nine people, stroller, car seat, and bags move from Bari into the Crete vehicles.", "Hudson’s family will bring its own rear-facing seat.", "Greek rental or insurer terms may require an IDP even when a valid U.S. license is accepted; every planned driver should carry both."],
+        options: [["Two airport rentals — recommended", "Simplest if both pick up and return at the airport used for the Athens flight."], ["One large + one compact", "Potentially cheaper, but only if the large vehicle truly holds most bags plus its passengers."], ["Two luggage-capable vehicles", "More forgiving for nine people and day trips; likely higher cost and larger deposits."]],
+        needed: ["Chosen base, 6 Sep departure airport/time, bag manifest, and named drivers.", "Automatic-transmission requirement and driver/card/IDP details.", "Whether everyone must travel together every day or one car can support subgroups."],
+        checks: ["Compare total price with extra drivers, insurance, deposits, fuel, mileage, and airport/one-way fees.", "Get the child-seat installation manual offline and test fit promptly at pickup.", "Avoid assuming a vehicle model is guaranteed; book by a class whose minimum cargo plan works."], source: '<a href="https://travel.state.gov/en/international-travel/planning/guidance/driving-transportation.html">U.S. State Department driving guidance</a>'
+      },
+      "athens-stay": {
+        status: ["After flights", "open"], title: "Book the Athens stay",
+        meta: ["Sun 6–Wed 9 Sep", "3 nights", "Ari + Kai depart 8 Sep"],
+        problem: "The group needs a walkable, infant-manageable base plus an easy airport departure for Ari + Kai. Room inventory for eight adults plus Hudson is more constrained than ordinary couple travel.",
+        known: ["Acropolis at opening and a midday rest are the planned rhythm for 7 Sep.", "The group splits on 8 Sep, so one airport transfer should not disrupt everyone else."],
+        options: [["Apartment / aparthotel", "Shared space, kitchen, and washer; verify lift, A/C, bathrooms, and legal bed count."], ["Cluster of hotel rooms", "Simpler housekeeping and luggage; less common space and infant kitchen flexibility."], ["Airport-adjacent final night", "Not recommended for all three nights; useful only if a specific early departure forces it."]],
+        needed: ["Room-sharing map, budget, exact Ari + Kai flight time, and accessibility/stair needs.", "Priority between Plaka atmosphere and easiest vehicle access."],
+        checks: ["Confirm bedroom A/C, elevator, crib, washer, blackout, cancellation, reception/check-in hours, and taxi/minibus access.", "Prefer a location that supports one major morning sight plus a walkable dinner rather than cross-city commuting."], source: "Trip-planning recommendation; lodging remains unbooked."
+      },
+      "fco-stay": {
+        status: ["After 9 Sep flight", "open"], title: "Book the FCO overnight",
+        meta: ["Wed 9 Sep", "Delta 207: Thu 10 Sep at 9:00am", "At least Chris Z + Maddie + Hudson"],
+        problem: "A central-Rome night creates a very early transfer and more failure points. The exact room count and shuttle load depend on Denise/John’s flights and the Athens–Rome booking.",
+        known: ["Chris Z, Maddie, and Hudson depart FCO at 9:00am on 10 Sep.", "The working plan is a direct Athens–Rome flight on 9 Sep and an FCO-area hotel with dependable early transport."],
+        options: [["Walk-connected airport hotel", "Highest certainty and easiest with stroller/bags; usually most expensive."], ["Fiumicino hotel with private transfer", "Often better value/food; only book with a written pre-dawn vehicle plan and enough luggage capacity."], ["Central Rome", "Use only if the group explicitly values the final evening over sleep and transfer simplicity."]],
+        needed: ["Who sleeps near FCO, room map, 9 Sep arrival time, and 10 Sep flight details for Denise + John.", "Crib and early-transfer requirements; bag count after the final manifest."],
+        checks: ["Verify shuttle hours—‘airport shuttle’ does not guarantee a 6:00am group departure.", "Choose a cancellable booking until all outbound flight details are recorded."], source: "Trip-planning recommendation; FCO lodging remains unbooked."
+      },
+      "mmr": {
+        status: ["Call now", "conflict"], title: "Settle Hudson’s MMR timing",
+        meta: ["Hudson turns 1: Wed 5 Aug", "Depart: Sun 23 Aug", "18 days between"],
+        problem: "CDC guidance changes at 12 months. Hudson turns one shortly before departure, so his pediatrician should apply the schedule to his exact prior doses, birthday, and travel date rather than the family guessing.",
+        known: ["CDC recommends international travelers be protected at least two weeks before departure when possible.", "Infants 6–11 months receive an early travel dose; children over 12 months without evidence of immunity begin the routine series, with the second dose at least 28 days later."],
+        options: [["Appointment on/soon after 5 Aug", "Potentially fits the two-week target before 23 Aug; pediatrician confirms whether this is the correct dose."], ["Earlier travel dose", "Only if the pediatrician recommends it based on age and prior record; an early infant dose does not replace the later routine series."], ["Different clinical schedule", "Follow the pediatrician’s documented recommendation if medical history changes the standard path."]],
+        needed: ["Hudson’s exact vaccination record and pediatrician guidance.", "Appointment availability on or immediately after his birthday."],
+        checks: ["Call now; ask the office to state which dose, earliest appropriate date, and follow-up schedule.", "Store the updated immunization record offline with travel medical information."], source: '<a href="https://www.cdc.gov/measles/travel/index.html">CDC international measles guidance</a>'
+      },
+      "rome-lodging": {
+        status: ["Confirm", "open"], title: "Confirm Rome lodging details",
+        meta: ["Mon 24–Thu 27 Aug", "Booked Airbnb", "Arrival times incomplete"],
+        problem: "The property is booked, but arrival-day bag handling and Hudson’s sleep setup are not operationally confirmed. Without them, transfer vehicles and the recovery day cannot be finalized.",
+        known: ["Rome lodging is confirmed for 24–27 Aug.", "The group arrives in separate parties; Delta 206’s local arrival time and other parties’ exact details are still missing."],
+        options: [["Early bag drop at Airbnb", "Best if host confirms exact time, access contact, and whether rooms may still be unavailable."], ["Airport / city luggage storage", "Fallback if host cannot take bags; adds transfer handling and should be reserved for the actual bag count."], ["Standard check-in only", "Requires the arrival-day plan to absorb bags until access time."]],
+        needed: ["Every arrival flight, local landing time, terminal/airport, and bag count.", "Host answers on early drop, check-in, bed layout, A/C, washer, stairs, crib/high chair, and vehicle approach."],
+        checks: ["Ask for the address in local format and a day-of contact number for offline storage.", "Do not send the private Airbnb invitation link to the public page."], source: "Confirmed booking; practical details remain open."
+      },
+      "rome-transfers": {
+        status: ["After arrivals", "open"], title: "Book Rome airport transfers",
+        meta: ["FCO → Rome: 24 Aug", "Rome → FCO cars: 27 Aug", "Multiple arrival parties"],
+        problem: "One generic ‘airport transfer’ cannot be priced correctly until each arrival time, bag count, child-seat plan, and lodging access time are known.",
+        known: ["Authorized Rome taxis are white and licensed. The current official FCO–central Rome fixed fare is €55 per vehicle within the Aurelian Walls, but ordinary taxis will not fit the full party and baggage.", "The family can install its own travel seat if the vehicle has a compatible seating position; that needs to be agreed in writing."],
+        options: [["One pre-booked minibus per arrival cluster", "Best luggage certainty; verify legal passenger count and Hudson’s restraint."], ["Two coordinated licensed vehicles", "More flexible for split arrivals; requires clear destination and bag allocation."], ["Official taxi rank", "Useful fallback for small arrival groups; do not accept unsolicited drivers inside the terminal."]],
+        needed: ["Arrival manifest: traveler, flight, terminal, local time, checked/cabin bags.", "Airbnb access time/address and whether the travel car seat will be accessible on arrival."],
+        checks: ["Book by vehicle capacity after luggage, not passenger seats alone.", "Keep the driver/dispatcher contact and destination address offline.", "For the 27 Aug FCO rental pickup, compare a group transfer with moving only the named drivers to FCO and returning for passengers."], source: '<a href="https://www.adr.it/en/web/aeroporti-di-roma-en/pax-fco-taxi">Fiumicino official taxi guidance</a>'
+      },
+      "insurance": {
+        status: ["Compare now", "open"], title: "Choose travel insurance",
+        meta: ["Cover: 23 Aug–11 Sep + delay buffer", "Include Hudson", "Italy + Greece"],
+        problem: "Credit-card benefits, U.S. health coverage, and travel insurance overlap but are not interchangeable. The decision should begin with existing coverage and non-refundable exposure, not a brand ranking.",
+        known: ["The U.S. government does not pay overseas medical bills. Medicare/Medicaid do not cover care abroad; private coverage varies and may require reimbursement.", "Medical evacuation, travel health, cancellation/interruption, delay, baggage, and rental damage are separate benefits with different triggers.", "Time-sensitive waivers such as pre-existing-condition or CFAR benefits vary by policy and deposit date; confirm eligibility immediately rather than assuming a generic 10–21 day window."],
+        options: [["Comprehensive policy", "Medical + evacuation + cancellation/interruption + delay/baggage. Best when prepaid non-refundable costs are meaningful."], ["Medical/evacuation supplement", "Possible if card benefits already cover cancellation/delay adequately."], ["Self-insure trip cost", "Only after confirming health/evacuation protection; accepting lost prepaid costs does not solve overseas medical risk."]],
+        needed: ["First trip-deposit date and total prepaid non-refundable cost by traveler/household.", "Written overseas benefits from each health plan and credit card used to pay bookings.", "Hudson’s coverage, medical evacuation/repatriation, 24-hour assistance, exclusions, deductibles, and whether rental-car coverage is primary/secondary."],
+        checks: ["Compare policy wording and benefit limits, not review-site rankings alone.", "Confirm both countries, full date range, all insured travelers, existing medical conditions, planned activities, and how claims are paid.", "Save the policy, assistance number, and claim instructions offline."], source: '<a href="https://travel.state.gov/en/international-travel/planning/guidance/insurance.html">U.S. State Department insurance guidance</a>'
+      },
+      "car-seat": {
+        status: ["Practice", "proposed"], title: "Practice the baby gear system",
+        meta: ["Finish by early Aug", "4 flight legs + rentals", "Rear-facing seat"],
+        problem: "The car seat, stroller, carrier, and bags have to work as one repeatable airport-to-car system. First-time installation at a dark 4:00am return or a busy rental lane is the wrong moment to learn it.",
+        known: ["Child restraints are mandatory in Italy; the family intends to bring its own rear-facing travel seat.", "Volotea permits two free baby-equipment items and returns the stroller at baggage claim, so the carrier must bridge aircraft-to-carousel."],
+        options: [["Own seat + stroller + soft carrier — recommended", "Most control over fit and condition; requires adults to practice carrying the complete load."], ["Rental-company seat", "Less gear through airports, but model, condition, and fit can be uncertain; reserve and reconfirm."], ["Carrier-heavy transit", "Useful for stairs and baggage claim, but not a substitute for the car restraint." ]],
+        needed: ["Exact car-seat and stroller models, manuals, airline protection bags, and which adult owns each item at each handoff.", "Confirmation that the seat is suitable for the child and compatible with installation using vehicle belts where needed."],
+        checks: ["Practice rear-facing belt installation in more than one vehicle, folding stroller one-handed, and carrying gear with two suitcases.", "Photograph correct installation steps and keep manuals offline.", "Put an AirTag/Tile and contact card on checked baby gear if desired."], source: '<a href="https://www.volotea.com/en/your-booking/families/">Volotea family rules</a> · <a href="https://europa.eu/youreurope/citizens/travel/driving-abroad/road-rules-and-safety/italy/index_en.htm">EU Italy road rules</a>'
+      },
+      "offline": {
+        status: ["Prepare", "proposed"], title: "Prepare phones + offline records",
+        meta: ["Set up by Sun 16 Aug", "Final refresh 48h before", "Both parents need access"],
+        problem: "The trip cannot depend on one phone, one email inbox, or live data. Booking references stay private, but they must be available to the adults who need them during a delay or separated arrival.",
+        known: ["ETIAS is scheduled for the last quarter of 2026, after this August/September trip; EES border procedures are already operating. Recheck the official EU site shortly before departure.", "Offline maps and language packs reduce dependence on island/mobile coverage."],
+        options: [["Shared encrypted travel folder — recommended", "PDFs/screenshots available offline to both parents, with a small printed backup."], ["App-only", "Convenient but brittle if logged out, offline, or a phone is lost."], ["Paper-only", "Good emergency backup, poor for updates; avoid printing unnecessary sensitive data for every traveler." ]],
+        needed: ["Who needs access to which booking, emergency contact, medical, and child documents.", "Phone roaming versus eSIM choice for each household."],
+        checks: ["Install airline apps, WhatsApp, offline Google Maps, and offline Italian/Greek Translate packs; add taxi/transit apps only if the group will use them.", "Store passport photo pages, insurance, flight/hotel/car details, local-language addresses, Hudson records, and emergency numbers offline.", "Always pay card terminals in euros; carry a small cash reserve and keep backup cards separate.", "Use only the official EU site for ETIAS status; do not pay third-party application sites."], source: '<a href="https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en">Official EU EES/ETIAS status</a>'
+      },
+      "colosseum": {
+        status: ["Decide before 27 Jul", "open"], title: "Family Colosseum plan",
+        meta: ["Proposed: Wed 26 Aug at 8:30am", "Sales: 30 days ahead", "Chris Z + Maddie + Hudson"],
+        problem: "The linked evening tour excludes children under six and strollers, so it cannot be the family-of-three plan. The lower-risk alternative is an official morning timed entry with a carrier and permission to stop early.",
+        known: ["Official standard entry is proposed for 8:30am on 26 Aug, with a maximum 75-minute Colosseum visit and Forum/Palatine treated as optional.", "Hudson needs a free named under-18 ticket. Official timed sales open 30 days ahead, so the target on-sale date is 27 Jul for a 26 Aug visit."],
+        options: [["Official 8:30am entry — recommended", "Parents self-guide, use carrier/small diaper kit, and leave when Hudson is done."], ["Parents alternate", "One parent visits with an adult subgroup while the other has Hudson, then swap only if ticket timing and energy make it reasonable."], ["Skip this trip", "Vatican is already a major early outing; skipping protects recovery and packing before Puglia." ]],
+        needed: ["Chris Z + Maddie accept/decline; confirm desired entry time before sales open.", "Final official infant/gear rules at purchase."],
+        checks: ["Buy from the official site when the date opens; avoid locking the family into a long third-party tour.", "Keep 25 Aug afternoon quiet and 26 Aug evening early."], source: '<a href="https://colosseo.it/en/tickets/colosseum-roman-forum-palatine/">Official Colosseum tickets</a>'
+      },
+      "classes": {
+        status: ["After transport", "proposed"], title: "Choose cooking classes",
+        meta: ["Possible: 25 Aug, 30 Aug, or 5 Sep", "One major activity/day", "Subgroups welcome"],
+        problem: "Classes can be trip highlights, but three classes plus the fixed sights would recreate the over-scheduled trip the group is trying to avoid. Each option also needs explicit infant rules before booking.",
+        known: ["Possible themes are Rome pasta, Puglia orecchiette, and Cretan cooking.", "25 Aug already begins with the 7:45am Vatican; 30 Aug includes Alberobello; 5 Sep competes with Chania."],
+        options: [["Choose one whole-group class", "Highest shared value and leaves space in the other regions."], ["Choose two subgroup classes", "Interested adults attend while a rotating Hudson/rest group protects pace."], ["Keep only informal food experiences", "Aperitivo, markets, bakeries, and tavernas without another fixed-duration booking." ]],
+        needed: ["Ranked interest, must-be-together status, infant/high-chair rules, duration, location, start time, and cancellation terms.", "Whether the class itself replaces the day’s sightseeing rather than being added to it."],
+        checks: ["Book only after lodging and transport are fixed.", "Prefer a start that does not collide with nap/bedtime and avoid more than one fixed major event that day."], source: "User-provided travel principle integrated: fewer bases and one or two major activities per day."
+      },
+      "puglia-days": {
+        status: ["Choose format", "proposed"], title: "Matera + Alberobello",
+        meta: ["Matera: Sat 29 Aug", "Alberobello: Sun 30 Aug", "Hot, uneven walking"],
+        problem: "Both are worthwhile, but full-day guided programs on consecutive days would leave little recovery and are awkward with a stroller. The group can choose depth, flexibility, or subgroups.",
+        known: ["Matera’s Sassi favor the carrier and an optional subgroup route.", "Alberobello is paired with at most one class; it should not become a multi-stop checklist day."],
+        options: [["Self-guided, early, short — recommended", "Reserve parking, choose a compact route, and leave before peak heat."], ["Private guide", "Useful context and route discipline; require infant flexibility and a 2–3 hour maximum."], ["Split group", "History/walking subgroup goes deeper while Hudson/rest subgroup chooses a shorter town or masseria day." ]],
+        needed: ["Who considers each destination essential; mobility/heat limits; guide budget; carrier willingness.", "Parking and drive time from the exact masseria."],
+        checks: ["Do not commit the whole group to both long days.", "Book official/local guides directly where possible and confirm cancellation, meeting point, shade/breaks, and child participation."], source: "Trip-planning recommendation based on the infant-paced group decision."
+      },
+      "beach": {
+        status: ["After cars", "proposed"], title: "Plan the Puglia beach day",
+        meta: ["Mon 31 Aug", "Finish early", "4:15am departure next day"],
+        problem: "The beach should be restorative, but 31 Aug is also the only pre-flight reset. A distant or fixed all-day club makes fueling, packing, early car return, and Hudson’s sleep harder.",
+        known: ["Both cars must be fueled/returned under the chosen plan, all bags packed, and everyone asleep early before the 7:20am flight.", "A nearby lido with reserved shade is easier with a baby than an exposed, parking-uncertain beach."],
+        options: [["Nearby lido, morning only — recommended", "Reserve umbrella/shade and leave after lunch."], ["Flexible public beach", "No reservation risk, but parking, shade, toilets, and food are less certain."], ["Masseria pool/rest", "Best if the group is tired or rental-return logistics remain unresolved." ]],
+        needed: ["Exact masseria location/drive, car-return choice, desired facilities, and cancellation/weather policy."],
+        checks: ["Confirm parking, shade, toilets/changing, food, stroller access, and infant suitability.", "Set a hard return time that preserves fuel, packing, dinner, and bed."], source: "Trip-planning recommendation; no beach club is booked."
+      },
+      "dinners": {
+        status: ["After lodging", "proposed"], title: "Taverna + fixed dinners",
+        meta: ["Crete target: Fri 4 Sep", "Rome/Puglia optional", "Book after addresses"],
+        problem: "Restaurants only become logistically real once lodging addresses, car plans, and child timing are known. A scenic mountain dinner can create a difficult night drive for two drivers.",
+        known: ["The current Crete plan pairs a nearby taverna with Knossos or a rest day on 4 Sep.", "The trip philosophy favors local, walkable meals over landmark-adjacent tourist restaurants and excessive reservations."],
+        options: [["Walkable neighborhood defaults", "Lowest logistics and easy opt-outs; save reservations for one or two special meals."], ["Mountain taverna", "Potential highlight; choose early seating, sober/designated drivers, and a short route from the villa."], ["Subgroup dinners", "Parents can leave early with Hudson without ending everyone’s evening." ]],
+        needed: ["Villa/hotel addresses, food constraints, high-chair needs, budget, and which meals truly need the whole group."],
+        checks: ["Confirm opening day, reservation time, parking/road, high chair, outdoor smoke, and cancellation.", "Avoid planning around an assumed 6:00pm Italian dinner; check the restaurant’s real service hours."], source: "User-provided local-dining advice integrated as a planning preference, not a confirmed reservation."
+      },
+      "reconfirm": {
+        status: ["Schedule later", "proposed"], title: "Final reconfirmations",
+        meta: ["First pass: 16–22 Aug", "Again: 48h before each leg", "Owner needed per booking"],
+        problem: "The route spans several independent bookings and group splits. A reservation existing in an inbox does not guarantee the infant record, bag allowance, transfer capacity, or after-hours instruction is operationally correct.",
+        known: ["The critical seams are Rome arrivals, Vatican operator rules, FCO rental pickup, Bari early return, Volotea infant/bags, Crete cars, and the 9–10 Sep FCO connection."],
+        options: [["Assign one owner per booking — recommended", "Owner verifies and updates the source-of-truth record; not one person doing every task."], ["Single group review call", "Useful for manifest and attendance, but still needs named follow-through owners." ]],
+        needed: ["Owner and confirmation status for each flight, stay, car, transfer, and fixed activity.", "Emergency contacts and who holds shared offline copies."],
+        checks: ["16–22 Aug: audit names, dates, local times, terminals, infant linkage, seats, bags, addresses, cancellation, and contacts.", "48h before each leg: flight status/check-in, transfer time, car return, weather/closure, and operator meeting point.", "Keep confirmation numbers private; publish only operational details the group needs."], source: "Operational control step derived from the confirmed multi-booking route."
+      }
+    };
+
+    const listInto = (element, items) => {
+      element.replaceChildren(...items.map((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        return li;
+      }));
+    };
+
+    const showAction = (id) => {
+      const detail = actionDetails[id];
+      if (!detail) return;
+      document.querySelectorAll(".action-choice").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.action === id));
+      });
+      const status = document.querySelector("#brief-status");
+      status.textContent = detail.status[0];
+      status.className = `status ${detail.status[1]}`;
+      document.querySelector("#brief-title").textContent = detail.title;
+      document.querySelector("#brief-problem").textContent = detail.problem;
+      document.querySelector("#brief-meta").replaceChildren(...detail.meta.map((item) => {
+        const span = document.createElement("span");
+        span.textContent = item;
+        return span;
+      }));
+      listInto(document.querySelector("#brief-known"), detail.known);
+      listInto(document.querySelector("#brief-needed"), detail.needed);
+      listInto(document.querySelector("#brief-checks"), detail.checks);
+      document.querySelector("#brief-options").replaceChildren(...detail.options.map(([title, copy]) => {
+        const option = document.createElement("div");
+        option.className = "brief-option";
+        const heading = document.createElement("b");
+        heading.textContent = title;
+        const text = document.createElement("span");
+        text.textContent = copy;
+        option.append(heading, text);
+        return option;
+      }));
+      document.querySelector("#brief-source").innerHTML = detail.source;
+    };
+
+    document.querySelectorAll(".action-choice").forEach((button) => {
+      button.addEventListener("click", () => {
+        showAction(button.dataset.action);
+        if (window.matchMedia("(max-width: 850px)").matches) {
+          const detail = document.querySelector("#action-detail");
+          detail.focus({ preventScroll: true });
+          detail.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+    showAction("volotea");
+  </script>
 
 </body>
 </html>
